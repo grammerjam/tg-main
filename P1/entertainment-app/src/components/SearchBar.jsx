@@ -1,5 +1,4 @@
 import { useState } from "react"
-import SearchIcon from "../assets/icon-search.svg"
 
 const SearchBar = ({ selectedFilter }) =>
 {
