@@ -1,14 +1,13 @@
 import { useState } from "react"
 
-const SearchBar = ({ selectedFilter }) =>
+const SearchBar = ({ selectedFilter,handleSearch, noResults }) =>
 {
 
     const [currentSearch, setCurrentSearch] = useState("")
-    const [searchResults, setSearchResults] = useState([]); // State to store search results
 
     const handleChange = (e) =>
     {
-        setCurrentSearch(e.target.value)
+        handleSearch(e.target.value)
     }
 
     let placeholderText = "Search for "
@@ -33,15 +32,14 @@ const SearchBar = ({ selectedFilter }) =>
                 <input
                     type="text"
                     placeholder={placeholderText}
-                    value={currentSearch}
                     onChange={handleChange}
                     className={`outline-none border-b ${currentSearch ? 'border-5A698F' : 'border-transparent'} w-full px-4 py-2 text-lg bg-transparent`}
                 />
 
             </div>
-            {currentSearch && searchResults.length === 0 && (
+            {noResults && (
                 <p>
-                    No results for &quot;{currentSearch}&quot; in {placeholderText}
+                    No results for &quot;{handleSearch}&quot; in {placeholderText}
                 </p>
             )}
         </>
