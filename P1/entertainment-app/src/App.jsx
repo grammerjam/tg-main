@@ -2,7 +2,8 @@ import React from 'react';
 // import { Route, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SideNav from '../src/components/SideNav';
 import TvSeries from './components/TvSeries';
-import Home from './components/Home';
+import Home from "./pages/Home"
+
 
 import {
   BrowserRouter,
