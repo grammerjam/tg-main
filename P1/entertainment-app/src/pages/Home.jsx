@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import data from "../../data.json"
 import SearchBar from "../components/SearchBar"
+import Feed from "../components/Feed";
 
 const Home = () =>
 {
@@ -26,11 +27,7 @@ const Home = () =>
     return (
         <div>
             <SearchBar handleSearch={handleSearch} noResults={noResults} />
-            {media.map((movie, index) => (
-                <div key={index}>
-                    <h2>{movie.title}</h2>
-                </div>
-            ))}
+            <Feed selectedFilter={noResults ? null : "Filtered"} media={media}> </Feed> 
         </div>
     )
 }

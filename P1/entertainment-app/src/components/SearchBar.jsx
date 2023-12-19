@@ -39,7 +39,7 @@ const SearchBar = ({ selectedFilter,handleSearch, noResults }) =>
             </div>
             {noResults && (
                 <p>
-                    No results for &quot;{handleSearch}&quot; in {placeholderText}
+                    No Results Found.
                 </p>
             )}
         </>
