@@ -1,11 +1,13 @@
 
-const Feed = ({ selectedFilter }) =>
+const Feed = ({ selectedFilter, trendingItems }) =>
 {
 
     const moviesData = [];
     const tvSeriesData = [];
     const bookmarkedMoviesData = [];
     const bookmarkedTvSeriesData = [];
+
+
 
     const renderContentByFilter = () =>
     {
@@ -27,7 +29,7 @@ const Feed = ({ selectedFilter }) =>
             default:
                 return (
                     <>
-                        {renderContent("Trending", null)}
+                        {renderContent("Trending", trendingItems)}
                         {renderContent("Recommended", null)}
                     </>
                 );

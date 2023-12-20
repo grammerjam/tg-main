@@ -23,11 +23,12 @@ const Home = () =>
     }
 
     const noResults = media.length === 0 && searchQuery !== "";
+    const trendingItems = data.filter((item) => item.isTrending)
 
     return (
         <div>
             <SearchBar handleSearch={handleSearch} noResults={noResults} />
-            <Feed selectedFilter={noResults ? null : "Filtered"} media={media}> </Feed> 
+            <Feed selectedFilter={noResults ? null : "Filtered"} trendingItems={trendingItems}> </Feed> 
         </div>
     )
 }
