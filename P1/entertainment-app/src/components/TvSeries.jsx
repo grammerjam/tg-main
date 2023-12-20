@@ -1,8 +1,8 @@
 import React from 'react'
 
-function TvSeries() {
+const TvSeries = () => {
   return (
-    <div className='text-yellow underline'>TV Series</div>
+    <div className='underline text-yellow-200'>TV Series</div>
   )
 }
 
