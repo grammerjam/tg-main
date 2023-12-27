@@ -44,6 +44,6 @@ const SearchBar = ({ selectedFilter,handleSearch, noResults }) =>
             )}
         </>
     )
-}
+} 
 
 export default SearchBar
