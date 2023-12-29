@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import data from "../../data.json"
 import SearchBar from "../components/SearchBar"
 import Feed from "../components/Feed";
+import LoginModal from "../components/LoginModal";
 
 const Home = () =>
 {
@@ -29,6 +30,7 @@ const Home = () =>
         <div>
             <SearchBar handleSearch={handleSearch} noResults={noResults} />
             <Feed selectedFilter={noResults ? null : "Filtered"} trendingItems={trendingItems}> </Feed> 
+            <LoginModal />
         </div>
     )
 }
