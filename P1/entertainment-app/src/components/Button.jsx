@@ -4,7 +4,7 @@ const Button = (props) => {
     const { text, onClick } = props;
     const red = "#FC4747", white = "#sdvsd";
     return (
-        <button onClick={onClick} className="h-[3rem] max-h-[21rem] w-full bg-red text-white hover:bg-white hover:hover:text-black rounded-md ">
+        <button onClick={onClick} className="h-[3rem] max-h-[21rem] w-full bg-ma-red text-ma-white hover:bg-ma-white hover:text-black rounded-md ">
             {text}
         </button>
     )
