@@ -40,7 +40,7 @@ const Feed = ({ selectedFilter, trendingItems }) =>
     {
         return (
             <div key={title}>
-                <h2>{title}</h2>
+                <h2 className="">{title}</h2>
                 {data ? renderItems(data) : <div>{`${title} Content`} </div>}
             </div>
         )
