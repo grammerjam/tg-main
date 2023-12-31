@@ -13,13 +13,14 @@ const SearchBar = ({ selectedFilter,handleSearch, noResults }) =>
     let placeholderText = "Search for "
     switch (selectedFilter)
     {
-        case "movies":
-            placeholderText += "Movies";
+        case "Movies":
+            placeholderText += "movies";
             break;
-        case "tvShows":
+        case "TV Series":
             placeholderText += "TV series";
             break;
-        case "bookmarked":
+        case "Bookmarked":
+            placeholderText += "bookmarked movies or TV series";
             break;
         default:
             placeholderText += "movies or TV series";
