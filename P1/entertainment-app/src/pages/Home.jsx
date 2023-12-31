@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import data from "../../data.json"
 import SearchBar from "../components/SearchBar"
 import Feed from "../components/Feed";
+import Navbar from "../components/Navbar";
 
 const Home = () =>
 {
@@ -16,19 +17,32 @@ const Home = () =>
     const handleSearch = (query) =>
     {
         setSearchQuery(query)
-        const filteredMedia = data.filter((media) =>
-            media.title.toLocaleLowerCase().includes(query.toLowerCase())
+        const filteredMedia = data.filter((item) =>
+            item.title.toLocaleLowerCase().includes(query.toLowerCase())
         );
         setMedia(filteredMedia)
     }
 
+    const handleNavbarFilter = (category) =>
+    {
+        const filteredMedia = data.filter((item) =>
+            item.category === category
+        );
+        setMedia(filteredMedia)
+        
+    }
+
+    const filteredMedia = searchQuery ? media.filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    ) : media;
+
     const noResults = media.length === 0 && searchQuery !== "";
-    const trendingItems = data.filter((item) => item.isTrending)
 
     return (
         <div>
+            <Navbar handleFilter={handleNavbarFilter} />
             <SearchBar handleSearch={handleSearch} noResults={noResults} />
-            <Feed selectedFilter={noResults ? null : "Filtered"} trendingItems={trendingItems}> </Feed> 
+            <Feed media={filteredMedia}> </Feed> 
         </div>
     )
 }

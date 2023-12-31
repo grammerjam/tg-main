@@ -1,40 +1,24 @@
 
-const Feed = ({ selectedFilter, trendingItems }) =>
+const Feed = ({ media  }) =>
 {
-
-    const moviesData = [];
-    const tvSeriesData = [];
-    const bookmarkedMoviesData = [];
-    const bookmarkedTvSeriesData = [];
-
-
-
+    
+    console.log(media)
     const renderContentByFilter = () =>
     {
-        switch (selectedFilter)
+        switch (media)
         {
             case "Movies":
-                return renderContent("Movies", moviesData);
-
-            case "TV Series":
-                return renderContent("TV Series", tvSeriesData);
-
-            case "Bookmarked":
-                return (
-                    <>
-                        {renderContent("Bookmarked Movies", bookmarkedMoviesData)}
-                        {renderContent("Bookmarked TV Series", bookmarkedTvSeriesData)}
-                    </>
-                );
+                return renderContent("Movies", media.filter(item => item.category === "Movie"));
             default:
                 return (
                     <>
-                        {renderContent("Trending", trendingItems)}
+                        {renderContent("Trending", null)}
                         {renderContent("Recommended", null)}
                     </>
                 );
         }
     };
+
 
     const renderContent = (title, data) =>
     {
@@ -46,6 +30,7 @@ const Feed = ({ selectedFilter, trendingItems }) =>
         )
     };
 
+
     const renderItems = (data) =>
     {
         return data.map((item, index) => <div key={index}>  
@@ -53,6 +38,7 @@ const Feed = ({ selectedFilter, trendingItems }) =>
         </div> )
     }
 
+    
     return (
         <div> {renderContentByFilter()} </div>
 
