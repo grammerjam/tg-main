@@ -8,6 +8,8 @@ const Home = () =>
 {
     const [searchQuery, setSearchQuery] = useState('');
     const [media, setMedia] = useState([])
+    const [selectedFilter, setSelectedFilter] = useState("default");
+
 
     useEffect(() =>
     {
@@ -29,7 +31,7 @@ const Home = () =>
             item.category === category
         );
         setMedia(filteredMedia)
-        
+        setSelectedFilter(category)
     }
 
     const filteredMedia = searchQuery ? media.filter((item) =>
@@ -41,8 +43,8 @@ const Home = () =>
     return (
         <div>
             <Navbar handleFilter={handleNavbarFilter} />
-            <SearchBar handleSearch={handleSearch} noResults={noResults} />
-            <Feed media={filteredMedia}> </Feed> 
+            <SearchBar handleSearch={handleSearch}  noResults={noResults} />
+            <Feed media={filteredMedia} selectedFilter={selectedFilter}> </Feed>
         </div>
     )
 }

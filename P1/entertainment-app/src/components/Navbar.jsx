@@ -13,10 +13,10 @@ const Navbar = ({ handleFilter }) =>
     return (
         <nav>
             <ul>
-                <li onClick={()=> handleCategory("home")}>H</li>
-                <li onClick={() => handleCategory("tv-series")}>TV</li>
-                <li onClick={() => handleCategory("movies")}>M</li>
-                <li onClick={() => handleCategory("bookmarked")}>B</li>
+                <li onClick={()=> handleCategory("Home")}>H</li>
+                <li onClick={() => handleCategory("TV Series")}>TV</li>
+                <li onClick={() => handleCategory("Movies")}>M</li>
+                <li onClick={() => handleCategory("Bookmarked")}>B</li>
             </ul>    
         </nav>
     )

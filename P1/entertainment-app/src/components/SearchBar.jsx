@@ -1,13 +1,15 @@
 import { useState } from "react"
 
-const SearchBar = ({ selectedFilter,handleSearch, noResults }) =>
+const SearchBar = ({ handleSearch, noResults }) =>
 {
 
     const [currentSearch, setCurrentSearch] = useState("")
 
     const handleChange = (e) =>
     {
-        handleSearch(e.target.value)
+        const query = e.target.value;
+        setCurrentSearch(query)
+        handleSearch(query)
     }
 
     let placeholderText = "Search for "
@@ -44,6 +46,6 @@ const SearchBar = ({ selectedFilter,handleSearch, noResults }) =>
             )}
         </>
     )
-} 
+}
 
 export default SearchBar
