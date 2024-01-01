@@ -23,7 +23,6 @@ export default function LoginModal() {
                 //router.push("/")
             }
             else {
-                /*Investigate why the login hasn't completed */
                 console.log(result);
             }
 
@@ -32,16 +31,16 @@ export default function LoginModal() {
         }
     };
     return (
-        <div className="rounded-[10px] bg-ma-blue p-[24px] pb-[32px] w-[100%]">
+        <div className="rounded-[10px] bg-ma-blue p-[24px] pb-[32px] w-[100%] tablet:max-w-[400px] tablet:p-[32px]">
             <h1 className="text-h-sm font-light pb-[40px]">Login</h1>
             <form className="flex flex-col gap-[40px] pb-[24px]">
                 <div className="flex flex-col gap-[24px]">
-                    <input onChange={(e) => setEmailAddress(e.target.value)} id="email" name="email" type="email" />
-                    <input onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" />
+                    <input className="bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] placeholder:font-light" placeholder="Email address" onChange={(e) => setEmailAddress(e.target.value)} id="email" name="email" type="email" />
+                    <input className="bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] placeholder:font-light" placeholder="Password" onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" />
                 </div>
-                <button className="font-light border-cyan-500 border-4" onClick={handleSubmit}>Login to your account</button>
+                <button className="font-light bg-ma-red rounded-[6px] py-[14px]" onClick={handleSubmit}>Login to your account</button>
             </form>
-            <p className="text-center font-light">Don&apos;t have an account? Sign up</p>
+            <p className="text-center font-light">Don&apos;t have an account? <span className="text-ma-red">Sign up</span></p>
         </div>
     )
 }
