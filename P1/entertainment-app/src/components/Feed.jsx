@@ -1,6 +1,12 @@
+import PropTypes from 'prop-types';
 
 const Feed = ({ filteredMedia, selectedFilter  }) =>
 {
+
+    Feed.propTypes = {
+        filteredMedia: PropTypes.array.isRequired,
+        selectedFilter: PropTypes.string.isRequired,
+    };
     
     const renderContentByFilter = () =>
     {

@@ -1,7 +1,15 @@
 import { useState } from "react"
+import PropTypes from 'prop-types';
 
 const SearchBar = ({ handleSearch, noResults, selectedFilter }) =>
 {
+
+    SearchBar.propTypes = {
+        handleSearch: PropTypes.func.isRequired,
+        noResults: PropTypes.bool.isRequired,
+        selectedFilter: PropTypes.string.isRequired,
+    };
+
 
     const [currentSearch, setCurrentSearch] = useState("")
 
