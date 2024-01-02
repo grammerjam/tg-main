@@ -44,7 +44,7 @@ const Home = () =>
         <div>
             <Navbar handleFilter={handleNavbarFilter} />
             <SearchBar handleSearch={handleSearch} noResults={noResults} selectedFilter={selectedFilter} />
-            <Feed media={filteredMedia} selectedFilter={selectedFilter}> </Feed>
+            <Feed filteredMedia={filteredMedia} selectedFilter={selectedFilter}> </Feed>
         </div>
     )
 }

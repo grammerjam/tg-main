@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const SearchBar = ({ handleSearch, noResults }) =>
+const SearchBar = ({ handleSearch, noResults, selectedFilter }) =>
 {
 
     const [currentSearch, setCurrentSearch] = useState("")
@@ -15,13 +15,14 @@ const SearchBar = ({ handleSearch, noResults }) =>
     let placeholderText = "Search for "
     switch (selectedFilter)
     {
-        case "movies":
+        case "Movie":
             placeholderText += "Movies";
             break;
-        case "tvShows":
+        case "TV Series":
             placeholderText += "TV series";
             break;
-        case "bookmarked":
+        case "Bookmarked":
+            placeholderText += "bookmarked shows";
             break;
         default:
             placeholderText += "movies or TV series";
