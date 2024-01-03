@@ -1,25 +1,36 @@
 import { useState } from "react"
+import PropTypes from 'prop-types';
 
-const SearchBar = ({ selectedFilter,handleSearch, noResults }) =>
+const SearchBar = ({ handleSearch, noResults, selectedFilter }) =>
 {
+
+    SearchBar.propTypes = {
+        handleSearch: PropTypes.func.isRequired,
+        noResults: PropTypes.bool.isRequired,
+        selectedFilter: PropTypes.string.isRequired,
+    };
+
 
     const [currentSearch, setCurrentSearch] = useState("")
 
     const handleChange = (e) =>
     {
-        handleSearch(e.target.value)
+        const query = e.target.value;
+        setCurrentSearch(query)
+        handleSearch(query)
     }
 
     let placeholderText = "Search for "
     switch (selectedFilter)
     {
-        case "movies":
+        case "Movie":
             placeholderText += "Movies";
             break;
-        case "tvShows":
+        case "TV Series":
             placeholderText += "TV series";
             break;
-        case "bookmarked":
+        case "Bookmarked":
+            placeholderText += "bookmarked shows";
             break;
         default:
             placeholderText += "movies or TV series";
@@ -44,6 +55,6 @@ const SearchBar = ({ selectedFilter,handleSearch, noResults }) =>
             )}
         </>
     )
-} 
+}
 
 export default SearchBar
