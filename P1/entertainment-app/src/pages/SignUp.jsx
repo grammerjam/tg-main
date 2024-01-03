@@ -11,11 +11,11 @@ const SignUp = () => {
                 <h2> Sign Up </h2>
                 <form>
                     <label> Email Address</label>
-                    <input> </input>
+                    <input/>
                     <label> Password </label>
-                    <input> </input>
+                    <input/>
                     <label> Repeat Password </label>
-                    <input> </input>
+                    <input/>
                 </form>
             </div>   
         </>
