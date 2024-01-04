@@ -8,12 +8,15 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
-    
+
     const [verify, setVerify] = useState(false);
     const [code, setCode] = useState("")
-    
+
+
+    const [hasSubmited, setHasSubmited] = useState(false)
+
     const nav = useNavigate();
-    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -64,7 +67,7 @@ const SignUp = () => {
             if (completeSignUp.status === "complete") {
                 await setActive({ session: completeSignUp.createdSessionId })
                 // Handle your own logic here, like redirecting to a new page if needed.
-                nav("/login");
+                nav("/login")
             }
         } catch (err) {
             // This can return an array of errors.
@@ -83,18 +86,24 @@ const SignUp = () => {
                 {/* First form */}
                 {!verify &&
                     <form className="flex flex-col">
-                        <label className=" text-ma-gray mb-[0.5rem]"> Email Address</label>
-                        <input onChange={(e) => {
-                            setEmail(e.target.value)
-                        }} type="email" value={email} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
-                        <label className=" text-ma-gray mb-[0.5rem]"> Password </label>
-                        <input onChange={(e) => {
-                            setPassword(e.target.value)
-                        }} type="password" value={password} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
-                        <label className=" text-ma-gray mb-[0.5rem]"> Repeat Password </label>
-                        <input onChange={(e) => {
-                            setRepeatPassword(e.target.value)
-                        }} type="password" value={repeatPassword} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
+                        <div className="flex flex-col">
+                            <label className=" text-ma-gray"> Email Address</label>
+                            <input onChange={(e) => {
+                                setEmail(e.target.value)
+                            }} type="email" value={email} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className=" text-ma-gray"> Password </label>
+                            <input onChange={(e) => {
+                                setPassword(e.target.value)
+                            }} type="password" value={password} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className=" text-ma-gray"> Repeat Password </label>
+                            <input onChange={(e) => {
+                                setRepeatPassword(e.target.value)
+                            }} type="password" value={repeatPassword} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
+                        </div>
                         <Button text={"Create an Account"} onClick={handleSubmit}></Button>
                         <div className=" mt-[1.5rem] flex justify-center">
                             <p className=" mr-[0.5rem]"> Already have an account? </p>
