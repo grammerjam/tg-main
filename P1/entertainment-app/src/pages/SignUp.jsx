@@ -7,6 +7,10 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+    };
 
     return (
         <main className="flex h-screen items-center justify-center">
