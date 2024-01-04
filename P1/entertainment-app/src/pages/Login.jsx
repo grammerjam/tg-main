@@ -4,7 +4,7 @@ import LoginModal from "../components/LoginModal";
 const Login = () => {
 
     return (
-        <div className="px-[24px] pt-[48px] gap-[58px] flex flex-col items-center">
+        <div className="w-[100%] h-[100%] px-[24px] pt-[48px] gap-[58px] flex flex-col items-center">
             <img src={Logo}/>
             <LoginModal />
         </div>
