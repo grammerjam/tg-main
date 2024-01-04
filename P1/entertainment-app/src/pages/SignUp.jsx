@@ -8,20 +8,20 @@ const SignUp = () => {
 
             </div>
         {/* Form Card*/}
-            <div className="h-[27rem] w-[20rem] bg-ma-blue flex flex-col justify-center">
-                <h2> Sign Up </h2>
+            <div className="min-h-[27rem] w-[20rem] p-[1.5rem] rounded-[0.66rem] bg-ma-blue flex flex-col">
+                <h2 className=" text-[2.5rem] mb-[2.5rem]"> Sign Up </h2>
                 <form className="flex flex-col">
-                    <label> Email Address</label>
-                    <input/>
-                    <label> Password </label>
-                    <input/>
-                    <label> Repeat Password </label>
-                    <input/>
-                    <Button text={"Submit"}></Button>
-                    <span> 
-                        <p> Already have an account? </p>
-                        <a> Login </a>
-                    </span>
+                    <label className=" text-ma-gray"> Email Address</label>
+                    <input className=" mb-[1.5rem]"/>
+                    <label className=" text-ma-gray"> Password </label>
+                    <input className=" mb-[1.5rem]"/>
+                    <label className=" text-ma-gray"> Repeat Password </label>
+                    <input className=" mb-[2.5rem]"/>
+                    <Button text={"Create an Account"}></Button>
+                    <div className=" mt-[1.5rem] flex justify-center">
+                        <p className=" mr-[0.5rem]"> Already have an account? </p>
+                        <a href="/" className="text-ma-red"> Login </a>
+                    </div>
                 </form>
             </div>   
         </main>
