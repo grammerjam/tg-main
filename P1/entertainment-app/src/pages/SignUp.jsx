@@ -1,16 +1,72 @@
+import { useSignUp } from "@clerk/clerk-react";
 import Button from "../components/Button";
 import { useState } from "react";
 
 const SignUp = () => {
-
+    const { isLoaded, signUp, setActive } = useSignUp();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const [verify, setVerify] = useState(false);
+    const [code, setCode] = useState("")
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
+        if (!isLoaded) {
+            return;
+        }
+        // Add visual errors later
+        if (password !== repeatPassword) {
+            return;
+        }
+
+        try {
+            await signUp.create({
+                email,
+                password,
+            });
+
+            await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
+
+            setVerify(true);
+        } catch (error) {
+            console.log(JSON.stringify(error, null, 2));
+        }
+
     };
+
+    // const handleVerify = async (e) => {
+    //     e.preventDefault();
+    //     if (!isLoaded) {
+    //         return;
+    //     }
+
+    //     try {
+    //         // Submit the code that the user provides to attempt verification
+    //         const completeSignUp = await signUp.attemptEmailAddressVerification({
+    //             code,
+    //         });
+
+    //         if (completeSignUp.status !== "complete") {
+    //             // The status can also be `abandoned` or `missing_requirements`
+    //             // Please see https://clerk.com/docs/references/react/use-sign-up#result-status for  more information
+    //             console.log(JSON.stringify(completeSignUp, null, 2));
+    //         }
+
+    //         // Check the status to see if it is complete
+    //         // If complete, the user has been created -- set the session active
+    //         if (completeSignUp.status === "complete") {
+    //             await setActive({ session: completeSignUp.createdSessionId })
+    //             // Handle your own logic here, like redirecting to a new page if needed.
+    //         }
+    //     } catch (err) {
+    //         // This can return an array of errors.
+    //         // See https://clerk.com/docs/custom-flows/error-handling to learn about error handling
+    //         console.error(JSON.stringify(err, null, 2));
+    //     }
+    // };
 
     return (
         <main className="flex h-screen items-center justify-center">
