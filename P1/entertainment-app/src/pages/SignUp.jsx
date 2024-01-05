@@ -20,11 +20,12 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setHasSubmited(true);
 
         if (!isLoaded) {
             return;
         }
-        // Add visual errors later
+
         if (password !== repeatPassword) {
             return;
         }
@@ -75,34 +76,40 @@ const SignUp = () => {
             console.error(JSON.stringify(err, null, 2));
         }
     };
-
+    /*
+        - Add error message
+        - Fix padding on mobile vs desktop
+        - Change caret color
+        - Border active color
+    
+    */
     return (
-        <main className="flex h-screen flex-col items-center justify-center">
+        <main className="flex h-screen flex-col items-center p-10">
             {/* Icon */}
             <img src="../../assets/logo.svg" className="mb-[4rem]" />
             {/* SignUp */}
             <div className="min-h-[27rem] min-w-[20rem] p-[1.5rem] rounded-[0.66rem] bg-ma-blue flex flex-col">
-                <h2 className=" text-[2.5rem] mb-[2.5rem]"> Sign Up </h2>
+                <h2 className="font-light text-[2.5rem] mb-[2.5rem]"> Sign Up </h2>
                 {/* First form */}
                 {!verify &&
                     <form className="flex flex-col">
-                        <div className="flex flex-col">
-                            <label className=" text-ma-gray"> Email Address</label>
+                        <div className="flex flex-col relative">
                             <input onChange={(e) => {
                                 setEmail(e.target.value)
-                            }} type="email" value={email} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
+                            }} type="email" value={email} className="font-light text-b-med pl-[1rem] pb-[0.5rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Email"/>
+                            {hasSubmited && !email && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
-                        <div className="flex flex-col">
-                            <label className=" text-ma-gray"> Password </label>
+                        <div className="flex flex-col relative">
                             <input onChange={(e) => {
                                 setPassword(e.target.value)
-                            }} type="password" value={password} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
+                            }} type="password" value={password} className="font-light text-b-med pl-[1rem] pb-[0.5rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Password" />
+                            {hasSubmited && !password && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
-                        <div className="flex flex-col">
-                            <label className=" text-ma-gray"> Repeat Password </label>
+                        <div className="flex flex-col relative">
                             <input onChange={(e) => {
                                 setRepeatPassword(e.target.value)
-                            }} type="password" value={repeatPassword} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
+                            }} type="password" value={repeatPassword} className="font-light text-b-med pl-[1rem] pb-[0.5rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Repeat Password" />
+                            {hasSubmited && !repeatPassword && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
                         <Button text={"Create an Account"} onClick={handleSubmit}></Button>
                         <div className=" mt-[1.5rem] flex justify-center">
