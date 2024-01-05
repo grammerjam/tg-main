@@ -29,7 +29,7 @@ const SignUp = () => {
         if (password !== repeatPassword) {
             return;
         }
-
+        //If any fields are empty, return.
         if(!email || !password || !repeatPassword){
             return;
         }
@@ -41,12 +41,11 @@ const SignUp = () => {
             });
 
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
-
             setVerify(true);
+
         } catch (error) {
             console.log(JSON.stringify(error, null, 2));
         }
-
     };
 
     const handleVerify = async (e) => {
@@ -80,9 +79,7 @@ const SignUp = () => {
             console.error(JSON.stringify(err, null, 2));
         }
     };
-    /*
-        - Border active color
-    */
+
     return (
         <div className="flex w-full flex-col pt-[3rem] px-[1.5rem]  justify-center items-center">
             {/* Icon */}
@@ -96,19 +93,22 @@ const SignUp = () => {
                         <div className="flex flex-col relative mb-[0.5rem]">
                             <input onChange={(e) => {
                                 setEmail(e.target.value)
-                            }} type="email" value={email} className = "caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Email address"/>
+                            }} type="email" value={email} placeholder="Email address"
+                            className = {`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`}/>
                             {hasSubmited && !email && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
                         <div className="flex flex-col relative mb-[0.5rem]">
                             <input onChange={(e) => {
                                 setPassword(e.target.value)
-                            }} type="password" value={password} className= "caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Password" />
+                            }} type="password" value={password} placeholder="Password"
+                            className= {`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`} />
                             {hasSubmited && !password && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
                         <div className="flex flex-col relative mb-[1.5rem] tablet:mb-[0.5rem]">
                             <input onChange={(e) => {
                                 setRepeatPassword(e.target.value)
-                            }} type="password" value={repeatPassword} className= "caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Repeat Password" />
+                            }} type="password" value={repeatPassword} placeholder="Repeat Password"
+                            className= {`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`} />
                             {hasSubmited && !repeatPassword && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
                         <Button text={"Create an Account"} onClick={handleSubmit}></Button>
@@ -120,10 +120,10 @@ const SignUp = () => {
                 {/* Second form */}
                 {verify &&
                     <form className="flex flex-col">
-                        <label className=" text-ma-gray mb-[0.5rem]"> Verification Code </label>
                         <input onChange={(e) => {
                             setCode(e.target.value)
-                        }} value={code} className=" mb-[1.5rem] bg-transparent border-b-[1px] border-b-ma-gray" />
+                        }} value={code} placeholder="Verification Code"
+                        className={`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`}/>
                         <Button text={"Verify"} onClick={handleVerify}></Button>
                     </form>}
             </div>
