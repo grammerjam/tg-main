@@ -96,22 +96,22 @@ const SignUp = () => {
                 {/* First form */}
                 {!verify &&
                     <form className="flex flex-col">
-                        <div className="flex flex-col relative">
+                        <div className="flex flex-col relative mb-[1.5rem]">
                             <input onChange={(e) => {
                                 setEmail(e.target.value)
-                            }} type="email" value={email} className="font-light text-b-med pl-[1rem] pb-[0.5rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Email"/>
+                            }} type="email" value={email} className="font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Email"/>
                             {hasSubmited && !email && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
-                        <div className="flex flex-col relative">
+                        <div className="flex flex-col relative mb-[1.5rem]">
                             <input onChange={(e) => {
                                 setPassword(e.target.value)
-                            }} type="password" value={password} className="font-light text-b-med pl-[1rem] pb-[0.5rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Password" />
+                            }} type="password" value={password} className="font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Password" />
                             {hasSubmited && !password && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
-                        <div className="flex flex-col relative">
+                        <div className="flex flex-col relative mb-[1.5rem]">
                             <input onChange={(e) => {
                                 setRepeatPassword(e.target.value)
-                            }} type="password" value={repeatPassword} className="font-light text-b-med pl-[1rem] pb-[0.5rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Repeat Password" />
+                            }} type="password" value={repeatPassword} className="font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none" placeholder="Repeat Password" />
                             {hasSubmited && !repeatPassword && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
                         <Button text={"Create an Account"} onClick={handleSubmit}></Button>
