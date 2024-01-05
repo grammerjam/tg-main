@@ -30,6 +30,10 @@ const SignUp = () => {
             return;
         }
 
+        if(!email || !password || !repeatPassword){
+            return;
+        }
+
         try {
             await signUp.create({
                 emailAddress: email,
@@ -77,19 +81,18 @@ const SignUp = () => {
         }
     };
     /*
-        - Add error message
         - Fix padding on mobile vs desktop
         - Change caret color
         - Border active color
     
     */
     return (
-        <main className="flex h-screen flex-col items-center p-10">
+        <div className="flex w-full flex-col pt-[3rem] px-[1.5rem]  justify-center items-center">
             {/* Icon */}
-            <img src="../../assets/logo.svg" className="mb-[4rem]" />
+            <img src="../../assets/logo.svg" className="mb-[3.5rem] tablet:mb-[4.5rem] desktop:mb-[5rem]" />
             {/* SignUp */}
-            <div className="min-h-[27rem] min-w-[20rem] p-[1.5rem] rounded-[0.66rem] bg-ma-blue flex flex-col">
-                <h2 className="font-light text-[2.5rem] mb-[2.5rem]"> Sign Up </h2>
+            <div className="w-full tablet:w-[25rem] p-[1.5rem] rounded-[0.66rem] bg-ma-blue flex flex-col">
+                <h2 className="font-light text-h-lg mb-[2.5rem]"> Sign Up </h2>
                 {/* First form */}
                 {!verify &&
                     <form className="flex flex-col">
@@ -113,8 +116,8 @@ const SignUp = () => {
                         </div>
                         <Button text={"Create an Account"} onClick={handleSubmit}></Button>
                         <div className=" mt-[1.5rem] flex justify-center">
-                            <p className=" mr-[0.5rem]"> Already have an account? </p>
-                            <a href="/login" className="text-ma-red"> Login </a>
+                            <p className=" font-light mr-[0.5rem]"> Already have an account? </p>
+                            <a href="/login" className="font-light text-ma-red"> Login </a>
                         </div>
                     </form>}
                 {/* Second form */}
@@ -127,7 +130,7 @@ const SignUp = () => {
                         <Button text={"Verify"} onClick={handleVerify}></Button>
                     </form>}
             </div>
-        </main>
+        </div>
     )
 }
 
