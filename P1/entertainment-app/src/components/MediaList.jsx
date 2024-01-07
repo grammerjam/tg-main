@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-// import { useEffect } from 'react';
 import MediaCard from './MediaCard'
-// import picture from '../../assets/thumbnails'
+
 
 export default function MediaList({ results }) {
     
