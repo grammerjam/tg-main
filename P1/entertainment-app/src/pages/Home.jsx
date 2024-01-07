@@ -10,7 +10,6 @@ const Home = () =>
     const [media, setMedia] = useState([])
     const [selectedFilter, setSelectedFilter] = useState("default");
 
-
     useEffect(() =>
     {
         setMedia(data)
