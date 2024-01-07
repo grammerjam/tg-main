@@ -22,7 +22,7 @@ const Navbar = ({ handleFilter }) =>
 
     return (
         <>
-            <img src="../../assets/logo.svg" alt="App-Icon" />
+            <img src="/assets/logo.svg" alt="App-Icon" />
             <nav className="navbar-container">
                 <ul>
 

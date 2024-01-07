@@ -1,5 +1,5 @@
-import Logo from '../../assets/logo.svg'
-import LoginModal from "../components/LoginModal";
+import Logo from '/assets/logo.svg'
+import LoginModal from "../components/LoginModal.jsx";
 
 const Login = () => {
 
