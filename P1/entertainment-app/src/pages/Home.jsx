@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import data from "../../data.json"
-import SearchBar from "../components/SearchBar"
-import Feed from "../components/Feed";
-import Navbar from "../components/Navbar";
+import SearchBar from "../components/SearchBar.jsx"
+import Feed from "../components/Feed.jsx";
+import Navbar from "../components/Navbar.jsx";
 
 const Home = () =>
 {

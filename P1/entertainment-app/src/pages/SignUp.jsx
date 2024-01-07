@@ -1,5 +1,5 @@
 import { useSignUp } from "@clerk/clerk-react";
-import Button from "../components/Button";
+import Button from "../components/Button.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
