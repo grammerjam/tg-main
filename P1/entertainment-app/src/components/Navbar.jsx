@@ -4,55 +4,50 @@ import PropTypes from 'prop-types';
 const Navbar = ({ handleFilter }) =>
 {
 
+    Navbar.propTypes = {
+        handleFilter: PropTypes.func.isRequired,
+    };
+
+
     // passes value(the filter) to the parent (Home Page)
     const handleCategory = (category) =>
     {
         handleFilter(category)
     }
 
-    // Handle redirection to the user profile page
-    const handleProfileClick = () =>
-    {
-    };
 
-    Navbar.propTypes = {
-        handleFilter: PropTypes.func.isRequired,
-        // Add other prop validations if needed
+    // conditionally renders "active" nav image
+    const isActive = (path) =>
+    {
+        const iconPath = `../../assets/icon-nav-${path}.svg`;
+        const activeIconPath = `../../assets/icon-nav-${path}-active.svg`;
+        if (path === 'home')
+        {
+            return window.location.pathname === '/' ? activeIconPath : iconPath;
+        }
+        return window.location.pathname === `/${path}` ? activeIconPath : iconPath;
     };
 
     return (
         <>
-            <img src="/assets/logo.svg" alt="App-Icon" />
+            <img src="../../assets/logo.svg" alt="App-Icon" />
             <nav className="navbar-container">
-                <ul>
-
-                    <li onClick={() => handleCategory("Home")}>
-                        <Link to="/">
-                            <img src="../../assets/icon-nav-home.svg" alt="Home" />
-                        </Link>
-                    </li>
-                    <li onClick={() => handleCategory("TV Series")}>
-                        <Link to="/tv-series">
-                            <img src="../../assets/icon-nav-tv-series.svg" alt="TV-Series" />
-                        </Link>
-                    </li>
-                    <li onClick={() => handleCategory("Movie")}>
-                        <Link to="/movies">
-                            <img src="../../assets/icon-nav-movies.svg" alt="Movies" />
-                        </Link >
-                    </li>
-                    <li onClick={() => handleCategory("Bookmarked")}>
-                        <Link to="/bookmarked">
-                            <img src="../../assets/icon-nav-bookmark.svg" alt="Bookmarked" />
-                        </Link>
-                    </li>
-                </ul>
+                <Link to="/" onClick={() => handleCategory("Home")} className="nav-link">
+                    <img src={isActive("home")} alt="Home" className="nav-icon" />
+                </Link>
+                <Link to="/tv-series" onClick={() => handleCategory("TV Series")} className="nav-link">
+                    <img src={isActive("tv-series")} alt="TV-Series" className="nav-icon" />
+                </Link>
+                <Link to="/movies" onClick={() => handleCategory("Movie")} className="nav-link">
+                    <img src={isActive("movies")} alt="Movies" className="nav-icon" />
+                </Link>
+                <Link to="/bookmarked" onClick={() => handleCategory("Bookmarked")} className="nav-link">
+                    <img src={isActive("bookmark")} alt="Bookmarked" className="nav-icon" />
+                </Link>
             </nav>
             <img src="../../assets/image-avatar.png" alt="User-Profile-Icon" />
         </>
     )
-
-
 }
 
 export default Navbar
