@@ -8,7 +8,7 @@ export default function MediaList({ results }) {
         <div className=''>
             {results.map((result) => {
                 return (
-                    <MediaCard key={result.title} result={result}/>
+                    <MediaCard key={result.title} media={result}/>
                 )
             })}
         </div>
