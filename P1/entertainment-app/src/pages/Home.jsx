@@ -10,7 +10,6 @@ const Home = () =>
     const [media, setMedia] = useState([])
     const [selectedFilter, setSelectedFilter] = useState("default");
 
-
     useEffect(() =>
     {
         setMedia(data)
@@ -41,10 +40,14 @@ const Home = () =>
     const noResults = media.length === 0 && searchQuery !== "";
 
     return (
-        <div>
-            <Navbar handleFilter={handleNavbarFilter} />
-            <SearchBar handleSearch={handleSearch} noResults={noResults} selectedFilter={selectedFilter} />
-            <Feed filteredMedia={filteredMedia} selectedFilter={selectedFilter}> </Feed>
+        <div className="flex flex-col lg:flex-row lg:mt-10">
+            <div className="lg:w-1/6 flex items-start justify-center">
+                <Navbar handleFilter={handleNavbarFilter} className="lg:block sticky top-0" />
+            </div>
+            <div className="lg:w-3/4 flex flex-col">
+                <SearchBar handleSearch={handleSearch} noResults={noResults} selectedFilter={selectedFilter} />
+                <Feed filteredMedia={filteredMedia} selectedFilter={selectedFilter}> </Feed>
+            </div>
         </div>
     )
 }
