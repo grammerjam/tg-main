@@ -30,22 +30,29 @@ const Navbar = ({ handleFilter }) =>
 
     return (
         <>
-            <img src="../../assets/logo.svg" alt="App-Icon" />
-            <nav className="navbar-container">
-                <Link to="/" onClick={() => handleCategory("Home")} className="nav-link">
-                    <img src={isActive("home")} alt="Home" className="nav-icon" />
-                </Link>
-                <Link to="/tv-series" onClick={() => handleCategory("TV Series")} className="nav-link">
-                    <img src={isActive("tv-series")} alt="TV-Series" className="nav-icon" />
-                </Link>
-                <Link to="/movies" onClick={() => handleCategory("Movie")} className="nav-link">
-                    <img src={isActive("movies")} alt="Movies" className="nav-icon" />
-                </Link>
-                <Link to="/bookmarked" onClick={() => handleCategory("Bookmarked")} className="nav-link">
-                    <img src={isActive("bookmark")} alt="Bookmarked" className="nav-icon" />
-                </Link>
+            <nav className="bg-ma-blue flex lg:inline-flex  flex-row lg:flex-col justify-between items-center md:rounded-2x1 lg:rounded-3xl lg:h-5/6 p-4">
+
+                <div className="ml-4 sm:ml-0 sm:mr-auto">
+                    <img src="../../assets/logo.svg" alt="App-Icon" />
+                </div>
+
+                <div className='flex justify-between lg:flex-col p-14'>
+                    <Link to="/" onClick={() => handleCategory("Home")}>
+                        <img src={isActive("home")} alt="Home" />
+                    </Link>
+                    <Link to="/tv-series" onClick={() => handleCategory("TV Series")}>
+                        <img src={isActive("tv-series")} alt="TV-Series" className="h-18" />
+                    </Link>
+                    <Link to="/movies" onClick={() => handleCategory("Movie")} >
+                        <img src={isActive("movies")} alt="Movies" className="h-6 sm:h-8" />
+                    </Link>
+                    <Link to="/bookmarked" onClick={() => handleCategory("Bookmarked")} >
+                        <img src={isActive("bookmark")} alt="Bookmarked" className="h-6 sm:h-8" />
+                    </Link>
+                </div>
+
+                <img src="../../assets/image-avatar.png" alt="User-Profile-Icon" className="h-8 sm:h-10 mr-4" />
             </nav>
-            <img src="../../assets/image-avatar.png" alt="User-Profile-Icon" />
         </>
     )
 }
