@@ -5,7 +5,7 @@ import MediaCard from './MediaCard'
 export default function MediaList({ results }) {
     
     return (
-        <div className=''>
+        <div className='w-full flex flex-wrap'>
             {results.map((result) => {
                 return (
                     <MediaCard key={result.title} media={result}/>
