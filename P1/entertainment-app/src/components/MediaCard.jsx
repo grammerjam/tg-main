@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
+import bookmark from '../../public/assets/icon-bookmark-empty.svg'
+import bookmarkFilled from '../../public/assets/icon-bookmark-full.svg'
 
 export default function MediaCard({ media }) {
 
+  console.log(media.isBookmarked)
 
   return (
     <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] mx-[0.9rem]'>
@@ -13,7 +16,11 @@ export default function MediaCard({ media }) {
         laptop:w-[17.5rem] laptop:h-[10.875rem] laptop:bg-[image:var(--large-img)]
         bg-cover rounded-lg mb-[0.5rem] p-[1rem] flex justify-end` 
         }>
-        <div className='w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50'>
+        <div className='w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 flex justify-center items-center'>
+          <img 
+          src={media.isBookmarked ? bookmarkFilled : bookmark}
+          className={``}        
+          />
         </div>
       </div>
       <div className='flex items-center text-ma-gray text-b-sm mb-[0.25rem] tablet:mb-[0.30]'>
