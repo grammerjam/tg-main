@@ -1,8 +1,8 @@
 import Home from './pages/Home.jsx'
 import SignUp from './pages/SignUp.jsx'
 import { Routes, Route } from 'react-router-dom';
-import Login from './pages/Login'
-import Movies from './pages/Movies';
+import Login from './pages/Login.jsx'
+import Movies from './pages/Movies.jsx'
 
 function App() {
   return (
