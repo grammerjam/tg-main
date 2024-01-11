@@ -4,9 +4,9 @@ import bookmarkHover from '/assets/icon-bookmark-empty-hover.svg'
 import bookmarkFilled from '/assets/icon-bookmark-full.svg'
 
 export default function MediaCard({ media }) {
-  
+
   return (
-    <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[40%] tablet:w-[30%] desktop:w-[20%]'>
+    <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[45%] tablet:w-[30%] desktop:w-[22%]'>
       <div className='w-full flex relative justify-end mb-[0.5rem]'>
         <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`} 
             onMouseEnter={(e) => {e.stopPropagation(); e.target.childNodes[0].src = bookmarkHover }}
