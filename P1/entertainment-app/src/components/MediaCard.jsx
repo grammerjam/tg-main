@@ -7,17 +7,14 @@ export default function MediaCard({ media }) {
 
 
   return (
-    <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem]'>
+    <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[50%] tablet:w-[33.33%] desktop:w-[25%]'>
       <div
-        style={{ 
-        '--small-img': `url( ${media.thumbnail.regular.small})`, 
-        '--medium-img': `url( ${media.thumbnail.regular.medium})`, 
-        '--large-img': `url( ${media.thumbnail.regular.large})` }}
+        style={{ '--small-img': `url( ${media.thumbnail.regular.small})`, '--medium-img': `url( ${media.thumbnail.regular.medium})`, '--large-img': `url( ${media.thumbnail.regular.large})` }}
         className={`
         w-[10.25rem] h-[6.875rem] bg-[image:var(--small-img)] 
         tablet:w-[13.75rem] tablet:h-[8.75rem] tablet:bg-[image:var(--medium-img)]
         laptop:w-[17.5rem] laptop:h-[10.875rem] laptop:bg-[image:var(--large-img)]
-        bg-cover rounded-lg mb-[0.5rem] p-[1rem] flex justify-end` 
+        bg-cover bg-no-repeat rounded-lg mb-[0.5rem] p-[1rem] flex justify-end` 
         }>
         <div className={`w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`} 
           onMouseOver={(e) => {e.stopPropagation(); e.target.childNodes[0].src = bookmarkHover }}
