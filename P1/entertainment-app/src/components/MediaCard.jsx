@@ -4,31 +4,16 @@ import bookmarkHover from '/assets/icon-bookmark-empty-hover.svg'
 import bookmarkFilled from '/assets/icon-bookmark-full.svg'
 
 export default function MediaCard({ media }) {
-
-      // <div
-      //   style={{ '--small-img': `url( ${media.thumbnail.regular.small})`, '--medium-img': `url( ${media.thumbnail.regular.medium})`, '--large-img': `url( ${media.thumbnail.regular.large})` }}
-      //   className={`
-      //   w-[10.25rem] h-[6.875rem] bg-[image:var(--small-img)] 
-      //   tablet:w-[13.75rem] tablet:h-[8.75rem] tablet:bg-[image:var(--medium-img)]
-      //   laptop:w-[17.5rem] laptop:h-[10.875rem] laptop:bg-[image:var(--large-img)]
-      //   bg-cover bg-no-repeat rounded-lg mb-[0.5rem] p-[1rem] flex justify-end` 
-      //   }>
-      //   <div className={`w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`} 
-      //     onMouseOver={(e) => {e.stopPropagation(); e.target.childNodes[0].src = bookmarkHover }}
-      //     onMouseLeave={(e) => {e.stopPropagation(); e.target.childNodes[0].src = media.isBookmarked ? bookmarkFilled : bookmark;}}>
-      //     <img src={media.isBookmarked ? bookmarkFilled : bookmark} onMouseOver={(e) => e.stopPropagation()} onMouseLeave={ (e) => e.stopPropagation()}  />
-      //   </div>
-      // </div>
-
+  
   return (
     <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[40%] tablet:w-[30%] desktop:w-[20%]'>
-      <div className='w-full flex relative justify-end'>
+      <div className='w-full flex relative justify-end mb-[0.5rem]'>
         <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`} 
-            onMouseOver={(e) => {e.stopPropagation(); e.target.childNodes[0].src = bookmarkHover }}
+            onMouseEnter={(e) => {e.stopPropagation(); e.target.childNodes[0].src = bookmarkHover }}
             onMouseLeave={(e) => {e.stopPropagation(); e.target.childNodes[0].src = media.isBookmarked ? bookmarkFilled : bookmark;}}>
-            <img src={media.isBookmarked ? bookmarkFilled : bookmark} onMouseOver={(e) => e.stopPropagation()} onMouseLeave={ (e) => e.stopPropagation()}  />
+            <img src={media.isBookmarked ? bookmarkFilled : bookmark} onMouseEnter={(e) => e.stopPropagation()} onMouseLeave={ (e) => e.stopPropagation()}  />
         </div>
-        <img className='w-full' src={media.thumbnail.regular.large}></img>
+        <img className='w-full rounded-lg' src={media.thumbnail.regular.large}></img>
       </div>
       <div className='flex items-center text-ma-gray text-b-sm mb-[0.25rem] tablet:mb-[0.30]'>
         <p> {media.year} </p>
