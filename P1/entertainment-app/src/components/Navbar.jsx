@@ -31,13 +31,13 @@ const Navbar = ({ handleFilter }) =>
 
     return (
         <>
-            <nav className="bg-ma-blue flex lg:inline-flex flex-row lg:flex-col justify-between items-center md:rounded-2x1 lg:rounded-3xl w-screen lg:w-fit" >
+            <nav className="bg-ma-blue flex desktop:inline-flex flex-row desktop:flex-col justify-between items-center tablet:rounded-2x1 desktop:rounded-3xl w-screen desktop:w-fit" >
 
-                <div className='ml-4 md:ml-16 lg:ml-0 lg:mt-16'>
+                <div className='ml-4 tablet:ml-16 desktop:ml-0 desktop:mt-16'>
                     <img src="../../assets/logo.svg" alt="App-Icon" />
                 </div>
 
-                <div className='flex justify-between lg:flex-col p-14 space-x-7 md:space-x-20 lg:space-x-0 lg:space-y-10'>
+                <div className='flex justify-between desktop:flex-col p-14 space-x-7 tablet:space-x-20 desktop:space-x-0 desktop:space-y-10'>
                     <Link to="/" onClick={() => handleCategory("Home")}>
                         <img src={isActive("home")} alt="Home" className="h-6" />
                     </Link>
@@ -52,7 +52,7 @@ const Navbar = ({ handleFilter }) =>
                     </Link>
                 </div>
 
-                <img src="../../assets/image-avatar.png" alt="User-Profile-Icon" className='lg:mt-96 h-24 p-6 ' />
+                <img src="../../assets/image-avatar.png" alt="User-Profile-Icon" className='desktop:mt-96 h-24 p-6 ' />
             </nav>
         </>
     )
