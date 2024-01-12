@@ -40,10 +40,14 @@ const Home = () =>
     const noResults = media.length === 0 && searchQuery !== "";
 
     return (
-        <div>
-            <Navbar handleFilter={handleNavbarFilter} />
-            <SearchBar handleSearch={handleSearch} noResults={noResults} selectedFilter={selectedFilter} />
-            <Feed filteredMedia={filteredMedia} selectedFilter={selectedFilter}> </Feed>
+        <div className="flex flex-col desktop:flex-row desktop:mt-10">
+            <div className="desktop:w-1/6 flex items-start justify-center">
+                <Navbar handleFilter={handleNavbarFilter} className="desktop:block sticky top-0" />
+            </div>
+            <div className="desktop:w-3/4 flex flex-col">
+                <SearchBar handleSearch={handleSearch} noResults={noResults} selectedFilter={selectedFilter} />
+                <Feed filteredMedia={filteredMedia} selectedFilter={selectedFilter}> </Feed>
+            </div>
         </div>
     )
 }
