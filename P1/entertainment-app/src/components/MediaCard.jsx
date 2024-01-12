@@ -18,7 +18,7 @@ export default function MediaCard({ media }) {
       <div className='flex items-center text-ma-gray text-b-sm mb-[0.25rem] tablet:mb-[0.30]'>
         <p> {media.year} </p>
         <p className='mx-[0.5rem]'> {"•"} </p>
-        <img src='../../public/assets/icon-nav-movies.svg' className='h-[0.75rem] w-[0.75rem] mr-[0.4rem]'></img>
+        <img src='/assets/icon-nav-movies.svg' className='h-[0.75rem] w-[0.75rem] mr-[0.4rem]'></img>
         <p> {media.category} </p>
         <p className='mx-[0.5rem]'> {"•"} </p>
         <p> {media.rating} </p>
