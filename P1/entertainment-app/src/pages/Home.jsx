@@ -8,7 +8,6 @@ const Home = () =>
 {
     const [searchQuery, setSearchQuery] = useState('');
     const [media, setMedia] = useState([])
-    const [selectedFilter, setSelectedFilter] = useState("default");
 
     useEffect(() =>
     {
@@ -24,14 +23,6 @@ const Home = () =>
         setMedia(filteredMedia)
     }
 
-    const handleNavbarFilter = (category) =>
-    {
-        const filteredMedia = data.filter((item) =>
-            item.category === category
-        );
-        setMedia(filteredMedia)
-        setSelectedFilter(category)
-    }
 
     const filteredMedia = searchQuery ? media.filter((item) =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -42,11 +33,11 @@ const Home = () =>
     return (
         <div className="flex flex-col desktop:flex-row desktop:mt-10">
             <div className="desktop:w-1/6 flex items-start justify-center">
-                <Navbar handleFilter={handleNavbarFilter} className="desktop:block sticky top-0" />
+                <Navbar className="desktop:block sticky top-0" />
             </div>
             <div className="desktop:w-3/4 flex flex-col">
-                <SearchBar handleSearch={handleSearch} noResults={noResults} selectedFilter={selectedFilter} />
-                <Feed filteredMedia={filteredMedia} selectedFilter={selectedFilter}> </Feed>
+                <SearchBar handleSearch={handleSearch} noResults={noResults} />
+                <Feed filteredMedia={filteredMedia}> </Feed>
             </div>
         </div>
     )
