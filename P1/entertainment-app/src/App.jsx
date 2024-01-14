@@ -12,6 +12,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/movies' element={<Movies />} />
+        <Route path='/tv' element={<p> TvSeries  </p>} />
+        <Route path='/bookmarked' element={<p> Bookmarked </p>} />
+        <Route path='*' element={<h1>No Component.</h1>} />
       </Routes>
     </div>
   )
