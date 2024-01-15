@@ -8,7 +8,7 @@ export default function Bookmarks() {
       <Navbar />
       <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px]">
         <SearchBar />
-        <MediaContainer pageTitle={"TV Series"} />
+        <MediaContainer pageTitle={"Bookmarked"} />
       </div>
     </div>
   )

@@ -17,12 +17,18 @@ export default function MediaContainer({ pageTitle }) {
                 return "TV Series"
             case "Recommended":
                 return true
+            case "Bookmarked":
+                return "isBookmarked"
         }
     }
 
     useEffect(() => {
-        let pageResults = data.filter((result) => {
-            return result.category === pageResultCategory(pageTitle)
+        let pageResults = data.filter((results) => {
+            if (pageTitle === "Bookmarked") {
+                return results.isBookmarked === true
+            } else {
+                return results.category === pageResultCategory(pageTitle)
+            }
         })
         let searchString = searchParams.get('search')
         if (searchString === null) {
