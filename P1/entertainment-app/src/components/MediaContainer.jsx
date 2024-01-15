@@ -48,7 +48,7 @@ export default function MediaContainer({ pageTitle }) {
 
     return (
         <div className='flex flex-col'>
-            <h1 className='text-h-sm mb-[1.5rem] desktop:mb-[2rem]'> {pageTitle}</h1>
+            <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>
             <MediaList results={results}/>
         </div>
     )
