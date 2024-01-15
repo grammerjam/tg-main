@@ -17,14 +17,21 @@ export default function MediaContainer({ pageTitle }) {
                 return "TV Series"
             case "Recommended":
                 return true
+            case "Bookmarked":
+                return "isBookmarked"
         }
     }
 
     useEffect(() => {
-        let pageResults = data.filter((result) => {
-            return result.category === pageResultCategory(pageTitle)
+        let pageResults = data.filter((results) => {
+            if (pageTitle === "Bookmarked") {
+                return results.isBookmarked === true
+            } else {
+                return results.category === pageResultCategory(pageTitle)
+            }
         })
         let searchString = searchParams.get('search')
+        
         if (searchString === null) {
             setResults(() => {
                 return pageResults
@@ -42,7 +49,7 @@ export default function MediaContainer({ pageTitle }) {
 
     return (
         <div className='flex flex-col'>
-            <h1 className='text-h-sm mb-[1.5rem] desktop:mb-[2rem]'> {pageTitle}</h1>
+            <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>
             <MediaList results={results}/>
         </div>
     )

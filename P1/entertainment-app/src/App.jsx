@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login.jsx'
 import Movies from './pages/Movies.jsx'
 import TVSeries from './pages/TVSeries.jsx';
+import Bookmarks from './pages/Bookmarks.jsx';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/movies' element={<Movies />} />
         <Route path='/tv' element={<TVSeries />} />
-        <Route path='/bookmarked' element={<p> Bookmarked </p>} />
+        <Route path='/bookmarked' element={<Bookmarks />} />
         <Route path='*' element={<h1>No Component.</h1>} />
       </Routes>
     </div>
