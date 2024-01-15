@@ -1,6 +1,7 @@
 import { useSignIn } from "@clerk/clerk-react"
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from '/assets/google-logo.svg'
 
 export default function LoginModal() {
     const { isLoaded, signIn, setActive } = useSignIn();
@@ -54,9 +55,32 @@ export default function LoginModal() {
                 </div>
                 <button className="font-light bg-ma-red rounded-[6px] py-[14px] hover:bg-white hover:text-ma-black" onClick={handleSubmit}>Login to your account</button>
             </form>
-            <p className="text-center font-light">Don&apos;t have an account? <Link to="/signup">
+            <SignInOAuthButtons />
+            <p className="text-center font-light pt-[24px]">Don&apos;t have an account? <Link to="/signup">
                 <span className="text-ma-red">Sign up</span>
             </Link></p>
         </div>
     )
+}
+
+function SignInOAuthButtons() {
+    const { signIn } = useSignIn();
+
+    const signInWith = (strategy) => {
+        return signIn.authenticateWithRedirect({
+            strategy,
+            redirectUrl: "/sso-callback",
+            redirectUrlComplete: "/",
+        });
+    };
+
+    // Render a button for each supported OAuth provider
+    // you want to add to your app
+    return (
+        <div className="w-full bg-white rounded-[6px]">
+            <button onClick={() => signInWith("oauth_google")} className="text-black flex justify-center w-full gap-[16px] py-[16px] ">
+                Sign In With Gmail <img src={Logo}/> 
+            </button>
+        </div>
+    );
 }
