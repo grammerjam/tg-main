@@ -1,9 +1,10 @@
 import { useSignIn } from "@clerk/clerk-react"
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from '/assets/google-logo.svg'
 
 export default function LoginModal() {
+    const navigate = useNavigate();
     const { isLoaded, signIn, setActive } = useSignIn();
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
@@ -24,7 +25,7 @@ export default function LoginModal() {
             if (result.status === "complete") {
                 console.log(result);
                 await setActive({ session: result.createdSessionId });
-                //router.push("/")
+                navigate("/")
             }
             else {
                 console.log(result);
