@@ -7,7 +7,7 @@ export default function TVSeries() {
     <div className="flex flex-col desktop:flex-row">
       <Navbar />
       <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px] w-full">
-        <SearchBar />
+        <SearchBar filterType={"TV series"} />
         <MediaContainer pageTitle={"TV Series"} />
       </div>
     </div>
