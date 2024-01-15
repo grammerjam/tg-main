@@ -31,6 +31,7 @@ export default function MediaContainer({ pageTitle }) {
             }
         })
         let searchString = searchParams.get('search')
+        
         if (searchString === null) {
             setResults(() => {
                 return pageResults
