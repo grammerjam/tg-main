@@ -44,7 +44,7 @@ const SearchBar = ({ handleSearch, noResults, selectedFilter }) => {
                         type="text"
                         placeholder={placeholderText}
                         onChange={handleChange}
-                        className={`outline-none border-b ${currentSearch ? 'border-5A698F' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[24px]`}
+                        className={`outline-none border-b ${currentSearch ? 'border-5A698F' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
                     />
 
                 </div>
