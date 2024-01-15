@@ -1,13 +1,15 @@
 import MediaContainer from "../components/MediaContainer";
+import Navbar from "../components/Navbar";
+import SearchBar from "../components/SearchBar";
 
 export default function Movies() {
-    
-
     return (
-        <div>
-            <p>Navbar</p>
-            <p>Searchbar</p>
-            <MediaContainer pageTitle={"Movies"}/>
+        <div className="flex flex-col desktop:flex-row">
+            <Navbar />
+            <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px]">
+                <SearchBar selectedFilter={"Movies"} />
+                <MediaContainer pageTitle={"Movies"} />
+            </div>
         </div>
     )
 }
