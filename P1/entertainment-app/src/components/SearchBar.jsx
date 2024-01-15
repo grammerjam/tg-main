@@ -10,7 +10,7 @@ const SearchBar = ({ filterType }) =>
     };
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [currentSearch, setCurrentSearch] = useState(searchParams.get("q") || "");
+    const [currentSearch, setCurrentSearch] = useState(searchParams.get("search") || "");
     const [noResults, setNoResults] = useState(false);
 
 
@@ -23,7 +23,7 @@ const SearchBar = ({ filterType }) =>
 {
         const query = e.target.value;
         setCurrentSearch(query)
-        setSearchParams({ q: query });
+        setSearchParams({ search: query });
 
     }
 
