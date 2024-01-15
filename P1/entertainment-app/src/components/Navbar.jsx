@@ -1,3 +1,4 @@
+import { UserButton } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -34,7 +35,10 @@ const Navbar = () => {
                             <img src={isActive("bookmark")} alt="Bookmarked" className="h-[16px] tablet:h-[20px]" />
                         </Link>
                     </div>
-                    <img src="/assets/image-avatar.png" alt="User-Profile-Icon" className='w-[24px] rounded-full tablet:w-[32px] desktop:mt-auto' />
+                    {/* <img src="/assets/image-avatar.png" alt="User-Profile-Icon" className='w-[24px] rounded-full tablet:w-[32px] desktop:mt-auto' /> */}
+                    <div className='desktop:mt-auto'>
+                        <UserButton />
+                    </div>
                 </nav>
             </div>
         </div>
