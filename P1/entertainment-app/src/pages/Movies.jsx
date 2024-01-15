@@ -6,7 +6,7 @@ export default function Movies() {
     return (
         <div className="flex flex-col desktop:flex-row">
             <Navbar />
-            <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px]">
+            <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px] w-full">
                 <SearchBar selectedFilter={"Movies"} />
                 <MediaContainer pageTitle={"Movies"} />
             </div>
