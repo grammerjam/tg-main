@@ -41,9 +41,9 @@ export default function LoginModal() {
             <form className="flex flex-col gap-[40px] pb-[24px]">
                 <div className="flex flex-col gap-[24px]">
                     <div className="w-[100%] relative h-[44px]">
-                        <input className={`w-[100%] bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] text-b-med placeholder:font-light font-light focus:outline-none focus:border-ma-white caret-ma-red ${hasSubmited && emailAddress === "" ? "border-b-ma-red" : ""}`} placeholder="Email address"
+                        <input className={`w-[100%] bg-ma-blue border-b-[1px] border-ma-gray pb-[18px] pl-[16px] text-b-med placeholder:font-light font-light focus:outline-none focus:border-ma-white caret-ma-red ${hasSubmited && emailAddress === "" ? "border-b-ma-red" : ""}`} placeholder="Email address"
                             onChange={(e) => setEmailAddress(e.target.value)}
-                            id="email"
+                            id="emailInput"
                             name="email"
                             type="email"
                         />
