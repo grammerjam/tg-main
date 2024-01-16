@@ -27,7 +27,7 @@ export default function MediaContainer({ pageTitle }) {
             if (pageTitle === "Bookmarked") {
                 return results.isBookmarked === true
             } else if (pageTitle === "Recommended") {
-                return results
+                return results.isTrending !== true
             } else {
                 return results.category === pageResultCategory(pageTitle)
             }
