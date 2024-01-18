@@ -1,40 +1,18 @@
 import { UserButton } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 
-import home from '/assets/icon-nav-home.svg';
-import homeActive from '/assets/icon-nav-home-active.svg';
-import movies from '/assets/icon-nav-movies.svg';
-import moviesActive from '/assets/icon-nav-movies-active.svg';
-import tv from '/assets/icon-nav-tv.svg';
-import tvActive from '/assets/icon-nav-tv-active.svg';
-import bookmarked from '/assets/icon-nav-bookmarked.svg';
-import bookmarkedActive from '/assets/icon-nav-bookmarked-active.svg';
 
 const Navbar = () => {
-    const iconSet = {
-        home: {
-            active: homeActive,
-            inactive: home
-        },
-        movies: {
-            active: moviesActive,
-            inactive: movies
-        },
-        tv: {
-            active: tvActive,
-            inactive: tv
-        },
-        bookmarked: {
-            active: bookmarkedActive,
-            inactive: bookmarked
-        }
-    }
+
     // conditionally renders "active" nav image
     const isActive = (path) => {
+        console.log(path)
+        const iconPath = `/assets/icon-nav-${path}.svg`;
+        const activeIconPath = `/assets/icon-nav-${path}-active.svg`;
         if (path === 'home') {
-            return window.location.pathname === '/' ? iconSet[`${path}`].active : iconSet[`${path}`].inactive;
+            return window.location.pathname === '/' ? activeIconPath : iconPath;
         }
-        return window.location.pathname === `/${path}` ? iconSet[`${path}`].active : iconSet[`${path}`].inactive;
+        return window.location.pathname === `/${path}` ? activeIconPath : iconPath;
     };
 
     return (
