@@ -5,14 +5,16 @@ const TrendingList = ({ trendingResults }) =>
 {
 
     return (
-        <div className='w-full h-full flex tablet:flex-row justify-start gap-x-[0.94rem] tablet:gap-x-[1.88rem] desktop:gap-x-[0.5rem] overflow-x-auto'>
-            {trendingResults.map((trendingResults) =>
-            {
-                return (
+        <div className='w-full overflow-x-auto'>
+            <div className='h-full flex tablet:flex-row justify-start gap-x-[0.94rem] tablet:gap-x-[1.88rem] desktop:gap-x-[2.5rem]'>
+                {trendingResults.map((trendingResults) =>
+                {
+                    return (
 
-                    <TrendingCard key={trendingResults.title} trendingResults={trendingResults} />
-                )
-            })}
+                        <TrendingCard key={trendingResults.title} trendingResults={trendingResults} />
+                    )
+                })}
+            </div>
         </div>
     )
 }
