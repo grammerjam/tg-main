@@ -9,6 +9,7 @@ export default function LoginModal() {
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
     const [hasSubmited, setHasSubmited] = useState(false)
+    const [signUpError, setSignUpError] = useState("")
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!isLoaded) {
@@ -33,6 +34,7 @@ export default function LoginModal() {
 
         } catch (err) {
             console.error("error", err.errors[0].longMessage)
+            setSignUpError(err.errors[0].message)
         }
     };
     return (
@@ -54,6 +56,7 @@ export default function LoginModal() {
                         <p className={`absolute text-ma-red text-b-sm right-0 top-0 pt-[3px] tablet:pt-[2px] ${hasSubmited && password === "" ? "" : "hidden"}`}>Can&apos;t be empty</p>
                     </div>
                 </div>
+                {signUpError ? <p className="text-ma-red">{signUpError}</p> : null}
                 <button className="font-light bg-ma-red rounded-[6px] py-[14px] hover:bg-white hover:text-ma-black" onClick={handleSubmit}>Login to your account</button>
             </form>
             <SignInOAuthButtons />
