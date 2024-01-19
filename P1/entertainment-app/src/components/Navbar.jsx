@@ -1,18 +1,20 @@
 import { UserButton } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = () =>
+{
 
     // conditionally renders "active" nav image
-    const isActive = (path) => {
+    const isActive = (path) =>
+    {
         const iconPath = `/assets/icon-nav-${path}.svg`;
         const activeIconPath = `/assets/icon-nav-${path}-active.svg`;
-        if (path === 'home') {
+        if (path === 'home')
+        {
             return window.location.pathname === '/' ? activeIconPath : iconPath;
         }
         return window.location.pathname === `/${path}` ? activeIconPath : iconPath;
     };
-
 
     return (
         <div className='desktop:h-[100vh]'>
@@ -28,11 +30,11 @@ const Navbar = () => {
                         <Link to="/movies" >
                             <img src={isActive("movies")} alt="Movies" className="h-[16px] tablet:h-[20px]" />
                         </Link>
-                        <Link to="/tv">
+                        <Link to="/tv-series">
                             <img src={isActive("tv-series")} alt="TV-Series" className="h-[16px] tablet:h-[20px]" />
                         </Link>
-                        <Link to="/bookmarked" >
-                            <img src={isActive("bookmark")} alt="Bookmarked" className="h-[16px] tablet:h-[20px]" />
+                        <Link to="/bookmark" >
+                            <img src={isActive("bookmark")} alt="bookmark" className="h-[16px] tablet:h-[20px]" />
                         </Link>
                     </div>
                     {/* <img src="/assets/image-avatar.png" alt="User-Profile-Icon" className='w-[24px] rounded-full tablet:w-[32px] desktop:mt-auto' /> */}
