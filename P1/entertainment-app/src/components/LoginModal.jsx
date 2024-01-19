@@ -60,6 +60,9 @@ export default function LoginModal() {
             <p className="text-center font-light pt-[24px]">Don&apos;t have an account? <Link to="/signup">
                 <span className="text-ma-red">Sign up</span>
             </Link></p>
+            <Link to="/forgot-password">
+                <p className="text-center font-light text-ma-gray pt-[16px]">Forgot Your Password?</p>
+            </Link>
         </div>
     )
 }
@@ -80,7 +83,7 @@ function SignInOAuthButtons() {
     return (
         <div className="w-full bg-white rounded-[6px]">
             <button onClick={() => signInWith("oauth_google")} className="text-black flex justify-center w-full gap-[16px] py-[16px] ">
-                Sign In With Gmail <img src={Logo}/> 
+                Sign In With Gmail <img src={Logo} />
             </button>
         </div>
     );
