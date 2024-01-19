@@ -8,6 +8,7 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
+    const [signUpError, setSignUpError] = useState("")
 
     const [verify, setVerify] = useState(false);
     const [code, setCode] = useState("")
@@ -45,6 +46,7 @@ const SignUp = () => {
 
         } catch (error) {
             console.log(JSON.stringify(error, null, 2));
+            setSignUpError(error.errors[0].message)
         }
     };
 
@@ -77,6 +79,7 @@ const SignUp = () => {
             // This can return an array of errors.
             // See https://clerk.com/docs/custom-flows/error-handling to learn about error handling
             console.error(JSON.stringify(err, null, 2));
+            console.log("i hate the no status complete");
         }
     };
 
@@ -111,6 +114,7 @@ const SignUp = () => {
                             className= {`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`} />
                             {hasSubmited && !repeatPassword && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
+                        {signUpError ? <p className="text-ma-red pb-[24px]">{signUpError}</p> : null}
                         <Button text={"Create an Account"} onClick={handleSubmit}></Button>
                         <div className=" mt-[1.5rem] flex justify-center">
                             <p className=" font-light mr-[0.5rem]"> Already have an account? </p>
