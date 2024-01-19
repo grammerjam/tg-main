@@ -35,14 +35,17 @@ export default function MediaContainer({ pageTitle })
             if (pageTitle === "Bookmarked")
             {
                 return results.isBookmarked === true
-            } else {
+            } else
+            {
                 return results.category === pageResultCategory(pageTitle)
             }
         })
         let searchString = searchParams.get('search')
-        
-        if (searchString === null) {
-            setResults(() => {
+
+        if (searchString === null)
+        {
+            setResults(() =>
+            {
                 return pageResults
             })
         } else
@@ -64,7 +67,7 @@ export default function MediaContainer({ pageTitle })
     return (
         <div className='flex flex-col'>
             {(searchString !== null && searchString !== "") ? (
-                <p className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{resultsLength !== 0 ? `Found ${resultsLength} for "${searchString}"` : "No results found for \"" + searchString + "\""}</p>
+                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{resultsLength !== 0 ? `Found ${resultsLength} result${resultsLength !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
             ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
             <MediaList results={results} />
         </div>
