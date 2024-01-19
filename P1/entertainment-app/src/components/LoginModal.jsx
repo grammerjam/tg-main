@@ -12,6 +12,7 @@ export default function LoginModal() {
     const [signUpError, setSignUpError] = useState("")
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSignUpError("")
         if (!isLoaded) {
             return;
         }
@@ -56,7 +57,7 @@ export default function LoginModal() {
                         <p className={`absolute text-ma-red text-b-sm right-0 top-0 pt-[3px] tablet:pt-[2px] ${hasSubmited && password === "" ? "" : "hidden"}`}>Can&apos;t be empty</p>
                     </div>
                 </div>
-                {signUpError ? <p className="text-ma-red">{signUpError}</p> : null}
+                {signUpError ? <p className=" text-b-med text-ma-red">{signUpError}</p> : null}
                 <button className="font-light bg-ma-red rounded-[6px] py-[14px] hover:bg-white hover:text-ma-black" onClick={handleSubmit}>Login to your account</button>
             </form>
             <SignInOAuthButtons />
