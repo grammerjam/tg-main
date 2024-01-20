@@ -81,8 +81,7 @@ const SignUp = () => {
         } catch (error) {
             // This can return an array of errors.
             // See https://clerk.com/docs/custom-flows/error-handling to learn about error handling
-            console.log(error.errors[0].message)
-            setVerifyError(error.errors[0].message)
+            setVerifyError(error.errors[0].longMessage)
         }
     };
 
@@ -134,7 +133,7 @@ const SignUp = () => {
                                 className={` relative w-full caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${hasSubmited && email === "" ? "border-b-ma-red" : ""}`} />
                             {hasSubmited && !code && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
-                        {signUpError ? <p className="text-ma-red pb-[24px]">{verifyError}</p> : null}
+                        {verifyError ? <p className=" text-b-med text-ma-red pb-[24px]"> {verifyError} </p> : null}
                         <Button text={"Verify"} onClick={handleVerify}></Button>
                     </form>}
             </div>

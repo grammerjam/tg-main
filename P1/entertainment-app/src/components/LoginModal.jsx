@@ -13,10 +13,16 @@ export default function LoginModal() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSignUpError("")
+        setHasSubmited(true)
+        
         if (!isLoaded) {
             return;
         }
-        setHasSubmited(true)
+
+        if(!emailAddress || !password){
+            return;
+        }
+        
 
         try {
             const result = await signIn.create({
