@@ -13,6 +13,7 @@ const SignUp = () => {
     const [verify, setVerify] = useState(false);
     const [code, setCode] = useState("")
     const [verifyError, setVerifyError] = useState("")
+    const [passwordsMatch, setPasswordsMatch] = useState(true)
 
 
     const [hasSubmited, setHasSubmited] = useState(false)
@@ -30,6 +31,7 @@ const SignUp = () => {
         }
 
         if (password !== repeatPassword) {
+            setSignUpError("Passwords do not match")
             return;
         }
         //If any fields are empty, return.
@@ -76,7 +78,7 @@ const SignUp = () => {
             if (completeSignUp.status === "complete") {
                 await setActive({ session: completeSignUp.createdSessionId })
                 // Handle your own logic here, like redirecting to a new page if needed.
-                nav("/login")
+                nav("/")
             }
         } catch (error) {
             // This can return an array of errors.
