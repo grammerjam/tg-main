@@ -6,7 +6,7 @@ import bookmarkFilled from '/assets/icon-bookmark-full.svg'
 const TrendingCard = ({ trendingResults }) =>
 {
     return (
-        <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[45%] tablet:w-[30%] desktop:w-[22%] relative'>
+        <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative'>
             <div className='w-full flex relative justify-end mb-[0.5rem]' >
                 <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`}
                     onMouseEnter={(e) => { e.stopPropagation(); e.target.childNodes[0].src = bookmarkHover }}
@@ -27,7 +27,7 @@ const TrendingCard = ({ trendingResults }) =>
                         <p className='mx-[0.5rem]'> {"•"} </p>
                         <p> {trendingResults.rating} </p>
                     </div>
-                    <p className="font-light text-b-med tablet:text-h-med"> {trendingResults.title} </p>
+                    <p className="font-light text-h-sm tablet:text-h-med"> {trendingResults.title} </p>
                 </div>
             </div>
         </div>

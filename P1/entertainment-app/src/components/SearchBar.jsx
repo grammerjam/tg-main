@@ -11,27 +11,25 @@ const SearchBar = ({ filterType }) =>
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [currentSearch, setCurrentSearch] = useState(searchParams.get("search") || "");
-    // const [noResults, setNoResults] = useState(false);
-    // const [showResultsCount, setShowResultsCount] = useState(false);
-
-    // useEffect(() =>
-    // {
-    //     setNoResults(currentSearch.length === 0);
-    // }, [currentSearch]);
 
     const handleChange = (e) =>
     {
         const query = e.target.value;
         setCurrentSearch(query)
-        setSearchParams({ search: query });
 
+    }
+
+    const handleSubmit = (e) => 
+    {
+        e.preventDefault();
+        setSearchParams({ search: currentSearch });
     }
 
     let placeholderText = `Search for ${filterType}`
 
     return (
         <>
-            <form className="pb-[20px] desktop:py-[28px] desktop:px-0">
+            <form onSubmit={handleSubmit} className="pb-[20px] desktop:py-[28px] desktop:px-0">
                 <div className="flex items-center desktop:py-[10px]">
                     <div className="max-w-[24px] tablet:max-h-[24px]">
                         <img src={"/assets/icon-searchbar-search.svg"} />

@@ -44,7 +44,7 @@ export default function MediaContainer({ pageTitle })
                 return results.category === pageResultCategory(pageTitle)
             }
         })
-        console.log(pageResults)
+        
         let searchString = searchParams.get('search')
 
         if (searchString === null)
@@ -67,7 +67,7 @@ export default function MediaContainer({ pageTitle })
             })
             setResultsLength(filteredMovieResults.length)
         }
-    }, [searchParams, pageTitle, searchString])
+    }, [searchParams, pageTitle])
 
     return (
         <div className='flex flex-col'>
