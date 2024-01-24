@@ -47,17 +47,22 @@ const SignUp = () => {
 
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
             setVerify(true);
-            setHasSubmited(false);
+            await setHasSubmited(false);
 
         } catch (error) {
-            setSignUpError(error.errors[0].message)
+            setSignUpError(error.errors[0].longMessage)
         }
     };
 
     const handleVerify = async (e) => {
         e.preventDefault();
         setVerifyError("")
+        setHasSubmited(true)
         if (!isLoaded) {
+            return;
+        }
+
+        if (!code) {
             return;
         }
 
