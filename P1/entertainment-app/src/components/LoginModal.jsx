@@ -9,12 +9,20 @@ export default function LoginModal() {
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
     const [hasSubmited, setHasSubmited] = useState(false)
+    const [signUpError, setSignUpError] = useState("")
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSignUpError("")
+        setHasSubmited(true)
+        
         if (!isLoaded) {
             return;
         }
-        setHasSubmited(true)
+
+        if(!emailAddress || !password){
+            return;
+        }
+        
 
         try {
             const result = await signIn.create({
@@ -33,6 +41,7 @@ export default function LoginModal() {
 
         } catch (err) {
             console.error("error", err.errors[0].longMessage)
+            setSignUpError(err.errors[0].message)
         }
     };
     return (
@@ -54,12 +63,16 @@ export default function LoginModal() {
                         <p className={`absolute text-ma-red text-b-sm right-0 top-0 pt-[3px] tablet:pt-[2px] ${hasSubmited && password === "" ? "" : "hidden"}`}>Can&apos;t be empty</p>
                     </div>
                 </div>
+                {signUpError ? <p className=" text-b-med text-ma-red">{signUpError}</p> : null}
                 <button className="font-light bg-ma-red rounded-[6px] py-[14px] hover:bg-white hover:text-ma-black" onClick={handleSubmit}>Login to your account</button>
             </form>
             <SignInOAuthButtons />
             <p className="text-center font-light pt-[24px]">Don&apos;t have an account? <Link to="/signup">
                 <span className="text-ma-red">Sign up</span>
             </Link></p>
+            <Link to="/forgot-password">
+                <p className="text-center font-light text-ma-gray pt-[16px]">Forgot Your Password?</p>
+            </Link>
         </div>
     )
 }
@@ -80,7 +93,7 @@ function SignInOAuthButtons() {
     return (
         <div className="w-full bg-white rounded-[6px]">
             <button onClick={() => signInWith("oauth_google")} className="text-black flex justify-center w-full gap-[16px] py-[16px] ">
-                Sign In With Gmail <img src={Logo}/> 
+                Sign In With Gmail <img src={Logo} />
             </button>
         </div>
     );
