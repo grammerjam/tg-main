@@ -12,6 +12,8 @@ export default function ForgotPassword() {
     const { isLoaded, signIn, setActive } = useSignIn();
     const [complete, setComplete] = useState(false);
     const [secondFactor, setSecondFactor] = useState(false);
+    const [hasSubmitedCreate, setHasSubmitedCreate] = useState(false)
+    const [hasSubmitedReset, setHasSubmitedReset] = useState(false)
     const navigate = useNavigate();
 
     if (!isLoaded) {
@@ -19,6 +21,11 @@ export default function ForgotPassword() {
     }
 
     async function create(e) {
+        e.preventDefault()
+        setHasSubmitedCreate(true)
+        if (email === "") {
+            return
+        }
         e.preventDefault();
         await signIn
             ?.create({
@@ -28,6 +35,7 @@ export default function ForgotPassword() {
             .then(() => {
                 setSuccessfulCreation(true);
                 setSignUpError("")
+
             })
             .catch(err => {
                 setSignUpError(err.errors[0].message)
@@ -37,6 +45,13 @@ export default function ForgotPassword() {
 
     async function reset(e) {
         e.preventDefault();
+        setHasSubmitedReset(true)
+        if (code === "") {
+            return
+        }
+        if (password === "") {
+            return
+        }
         await signIn
             ?.attemptFirstFactor({
                 strategy: 'reset_password_email_code',
@@ -76,14 +91,20 @@ export default function ForgotPassword() {
                     <h1 className="text-h-lg font-light pb-[40px] text-white">Forgot Password</h1>
                     {!successfulCreation && !complete && (
                         <div className='flex flex-col gap-[40px]'>
-                            <input
-                                type='email'
-                                name="email"
-                                placeholder='Email address'
-                                value={email}
-                                onChange={e => setEmail(e.target.value)}
-                                className='text-white w-[100%] bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] text-b-med placeholder:font-light font-light focus:outline-none focus:border-ma-white caret-ma-red'
-                            />
+                            <div className="w-[100%] relative h-[44px]">
+                                <input
+                                    type='email'
+                                    name="email"
+                                    placeholder='Email address'
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    className='text-white w-[100%] bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] text-b-med placeholder:font-light font-light focus:outline-none focus:border-ma-white caret-ma-red'
+                                />
+                                {hasSubmitedCreate && email === "" ?
+                                    <p className='absolute text-ma-red text-b-sm right-0 top-0 pt-[3px] tablet:pt-[2px]'>Can&apos;t be empty</p>
+                                    : null
+                                }
+                            </div>
                             {signUpError ? <p className="text-ma-red text-b-sm right-0 top-0 pt-[3px] tablet:pt-[2px]">{signUpError}</p> : null}
                             <button className="font-light bg-ma-red rounded-[6px] py-[14px] hover:bg-white hover:text-ma-black text-white">Send Code</button>
                         </div>
@@ -92,22 +113,34 @@ export default function ForgotPassword() {
                     {successfulCreation && !complete && (
                         <div className='flex flex-col gap-[40px]'>
                             <div className='flex flex-col gap-[24px]'>
-                                <input
-                                    type='text'
-                                    name="resetCode"
-                                    placeholder='Reset Code'
-                                    value={code}
-                                    onChange={e => setCode(e.target.value)}
-                                    className='text-white w-[100%] bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] text-b-med placeholder:font-light font-light focus:outline-none focus:border-ma-white caret-ma-red'
-                                />
-                                <input
-                                    type='password'
-                                    name='password'
-                                    placeholder='New Password'
-                                    value={password}
-                                    onChange={e => setPassword(e.target.value)}
-                                    className='text-white w-[100%] bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] text-b-med placeholder:font-light font-light focus:outline-none focus:border-ma-white caret-ma-red'
-                                />
+                                <div className="w-[100%] relative h-[44px]">
+                                    <input
+                                        type='text'
+                                        name="resetCode"
+                                        placeholder='Reset Code'
+                                        value={code}
+                                        onChange={e => setCode(e.target.value)}
+                                        className='text-white w-[100%] bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] text-b-med placeholder:font-light font-light focus:outline-none focus:border-ma-white caret-ma-red'
+                                    />
+                                    {hasSubmitedReset && code === "" ?
+                                        <p className='absolute text-ma-red text-b-sm right-0 top-0 pt-[3px] tablet:pt-[2px]'>Can&apos;t be empty</p>
+                                        : null
+                                    }
+                                </div>
+                                <div className="w-[100%] relative h-[44px]">
+                                    <input
+                                        type='password'
+                                        name='password'
+                                        placeholder='New Password'
+                                        value={password}
+                                        onChange={e => setPassword(e.target.value)}
+                                        className='text-white w-[100%] bg-transparent border-b-[1px] border-ma-gray pb-[18px] pl-[16px] text-b-med placeholder:font-light font-light focus:outline-none focus:border-ma-white caret-ma-red'
+                                    />
+                                    {hasSubmitedReset && password === "" ?
+                                        <p className='absolute text-ma-red text-b-sm right-0 top-0 pt-[3px] tablet:pt-[2px]'>Can&apos;t be empty</p>
+                                        : null
+                                    }
+                                </div>
                                 {signUpError ? <p className="text-ma-red text-b-sm right-0 top-0 pt-[3px] tablet:pt-[2px]">{signUpError}</p> : null}
                             </div>
                             <button className="font-light bg-ma-red rounded-[6px] py-[14px] hover:bg-white hover:text-ma-black text-white">Reset</button>
