@@ -6,6 +6,7 @@ import Movies from './pages/Movies.jsx'
 import TVSeries from './pages/TVSeries.jsx';
 import Bookmarks from './pages/Bookmarks.jsx';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
+import ForgotPassword from './pages/ForgotPassword.jsx';
 
 function App()
 {
@@ -15,6 +16,7 @@ function App()
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='*' element={<Login />} />
         </Routes>
       </SignedOut>
