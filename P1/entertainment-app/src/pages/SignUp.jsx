@@ -8,9 +8,11 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
+    const [signUpError, setSignUpError] = useState("")
 
     const [verify, setVerify] = useState(false);
     const [code, setCode] = useState("")
+    const [verifyError, setVerifyError] = useState("")
 
 
     const [hasSubmited, setHasSubmited] = useState(false)
@@ -21,16 +23,18 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmited(true);
+        setSignUpError("")
 
         if (!isLoaded) {
             return;
         }
 
         if (password !== repeatPassword) {
+            setSignUpError("Passwords do not match")
             return;
         }
         //If any fields are empty, return.
-        if(!email || !password || !repeatPassword){
+        if (!email || !password || !repeatPassword) {
             return;
         }
 
@@ -42,15 +46,22 @@ const SignUp = () => {
 
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
             setVerify(true);
+            await setHasSubmited(false);
 
         } catch (error) {
-            console.log(JSON.stringify(error, null, 2));
+            setSignUpError(error.errors[0].longMessage)
         }
     };
 
     const handleVerify = async (e) => {
         e.preventDefault();
+        setVerifyError("")
+        setHasSubmited(true)
         if (!isLoaded) {
+            return;
+        }
+
+        if (!code) {
             return;
         }
 
@@ -71,12 +82,12 @@ const SignUp = () => {
             if (completeSignUp.status === "complete") {
                 await setActive({ session: completeSignUp.createdSessionId })
                 // Handle your own logic here, like redirecting to a new page if needed.
-                nav("/login")
+                nav("/")
             }
-        } catch (err) {
+        } catch (error) {
             // This can return an array of errors.
             // See https://clerk.com/docs/custom-flows/error-handling to learn about error handling
-            console.error(JSON.stringify(err, null, 2));
+            setVerifyError(error.errors[0].longMessage)
         }
     };
 
@@ -94,23 +105,24 @@ const SignUp = () => {
                             <input onChange={(e) => {
                                 setEmail(e.target.value)
                             }} type="email" value={email} placeholder="Email address"
-                            className = {`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`}/>
+                                className={`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${hasSubmited && email === "" ? "border-b-ma-red" : ""}`} />
                             {hasSubmited && !email && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
                         <div className="flex flex-col relative mb-[0.5rem]">
                             <input onChange={(e) => {
                                 setPassword(e.target.value)
                             }} type="password" value={password} placeholder="Password"
-                            className= {`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`} />
+                                className={`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${hasSubmited && email === "" ? "border-b-ma-red" : ""}`} />
                             {hasSubmited && !password && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
                         <div className="flex flex-col relative mb-[1.5rem] tablet:mb-[0.5rem]">
                             <input onChange={(e) => {
                                 setRepeatPassword(e.target.value)
                             }} type="password" value={repeatPassword} placeholder="Repeat Password"
-                            className= {`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`} />
+                                className={`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${hasSubmited && email === "" ? "border-b-ma-red" : ""}`} />
                             {hasSubmited && !repeatPassword && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
                         </div>
+                        {signUpError ? <p className=" text-b-med text-ma-red pb-[24px]">{signUpError}</p> : null}
                         <Button text={"Create an Account"} onClick={handleSubmit}></Button>
                         <div className=" mt-[1.5rem] flex justify-center">
                             <p className=" font-light mr-[0.5rem]"> Already have an account? </p>
@@ -120,10 +132,14 @@ const SignUp = () => {
                 {/* Second form */}
                 {verify &&
                     <form className="flex flex-col">
-                        <input onChange={(e) => {
-                            setCode(e.target.value)
-                        }} value={code} placeholder="Verification Code"
-                        className={`caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${ hasSubmited && email === "" ? "border-b-ma-red" : "" }`}/>
+                        <div className="flex flex-col relative mb-[1.5rem] tablet:mb-[0.5rem]">
+                            <input onChange={(e) => {
+                                setCode(e.target.value)
+                            }} value={code} placeholder="Verification Code"
+                                className={` relative w-full caret-ma-red font-light text-b-med pl-[1rem] pb-[1rem] mb-[1.5rem] bg-transparent border-b-[1px] text-ma-white border-b-ma-gray outline-none focus:border-ma-white ${hasSubmited && email === "" ? "border-b-ma-red" : ""}`} />
+                            {hasSubmited && !code && <p className="text-ma-red absolute right-[1rem] text-b-sm">{"Can't be empty"}</p>}
+                        </div>
+                        {verifyError ? <p className=" text-b-med text-ma-red pb-[24px]"> {verifyError} </p> : null}
                         <Button text={"Verify"} onClick={handleVerify}></Button>
                     </form>}
             </div>
