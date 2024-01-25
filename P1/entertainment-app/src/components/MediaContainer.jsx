@@ -20,7 +20,7 @@ export default function MediaContainer({ pageTitle })
             case "TV Series":
                 return "TV Series"
             case "Recommended":
-                return true
+                return "Recommended"
             case "Bookmarked":
                 return "isBookmarked"
         }
@@ -35,11 +35,16 @@ export default function MediaContainer({ pageTitle })
             if (pageTitle === "Bookmarked")
             {
                 return results.isBookmarked === true
-            } else
+            } else if (pageTitle === "Recommended")
+            {
+                return results
+            }
+            else
             {
                 return results.category === pageResultCategory(pageTitle)
             }
         })
+        
         let searchString = searchParams.get('search')
 
         if (searchString === null)
@@ -62,7 +67,7 @@ export default function MediaContainer({ pageTitle })
             })
             setResultsLength(filteredMovieResults.length)
         }
-    }, [searchParams, pageTitle, searchString])
+    }, [searchParams, pageTitle])
 
     return (
         <div className='flex flex-col'>

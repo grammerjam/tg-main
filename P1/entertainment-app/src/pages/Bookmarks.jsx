@@ -7,7 +7,7 @@ export default function Bookmarks() {
     <div className="flex flex-col desktop:flex-row">
       <Navbar />
       <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px]">
-        <SearchBar />
+        <SearchBar filterType={"bookmarked shows"} />
         <MediaContainer pageTitle={"Bookmarked"} />
       </div>
     </div>

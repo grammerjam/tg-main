@@ -37,7 +37,6 @@ const Navbar = () =>
                             <img src={isActive("bookmark")} alt="bookmark" className="h-[16px] tablet:h-[20px]" />
                         </Link>
                     </div>
-                    {/* <img src="/assets/image-avatar.png" alt="User-Profile-Icon" className='w-[24px] rounded-full tablet:w-[32px] desktop:mt-auto' /> */}
                     <div className='desktop:mt-auto'>
                         <UserButton />
                     </div>
