@@ -7,6 +7,7 @@ import TVSeries from './pages/TVSeries.jsx';
 import Bookmarks from './pages/Bookmarks.jsx';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import ForgotPassword from './pages/ForgotPassword.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 function App() {
   return (
@@ -23,9 +24,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/movies' element={<Movies />} />
-          <Route path='/tv' element={<TVSeries />} />
-          <Route path='/bookmarked' element={<Bookmarks />} />
-          <Route path='*' element={<h1>No Component but signed in.</h1>} />
+          <Route path='/tv-series' element={<TVSeries />} />
+          <Route path='/bookmark' element={<Bookmarks />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </SignedIn>
     </div>
