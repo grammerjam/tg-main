@@ -13,7 +13,6 @@ const SignUp = () => {
     const [verify, setVerify] = useState(false);
     const [code, setCode] = useState("")
     const [verifyError, setVerifyError] = useState("")
-    const [passwordsMatch, setPasswordsMatch] = useState(true)
 
 
     const [hasSubmited, setHasSubmited] = useState(false)
