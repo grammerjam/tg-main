@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react";
 import PropTypes from 'prop-types'
 import { useSearchParams } from "react-router-dom";
 
@@ -9,6 +9,7 @@ const SearchBar = ({ filterType }) =>
         filterType: PropTypes.string.isRequired,
     };
 
+    const [isScrolled, setIsScrolled] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const [currentSearch, setCurrentSearch] = useState(searchParams.get("search") || "");
 
@@ -25,12 +26,27 @@ const SearchBar = ({ filterType }) =>
         setSearchParams({ search: currentSearch });
     }
 
+    useEffect(() =>
+    {
+        const handleScroll = () =>
+        {
+            const scrollPosition = window.scrollY;
+            setIsScrolled(scrollPosition > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () =>
+        {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     let placeholderText = `Search for ${filterType}`
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="pb-[20px] desktop:py-[28px] desktop:px-0">
-                <div className="flex items-center desktop:py-[10px]">
+            <form onSubmit={handleSubmit} className={`pb-[20px] desktop:py-[28px] desktop:px-0 `}>
+                <div className={`flex items-center desktop:py-[10px] ${isScrolled ? 'active w-10/12 tablet:w-6/12 h-16 bg-ma-gray bg-opacity-90 rounded-[10px]' : ''}`}>
                     <div className="max-w-[24px] tablet:max-h-[24px]">
                         <img src={"/assets/icon-searchbar-search.svg"} />
                     </div>
@@ -38,7 +54,7 @@ const SearchBar = ({ filterType }) =>
                         type="text"
                         placeholder={placeholderText}
                         onChange={handleChange}
-                        className={`outline-none border-b ${currentSearch ? 'border-5A698F' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
+                        className={`outline-none border-b ${currentSearch ? 'border-5A698F w-10/12 tablet:w-6/12' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
                     />
                 </div>
             </form>
