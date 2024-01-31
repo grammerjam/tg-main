@@ -26,27 +26,12 @@ const SearchBar = ({ filterType }) =>
         setSearchParams({ search: currentSearch });
     }
 
-    useEffect(() =>
-    {
-        const handleScroll = () =>
-        {
-            const scrollPosition = window.scrollY;
-            setIsScrolled(scrollPosition > 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () =>
-        {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     let placeholderText = `Search for ${filterType}`
 
     return (
         <>
             <form onSubmit={handleSubmit} className={`pb-[20px] desktop:py-[28px] desktop:px-0 `}>
-                <div className={`flex items-center desktop:py-[10px] ${isScrolled ? 'active w-10/12 tablet:w-6/12 h-16 bg-ma-gray bg-opacity-90 rounded-[10px]' : ''}`}>
+                <div className={`flex items-center desktop:py-[10px]`}>
                     <div className="max-w-[24px] tablet:max-h-[24px]">
                         <img src={"/assets/icon-searchbar-search.svg"} />
                     </div>

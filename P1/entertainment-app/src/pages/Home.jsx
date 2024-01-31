@@ -15,7 +15,7 @@ const Home = () =>
                 <Navbar />
             </div>
             <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px] w-full">
-                <div className="sticky top-20 tablet:top-32 desktop:top-0 tablet:mb-16 desktop:mb-0 desk z-20">
+                <div className="fixed top-20 tablet:top-32 desktop:top-0 tablet:mb-16 desktop:mb-0 w-full">
                     <SearchBar filterType={"movies or TV series"} />
                 </div>
                 {!searchString && <TrendingContainer />}
