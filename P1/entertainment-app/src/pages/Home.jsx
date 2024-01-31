@@ -14,10 +14,8 @@ const Home = () =>
             <div className="sticky top-0 h-16 z-10">
                 <Navbar />
             </div>
-            <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px] w-full">
-                <div className="fixed top-20 tablet:top-32 desktop:top-0 tablet:mb-16 desktop:mb-0 w-full">
-                    <SearchBar filterType={"movies or TV series"} />
-                </div>
+            <SearchBar filterType={"movies or TV series"} />
+            <div className="px-[1rem] pt-[4.5rem] tablet:px-[1.5rem] w-full">
                 {!searchString && <TrendingContainer />}
                 <MediaContainer pageTitle={"Recommended"} />
             </div>
