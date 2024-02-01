@@ -25,7 +25,7 @@ const SearchBar = ({ filterType }) => {
     let placeholderText = `Search for ${filterType}`
 
     return (
-        <div className="w-full flex items-center bg-ma-black h-[4rem] ">
+        <div className="w-full flex items-center desktop:h-[5.5rem] desktop:items-end bg-ma-black h-[4rem] ">
             <form onSubmit={handleSubmit} className="w-full text-h-med tablet:text-h-lg px-[1rem] flex items-center z-10">
                 <div className={`flex items-center desktop:py-[10px]`}>
                     <div className="max-w-[24px] tablet:max-h-[24px]">
