@@ -8,8 +8,8 @@ export default function Bookmarks() {
       <div className="sticky top-0 h-16 z-10">
         <Navbar />
       </div>
-      <div className="px-[16px] tablet:px-[24px] desktop:pl-[12px] desktop:pr-[36px]">
-        <div className="sticky top-20 tablet:top-32 desktop:top-0 tablet:mb-16 desktop:mb-0 desk z-20">
+      <div className="px-[1rem] tablet:px-[1.5rem] w-full">
+        <div className="sticky top-16 tablet:top-24 desktop:top-0 z-10 mb-[1.5rem] tablet:mb-[3rem]">
           <SearchBar filterType={"bookmarked shows"} />
         </div>
         <MediaContainer pageTitle={"Bookmarked"} />

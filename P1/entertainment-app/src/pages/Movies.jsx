@@ -8,8 +8,10 @@ export default function Movies() {
             <div className="sticky top-0 h-16 z-10">
                 <Navbar />
             </div>
-            <SearchBar filterType={"movies"} />
-            <div className="px-[1rem] pt-[4.5rem] tablet:px-[1.5rem] w-full">
+            <div className="px-[1rem] tablet:px-[1.5rem] w-full">
+                <div className="sticky top-16 tablet:top-24 desktop:top-0 z-10 mb-[1.5rem] tablet:mb-[3rem]">
+                    <SearchBar filterType={"movies"} />
+                </div>
                 <MediaContainer pageTitle={"Movies"} />
             </div>
         </div>
