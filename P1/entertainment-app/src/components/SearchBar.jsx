@@ -25,19 +25,21 @@ const SearchBar = ({ filterType }) => {
     let placeholderText = `Search for ${filterType}`
 
     return (
-        <form onSubmit={handleSubmit} className={`fixed top-[5rem] left-[1rem]`}>
-            <div className={`flex items-center desktop:py-[10px]`}>
-                <div className="max-w-[24px] tablet:max-h-[24px]">
-                    <img src={"/assets/icon-searchbar-search.svg"} />
+        <div className="w-full flex items-center bg-ma-black h-[4rem] ">
+            <form onSubmit={handleSubmit} className="w-full text-h-med tablet:text-h-lg px-[1rem] flex items-center z-10">
+                <div className={`flex items-center desktop:py-[10px]`}>
+                    <div className="max-w-[24px] tablet:max-h-[24px]">
+                        <img src={"/assets/icon-searchbar-search.svg"} />
+                    </div>
+                    <input
+                        type="text"
+                        placeholder={placeholderText}
+                        onChange={handleChange}
+                        className={`outline-none border-b ${currentSearch ? 'border-5A698F w-10/12 tablet:w-6/12' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
+                    />
                 </div>
-                <input
-                    type="text"
-                    placeholder={placeholderText}
-                    onChange={handleChange}
-                    className={`outline-none border-b ${currentSearch ? 'border-5A698F w-10/12 tablet:w-6/12' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
-                />
-            </div>
-        </form>
+            </form>
+        </div>
     )
 }
 
