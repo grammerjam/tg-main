@@ -16,9 +16,9 @@
     "category": "Movie",
     "rating": "PG",
     "genre": [
+      "Sci Fi",
       "Comedy",
-      "Horror",
-      "Thriller"
+      "Romance"
     ]
   },
   {
@@ -38,9 +38,9 @@
     "category": "Movie",
     "rating": "PG",
     "genre": [
-      "War",
-      "Sci Fi",
-      "Comedy"
+      "Comedy",
+      "Crime",
+      "Action"
     ]
   },
   {
@@ -60,9 +60,9 @@
     "category": "TV Series",
     "rating": "E",
     "genre": [
+      "Thriller",
       "Sci Fi",
-      "Action",
-      "Horror"
+      "Action"
     ]
   },
   {
@@ -82,9 +82,9 @@
     "category": "Movie",
     "rating": "18+",
     "genre": [
-      "Crime",
-      "Action",
-      "Thriller"
+      "Romance",
+      "Comedy",
+      "Horror"
     ]
   },
   {
@@ -104,9 +104,9 @@
     "category": "TV Series",
     "rating": "PG",
     "genre": [
-      "War",
-      "Romance",
-      "Horror"
+      "Comedy",
+      "Sci Fi",
+      "War"
     ]
   },
   {
@@ -122,9 +122,9 @@
     "category": "Movie",
     "rating": "E",
     "genre": [
-      "War",
-      "Thriller",
-      "Romance"
+      "Sci Fi",
+      "Crime",
+      "War"
     ]
   },
   {
@@ -140,9 +140,9 @@
     "category": "TV Series",
     "rating": "PG",
     "genre": [
+      "Romance",
       "Comedy",
-      "Action",
-      "Crime"
+      "Thriller"
     ]
   },
   {
@@ -158,9 +158,9 @@
     "category": "Movie",
     "rating": "18+",
     "genre": [
+      "War",
       "Thriller",
-      "Crime",
-      "Action"
+      "Romance"
     ]
   },
   {
@@ -176,9 +176,9 @@
     "category": "Movie",
     "rating": "E",
     "genre": [
-      "Thriller",
-      "Sci Fi",
-      "Romance"
+      "Comedy",
+      "Action",
+      "Crime"
     ]
   },
   {
@@ -194,9 +194,9 @@
     "category": "TV Series",
     "rating": "PG",
     "genre": [
-      "Horror",
-      "Crime",
-      "Comedy"
+      "Thriller",
+      "Action",
+      "Horror"
     ]
   },
   {
@@ -212,9 +212,9 @@
     "category": "TV Series",
     "rating": "18+",
     "genre": [
-      "Sci Fi",
-      "War",
-      "Romance"
+      "Romance",
+      "Comedy",
+      "Horror"
     ]
   },
   {
@@ -230,9 +230,9 @@
     "category": "Movie",
     "rating": "E",
     "genre": [
-      "Sci Fi",
-      "Crime",
-      "Comedy"
+      "Comedy",
+      "Thriller",
+      "Sci Fi"
     ]
   },
   {
@@ -248,9 +248,9 @@
     "category": "TV Series",
     "rating": "PG",
     "genre": [
-      "Sci Fi",
+      "Romance",
       "Horror",
-      "Comedy"
+      "War"
     ]
   },
   {
@@ -266,9 +266,9 @@
     "category": "TV Series",
     "rating": "E",
     "genre": [
-      "Action",
-      "Romance",
-      "War"
+      "Sci Fi",
+      "Comedy",
+      "Crime"
     ]
   },
   {
@@ -284,9 +284,9 @@
     "category": "Movie",
     "rating": "PG",
     "genre": [
-      "Comedy",
-      "Sci Fi",
-      "Horror"
+      "Crime",
+      "Romance",
+      "War"
     ]
   },
   {
@@ -302,9 +302,9 @@
     "category": "TV Series",
     "rating": "18+",
     "genre": [
-      "Comedy",
+      "Action",
       "Sci Fi",
-      "Romance"
+      "Comedy"
     ]
   },
   {
@@ -320,9 +320,9 @@
     "category": "Movie",
     "rating": "PG",
     "genre": [
-      "Action",
       "Horror",
-      "Crime"
+      "Comedy",
+      "Action"
     ]
   },
   {
@@ -338,9 +338,9 @@
     "category": "Movie",
     "rating": "PG",
     "genre": [
-      "Thriller",
+      "Comedy",
       "Crime",
-      "Horror"
+      "Romance"
     ]
   },
   {
@@ -356,9 +356,9 @@
     "category": "Movie",
     "rating": "18+",
     "genre": [
-      "Thriller",
-      "Horror",
-      "Comedy"
+      "Comedy",
+      "Sci Fi",
+      "War"
     ]
   },
   {
@@ -374,9 +374,9 @@
     "category": "Movie",
     "rating": "E",
     "genre": [
+      "Romance",
       "Horror",
-      "War",
-      "Romance"
+      "Action"
     ]
   },
   {
@@ -392,9 +392,9 @@
     "category": "TV Series",
     "rating": "PG",
     "genre": [
-      "Horror",
-      "Thriller",
-      "War"
+      "Romance",
+      "Crime",
+      "Comedy"
     ]
   },
   {
@@ -410,9 +410,9 @@
     "category": "Movie",
     "rating": "E",
     "genre": [
-      "Thriller",
-      "Crime",
-      "Comedy"
+      "Comedy",
+      "War",
+      "Action"
     ]
   },
   {
@@ -428,9 +428,9 @@
     "category": "TV Series",
     "rating": "PG",
     "genre": [
-      "Comedy",
       "Romance",
-      "War"
+      "Sci Fi",
+      "Horror"
     ]
   },
   {
@@ -446,9 +446,9 @@
     "category": "TV Series",
     "rating": "E",
     "genre": [
-      "Comedy",
-      "Horror",
-      "Thriller"
+      "War",
+      "Thriller",
+      "Action"
     ]
   },
   {
@@ -465,8 +465,8 @@
     "rating": "PG",
     "genre": [
       "Comedy",
-      "Sci Fi",
-      "Romance"
+      "Action",
+      "Sci Fi"
     ]
   },
   {
@@ -482,8 +482,8 @@
     "category": "TV Series",
     "rating": "PG",
     "genre": [
-      "Romance",
-      "Sci Fi",
+      "Action",
+      "Horror",
       "Thriller"
     ]
   },
@@ -500,9 +500,9 @@
     "category": "Movie",
     "rating": "18+",
     "genre": [
-      "Sci Fi",
       "War",
-      "Crime"
+      "Thriller",
+      "Sci Fi"
     ]
   },
   {
@@ -518,9 +518,9 @@
     "category": "TV Series",
     "rating": "18+",
     "genre": [
-      "Thriller",
       "Horror",
-      "Action"
+      "War",
+      "Crime"
     ]
   },
   {
@@ -536,9 +536,9 @@
     "category": "Movie",
     "rating": "PG",
     "genre": [
-      "Thriller",
       "Comedy",
-      "Action"
+      "Thriller",
+      "Crime"
     ]
   },
   {
@@ -551,10 +551,11 @@
     "year": 2002,
     "category": "18+",
     "genre": [
-      "Romance",
+      "Comedy",
       "Thriller",
-      "Action"
-    ]
+      "Horror"
+    ],
+    "rating": "E"
   },
   {
     "title": "A Flash Of The Past",
@@ -566,10 +567,11 @@
     "year": 2011,
     "category": "18+",
     "genre": [
-      "Sci Fi",
       "War",
-      "Comedy"
-    ]
+      "Action",
+      "Horror"
+    ],
+    "rating": "E"
   },
   {
     "title": "A Forbidden Tale",
@@ -581,10 +583,11 @@
     "year": 2006,
     "category": "E",
     "genre": [
-      "Horror",
+      "Sci Fi",
       "Crime",
-      "Thriller"
-    ]
+      "Action"
+    ],
+    "rating": "18+"
   },
   {
     "title": "A New Prairie",
@@ -596,10 +599,11 @@
     "year": 2011,
     "category": "PG",
     "genre": [
-      "Action",
-      "Horror",
-      "Crime"
-    ]
+      "Comedy",
+      "War",
+      "Horror"
+    ],
+    "rating": "E"
   },
   {
     "title": "An Honest Living",
@@ -611,10 +615,11 @@
     "year": 2017,
     "category": "18+",
     "genre": [
-      "Comedy",
       "Sci Fi",
-      "Horror"
-    ]
+      "Comedy",
+      "Action"
+    ],
+    "rating": "E"
   },
   {
     "title": "Arch Duke",
@@ -626,10 +631,11 @@
     "year": 2019,
     "category": "PG",
     "genre": [
-      "Horror",
-      "Crime",
-      "War"
-    ]
+      "Action",
+      "War",
+      "Horror"
+    ],
+    "rating": "E"
   },
   {
     "title": "Artificial",
@@ -641,10 +647,11 @@
     "year": 2018,
     "category": "PG",
     "genre": [
-      "Action",
-      "Horror",
+      "Thriller",
+      "Sci Fi",
       "Comedy"
-    ]
+    ],
+    "rating": "E"
   },
   {
     "title": "Augmented Life",
@@ -656,10 +663,11 @@
     "year": 2013,
     "category": "E",
     "genre": [
-      "Romance",
-      "War",
-      "Crime"
-    ]
+      "Comedy",
+      "Crime",
+      "War"
+    ],
+    "rating": "PG"
   },
   {
     "title": "Divergent",
@@ -671,10 +679,11 @@
     "year": 2018,
     "category": "E",
     "genre": [
-      "Action",
-      "War",
-      "Crime"
-    ]
+      "Comedy",
+      "Crime",
+      "Sci Fi"
+    ],
+    "rating": "E"
   },
   {
     "title": "Good Hunting",
@@ -686,10 +695,11 @@
     "year": 2004,
     "category": "E",
     "genre": [
-      "War",
-      "Crime",
-      "Romance"
-    ]
+      "Romance",
+      "Horror",
+      "Crime"
+    ],
+    "rating": "PG"
   },
   {
     "title": "How To Be",
@@ -701,10 +711,11 @@
     "year": 2001,
     "category": "18+",
     "genre": [
-      "War",
-      "Thriller",
+      "Action",
+      "Comedy",
       "Horror"
-    ]
+    ],
+    "rating": "PG"
   },
   {
     "title": "Infected",
@@ -717,9 +728,10 @@
     "category": "PG",
     "genre": [
       "Comedy",
-      "War",
-      "Horror"
-    ]
+      "Horror",
+      "Crime"
+    ],
+    "rating": "PG"
   },
   {
     "title": "Johnny",
@@ -731,10 +743,11 @@
     "year": 2023,
     "category": "PG",
     "genre": [
-      "Comedy",
       "Crime",
+      "Sci Fi",
       "War"
-    ]
+    ],
+    "rating": "18+"
   },
   {
     "title": "Journey Home",
@@ -746,10 +759,11 @@
     "year": 2015,
     "category": "PG",
     "genre": [
-      "Sci Fi",
-      "Romance",
-      "War"
-    ]
+      "Comedy",
+      "Crime",
+      "Action"
+    ],
+    "rating": "18+"
   },
   {
     "title": "Last Day On Earth",
@@ -761,10 +775,11 @@
     "year": 2008,
     "category": "E",
     "genre": [
-      "Horror",
       "Crime",
-      "Romance"
-    ]
+      "Romance",
+      "Thriller"
+    ],
+    "rating": "PG"
   },
   {
     "title": "Life After Chernobyl",
@@ -776,10 +791,11 @@
     "year": 2024,
     "category": "E",
     "genre": [
+      "Sci Fi",
       "Comedy",
-      "War",
-      "Crime"
-    ]
+      "Romance"
+    ],
+    "rating": "E"
   },
   {
     "title": "Love 3000",
@@ -791,10 +807,11 @@
     "year": 2007,
     "category": "18+",
     "genre": [
+      "Romance",
       "War",
-      "Action",
-      "Crime"
-    ]
+      "Thriller"
+    ],
+    "rating": "E"
   },
   {
     "title": "Manmande Marvels",
@@ -806,10 +823,11 @@
     "year": 2003,
     "category": "18+",
     "genre": [
-      "Crime",
-      "Horror",
-      "Comedy"
-    ]
+      "Action",
+      "Comedy",
+      "Sci Fi"
+    ],
+    "rating": "18+"
   },
   {
     "title": "Mecha Reckoning",
@@ -821,10 +839,11 @@
     "year": 2021,
     "category": "E",
     "genre": [
+      "Thriller",
       "War",
-      "Comedy",
-      "Sci Fi"
-    ]
+      "Comedy"
+    ],
+    "rating": "18+"
   },
   {
     "title": "Mona Elisa",
@@ -836,10 +855,11 @@
     "year": 2014,
     "category": "PG",
     "genre": [
-      "Sci Fi",
       "Action",
-      "Thriller"
-    ]
+      "Comedy",
+      "Romance"
+    ],
+    "rating": "PG"
   },
   {
     "title": "Money Puzzle",
@@ -852,9 +872,10 @@
     "category": "PG",
     "genre": [
       "Romance",
-      "Comedy",
-      "Crime"
-    ]
+      "Action",
+      "Comedy"
+    ],
+    "rating": "18+"
   },
   {
     "title": "Mother Earth",
@@ -866,10 +887,11 @@
     "year": 2024,
     "category": "E",
     "genre": [
+      "Comedy",
       "Thriller",
-      "Crime",
-      "Action"
-    ]
+      "Romance"
+    ],
+    "rating": "PG"
   },
   {
     "title": "No Way Home",
@@ -881,10 +903,11 @@
     "year": 2004,
     "category": "18+",
     "genre": [
-      "Comedy",
+      "Thriller",
       "Crime",
-      "War"
-    ]
+      "Comedy"
+    ],
+    "rating": "18+"
   },
   {
     "title": "Private Eye",
@@ -896,10 +919,11 @@
     "year": 2022,
     "category": "18+",
     "genre": [
+      "Action",
       "War",
-      "Comedy",
-      "Sci Fi"
-    ]
+      "Horror"
+    ],
+    "rating": "E"
   },
   {
     "title": "Retribution",
@@ -911,10 +935,11 @@
     "year": 2017,
     "category": "PG",
     "genre": [
-      "Horror",
-      "War",
-      "Romance"
-    ]
+      "Action",
+      "Sci Fi",
+      "Crime"
+    ],
+    "rating": "PG"
   },
   {
     "title": "Robotical",
@@ -926,10 +951,11 @@
     "year": 2003,
     "category": "PG",
     "genre": [
-      "Thriller",
-      "Crime",
-      "Horror"
-    ]
+      "Action",
+      "Romance",
+      "Crime"
+    ],
+    "rating": "PG"
   },
   {
     "title": "Sky Trekkers",
@@ -941,10 +967,11 @@
     "year": 2015,
     "category": "18+",
     "genre": [
-      "Sci Fi",
       "Comedy",
+      "Sci Fi",
       "Action"
-    ]
+    ],
+    "rating": "PG"
   },
   {
     "title": "The First Of Us",
@@ -956,10 +983,11 @@
     "year": 2005,
     "category": "PG",
     "genre": [
+      "Action",
       "Comedy",
-      "War",
-      "Action"
-    ]
+      "Horror"
+    ],
+    "rating": "PG"
   },
   {
     "title": "The Future Is Here",
@@ -971,10 +999,11 @@
     "year": 2001,
     "category": "18+",
     "genre": [
-      "Comedy",
-      "Horror",
-      "Romance"
-    ]
+      "Romance",
+      "Sci Fi",
+      "Action"
+    ],
+    "rating": "PG"
   },
   {
     "title": "The Lost Age",
@@ -986,10 +1015,11 @@
     "year": 2000,
     "category": "E",
     "genre": [
-      "Romance",
-      "War",
-      "Sci Fi"
-    ]
+      "Horror",
+      "Comedy",
+      "Crime"
+    ],
+    "rating": "E"
   },
   {
     "title": "Unsocial",
@@ -1002,9 +1032,10 @@
     "category": "18+",
     "genre": [
       "Comedy",
-      "Horror",
-      "Action"
-    ]
+      "Sci Fi",
+      "Romance"
+    ],
+    "rating": "18+"
   },
   {
     "title": "Until We Meet",
@@ -1017,9 +1048,10 @@
     "category": "E",
     "genre": [
       "Comedy",
-      "Thriller",
-      "Crime"
-    ]
+      "Romance",
+      "Thriller"
+    ],
+    "rating": "PG"
   },
   {
     "title": "Vice Tour",
@@ -1031,10 +1063,11 @@
     "year": 2020,
     "category": "PG",
     "genre": [
-      "Comedy",
-      "Action",
-      "Thriller"
-    ]
+      "Romance",
+      "Thriller",
+      "Crime"
+    ],
+    "rating": "PG"
   },
   {
     "title": "Warship Tales",
@@ -1046,9 +1079,10 @@
     "year": 2010,
     "category": "PG",
     "genre": [
-      "Thriller",
-      "Horror",
-      "Comedy"
-    ]
+      "Crime",
+      "Action",
+      "Sci Fi"
+    ],
+    "rating": "PG"
   }
 ]
