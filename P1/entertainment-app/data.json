@@ -15,12 +15,10 @@
     "year": 2019,
     "category": "Movie",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": true,
     "genre": [
-      "Thriller",
       "Comedy",
-      "Sci Fi"
+      "Horror",
+      "Thriller"
     ]
   },
   {
@@ -39,11 +37,9 @@
     "year": 2021,
     "category": "Movie",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": true,
     "genre": [
-      "Romance",
-      "Action",
+      "War",
+      "Sci Fi",
       "Comedy"
     ]
   },
@@ -63,12 +59,10 @@
     "year": 2019,
     "category": "TV Series",
     "rating": "E",
-    "isBookmarked": false,
-    "isTrending": true,
     "genre": [
-      "Thriller",
-      "Horror",
-      "Comedy"
+      "Sci Fi",
+      "Action",
+      "Horror"
     ]
   },
   {
@@ -87,12 +81,10 @@
     "year": 2021,
     "category": "Movie",
     "rating": "18+",
-    "isBookmarked": false,
-    "isTrending": true,
     "genre": [
       "Crime",
-      "Romance",
-      "Sci Fi"
+      "Action",
+      "Thriller"
     ]
   },
   {
@@ -111,12 +103,10 @@
     "year": 2018,
     "category": "TV Series",
     "rating": "PG",
-    "isBookmarked": true,
-    "isTrending": true,
     "genre": [
+      "War",
       "Romance",
-      "Sci Fi",
-      "War"
+      "Horror"
     ]
   },
   {
@@ -131,12 +121,10 @@
     "year": 2019,
     "category": "Movie",
     "rating": "E",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Horror",
-      "Crime",
-      "Sci Fi"
+      "War",
+      "Thriller",
+      "Romance"
     ]
   },
   {
@@ -151,12 +139,10 @@
     "year": 2019,
     "category": "TV Series",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "War",
       "Comedy",
-      "Action"
+      "Action",
+      "Crime"
     ]
   },
   {
@@ -171,12 +157,10 @@
     "year": 2017,
     "category": "Movie",
     "rating": "18+",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "Action",
       "Thriller",
-      "Crime"
+      "Crime",
+      "Action"
     ]
   },
   {
@@ -191,11 +175,9 @@
     "year": 2019,
     "category": "Movie",
     "rating": "E",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Comedy",
-      "Horror",
+      "Thriller",
+      "Sci Fi",
       "Romance"
     ]
   },
@@ -211,12 +193,10 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Comedy",
+      "Horror",
       "Crime",
-      "Sci Fi"
+      "Comedy"
     ]
   },
   {
@@ -231,12 +211,10 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Romance",
-      "Comedy",
-      "Sci Fi"
+      "Sci Fi",
+      "War",
+      "Romance"
     ]
   },
   {
@@ -251,12 +229,10 @@
     "year": 2017,
     "category": "Movie",
     "rating": "E",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Comedy",
-      "Horror",
-      "Romance"
+      "Sci Fi",
+      "Crime",
+      "Comedy"
     ]
   },
   {
@@ -271,12 +247,10 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
       "Sci Fi",
-      "War",
-      "Horror"
+      "Horror",
+      "Comedy"
     ]
   },
   {
@@ -291,12 +265,10 @@
     "year": 2015,
     "category": "TV Series",
     "rating": "E",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "Thriller",
-      "War",
-      "Horror"
+      "Action",
+      "Romance",
+      "War"
     ]
   },
   {
@@ -311,11 +283,9 @@
     "year": 2017,
     "category": "Movie",
     "rating": "PG",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "Crime",
-      "Thriller",
+      "Comedy",
+      "Sci Fi",
       "Horror"
     ]
   },
@@ -331,12 +301,10 @@
     "year": 2018,
     "category": "TV Series",
     "rating": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Thriller",
       "Comedy",
-      "War"
+      "Sci Fi",
+      "Romance"
     ]
   },
   {
@@ -351,12 +319,10 @@
     "year": 2015,
     "category": "Movie",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Crime",
-      "Romance",
-      "Comedy"
+      "Action",
+      "Horror",
+      "Crime"
     ]
   },
   {
@@ -371,12 +337,10 @@
     "year": 2021,
     "category": "Movie",
     "rating": "PG",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "Action",
-      "Romance",
-      "Sci Fi"
+      "Thriller",
+      "Crime",
+      "Horror"
     ]
   },
   {
@@ -391,12 +355,10 @@
     "year": 2017,
     "category": "Movie",
     "rating": "18+",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "War",
-      "Comedy",
-      "Horror"
+      "Thriller",
+      "Horror",
+      "Comedy"
     ]
   },
   {
@@ -411,11 +373,9 @@
     "year": 2017,
     "category": "Movie",
     "rating": "E",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Crime",
-      "Thriller",
+      "Horror",
+      "War",
       "Romance"
     ]
   },
@@ -431,12 +391,10 @@
     "year": 2013,
     "category": "TV Series",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Comedy",
+      "Horror",
       "Thriller",
-      "Romance"
+      "War"
     ]
   },
   {
@@ -451,12 +409,10 @@
     "year": 2017,
     "category": "Movie",
     "rating": "E",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "Comedy",
-      "War",
-      "Crime"
+      "Thriller",
+      "Crime",
+      "Comedy"
     ]
   },
   {
@@ -471,12 +427,10 @@
     "year": 2018,
     "category": "TV Series",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Crime",
-      "Sci Fi",
-      "Thriller"
+      "Comedy",
+      "Romance",
+      "War"
     ]
   },
   {
@@ -491,12 +445,10 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "E",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "War",
-      "Romance",
-      "Sci Fi"
+      "Comedy",
+      "Horror",
+      "Thriller"
     ]
   },
   {
@@ -511,12 +463,10 @@
     "year": 2020,
     "category": "TV Series",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Romance",
-      "War",
-      "Comedy"
+      "Comedy",
+      "Sci Fi",
+      "Romance"
     ]
   },
   {
@@ -531,10 +481,8 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Crime",
+      "Romance",
       "Sci Fi",
       "Thriller"
     ]
@@ -551,12 +499,10 @@
     "year": 2017,
     "category": "Movie",
     "rating": "18+",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "Romance",
-      "Action",
-      "Thriller"
+      "Sci Fi",
+      "War",
+      "Crime"
     ]
   },
   {
@@ -571,12 +517,10 @@
     "year": 2018,
     "category": "TV Series",
     "rating": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "War",
-      "Action",
-      "Romance"
+      "Thriller",
+      "Horror",
+      "Action"
     ]
   },
   {
@@ -591,12 +535,10 @@
     "year": 2017,
     "category": "Movie",
     "rating": "PG",
-    "isBookmarked": true,
-    "isTrending": false,
     "genre": [
-      "Sci Fi",
+      "Thriller",
       "Comedy",
-      "Thriller"
+      "Action"
     ]
   },
   {
@@ -608,11 +550,9 @@
     },
     "year": 2002,
     "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
+      "Romance",
       "Thriller",
-      "Crime",
       "Action"
     ]
   },
@@ -624,13 +564,11 @@
       }
     },
     "year": 2011,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "18+",
     "genre": [
+      "Sci Fi",
       "War",
-      "Thriller",
-      "Sci Fi"
+      "Comedy"
     ]
   },
   {
@@ -642,12 +580,10 @@
     },
     "year": 2006,
     "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
+      "Horror",
       "Crime",
-      "Action",
-      "Horror"
+      "Thriller"
     ]
   },
   {
@@ -659,12 +595,10 @@
     },
     "year": 2011,
     "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Romance",
-      "Thriller",
-      "Sci Fi"
+      "Action",
+      "Horror",
+      "Crime"
     ]
   },
   {
@@ -676,12 +610,10 @@
     },
     "year": 2017,
     "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
+      "Comedy",
       "Sci Fi",
-      "Action",
-      "Comedy"
+      "Horror"
     ]
   },
   {
@@ -692,13 +624,11 @@
       }
     },
     "year": 2019,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "PG",
     "genre": [
-      "Comedy",
-      "Romance",
-      "Thriller"
+      "Horror",
+      "Crime",
+      "War"
     ]
   },
   {
@@ -709,13 +639,11 @@
       }
     },
     "year": 2018,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "PG",
     "genre": [
-      "Sci Fi",
       "Action",
-      "Crime"
+      "Horror",
+      "Comedy"
     ]
   },
   {
@@ -726,13 +654,11 @@
       }
     },
     "year": 2013,
-    "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "E",
     "genre": [
-      "Action",
       "Romance",
-      "Comedy"
+      "War",
+      "Crime"
     ]
   },
   {
@@ -743,13 +669,11 @@
       }
     },
     "year": 2018,
-    "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "E",
     "genre": [
-      "Comedy",
       "Action",
-      "War"
+      "War",
+      "Crime"
     ]
   },
   {
@@ -761,12 +685,10 @@
     },
     "year": 2004,
     "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Action",
-      "Romance",
-      "Sci Fi"
+      "War",
+      "Crime",
+      "Romance"
     ]
   },
   {
@@ -778,12 +700,10 @@
     },
     "year": 2001,
     "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Comedy",
-      "Romance",
-      "Thriller"
+      "War",
+      "Thriller",
+      "Horror"
     ]
   },
   {
@@ -795,12 +715,10 @@
     },
     "year": 2015,
     "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
       "Comedy",
-      "Horror",
-      "Romance"
+      "War",
+      "Horror"
     ]
   },
   {
@@ -811,13 +729,11 @@
       }
     },
     "year": 2023,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "PG",
     "genre": [
-      "Romance",
-      "Action",
-      "Comedy"
+      "Comedy",
+      "Crime",
+      "War"
     ]
   },
   {
@@ -829,12 +745,10 @@
     },
     "year": 2015,
     "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Crime",
-      "Horror",
-      "Thriller"
+      "Sci Fi",
+      "Romance",
+      "War"
     ]
   },
   {
@@ -845,13 +759,11 @@
       }
     },
     "year": 2008,
-    "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "E",
     "genre": [
-      "Thriller",
-      "Comedy",
-      "Horror"
+      "Horror",
+      "Crime",
+      "Romance"
     ]
   },
   {
@@ -862,13 +774,11 @@
       }
     },
     "year": 2024,
-    "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "E",
     "genre": [
-      "Sci Fi",
       "Comedy",
-      "War"
+      "War",
+      "Crime"
     ]
   },
   {
@@ -879,13 +789,11 @@
       }
     },
     "year": 2007,
-    "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "18+",
     "genre": [
-      "Comedy",
-      "Thriller",
-      "War"
+      "War",
+      "Action",
+      "Crime"
     ]
   },
   {
@@ -896,13 +804,11 @@
       }
     },
     "year": 2003,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "18+",
     "genre": [
-      "Sci Fi",
+      "Crime",
       "Horror",
-      "Crime"
+      "Comedy"
     ]
   },
   {
@@ -913,13 +819,11 @@
       }
     },
     "year": 2021,
-    "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "E",
     "genre": [
+      "War",
       "Comedy",
-      "Action",
-      "Thriller"
+      "Sci Fi"
     ]
   },
   {
@@ -930,13 +834,11 @@
       }
     },
     "year": 2014,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "PG",
     "genre": [
-      "Crime",
-      "Horror",
-      "Comedy"
+      "Sci Fi",
+      "Action",
+      "Thriller"
     ]
   },
   {
@@ -948,12 +850,10 @@
     },
     "year": 2019,
     "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
       "Romance",
-      "Horror",
-      "Thriller"
+      "Comedy",
+      "Crime"
     ]
   },
   {
@@ -964,13 +864,11 @@
       }
     },
     "year": 2024,
-    "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "E",
     "genre": [
+      "Thriller",
       "Crime",
-      "Comedy",
-      "Sci Fi"
+      "Action"
     ]
   },
   {
@@ -981,13 +879,11 @@
       }
     },
     "year": 2004,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "18+",
     "genre": [
-      "Sci Fi",
       "Comedy",
-      "Thriller"
+      "Crime",
+      "War"
     ]
   },
   {
@@ -998,12 +894,10 @@
       }
     },
     "year": 2022,
-    "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "18+",
     "genre": [
-      "Romance",
       "War",
+      "Comedy",
       "Sci Fi"
     ]
   },
@@ -1016,12 +910,10 @@
     },
     "year": 2017,
     "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Action",
-      "Romance",
-      "War"
+      "Horror",
+      "War",
+      "Romance"
     ]
   },
   {
@@ -1032,13 +924,11 @@
       }
     },
     "year": 2003,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "PG",
     "genre": [
-      "Comedy",
+      "Thriller",
       "Crime",
-      "Thriller"
+      "Horror"
     ]
   },
   {
@@ -1050,12 +940,10 @@
     },
     "year": 2015,
     "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Horror",
-      "War",
-      "Romance"
+      "Sci Fi",
+      "Comedy",
+      "Action"
     ]
   },
   {
@@ -1066,13 +954,11 @@
       }
     },
     "year": 2005,
-    "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "PG",
     "genre": [
-      "Sci Fi",
+      "Comedy",
       "War",
-      "Comedy"
+      "Action"
     ]
   },
   {
@@ -1083,13 +969,11 @@
       }
     },
     "year": 2001,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "18+",
     "genre": [
-      "Romance",
       "Comedy",
-      "Sci Fi"
+      "Horror",
+      "Romance"
     ]
   },
   {
@@ -1100,13 +984,11 @@
       }
     },
     "year": 2000,
-    "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "E",
     "genre": [
       "Romance",
-      "Crime",
-      "Comedy"
+      "War",
+      "Sci Fi"
     ]
   },
   {
@@ -1117,13 +999,11 @@
       }
     },
     "year": 2014,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "18+",
     "genre": [
       "Comedy",
-      "Thriller",
-      "Sci Fi"
+      "Horror",
+      "Action"
     ]
   },
   {
@@ -1134,11 +1014,9 @@
       }
     },
     "year": 2012,
-    "category": "18+",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "E",
     "genre": [
-      "Romance",
+      "Comedy",
       "Thriller",
       "Crime"
     ]
@@ -1152,12 +1030,10 @@
     },
     "year": 2020,
     "category": "PG",
-    "isBookmarked": false,
-    "isTrending": false,
     "genre": [
-      "Crime",
-      "Thriller",
-      "Romance"
+      "Comedy",
+      "Action",
+      "Thriller"
     ]
   },
   {
@@ -1168,13 +1044,11 @@
       }
     },
     "year": 2010,
-    "category": "E",
-    "isBookmarked": false,
-    "isTrending": false,
+    "category": "PG",
     "genre": [
+      "Thriller",
       "Horror",
-      "War",
-      "Romance"
+      "Comedy"
     ]
   }
 ]
