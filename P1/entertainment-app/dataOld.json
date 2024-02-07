@@ -15,11 +15,8 @@
     "year": 2019,
     "category": "Movie",
     "rating": "PG",
-    "genre": [
-      "Sci Fi",
-      "Comedy",
-      "Romance"
-    ]
+    "isBookmarked": false,
+    "isTrending": true
   },
   {
     "title": "Bottom Gear",
@@ -37,11 +34,8 @@
     "year": 2021,
     "category": "Movie",
     "rating": "PG",
-    "genre": [
-      "Comedy",
-      "Crime",
-      "Action"
-    ]
+    "isBookmarked": false,
+    "isTrending": true
   },
   {
     "title": "Undiscovered Cities",
@@ -59,11 +53,8 @@
     "year": 2019,
     "category": "TV Series",
     "rating": "E",
-    "genre": [
-      "Thriller",
-      "Sci Fi",
-      "Action"
-    ]
+    "isBookmarked": false,
+    "isTrending": true
   },
   {
     "title": "1998",
@@ -81,11 +72,8 @@
     "year": 2021,
     "category": "Movie",
     "rating": "18+",
-    "genre": [
-      "Romance",
-      "Comedy",
-      "Horror"
-    ]
+    "isBookmarked": false,
+    "isTrending": true
   },
   {
     "title": "Dark Side of the Moon",
@@ -103,11 +91,8 @@
     "year": 2018,
     "category": "TV Series",
     "rating": "PG",
-    "genre": [
-      "Comedy",
-      "Sci Fi",
-      "War"
-    ]
+    "isBookmarked": true,
+    "isTrending": true
   },
   {
     "title": "The Great Lands",
@@ -121,11 +106,8 @@
     "year": 2019,
     "category": "Movie",
     "rating": "E",
-    "genre": [
-      "Sci Fi",
-      "Crime",
-      "War"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "The Diary",
@@ -139,11 +121,8 @@
     "year": 2019,
     "category": "TV Series",
     "rating": "PG",
-    "genre": [
-      "Romance",
-      "Comedy",
-      "Thriller"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Earth’s Untouched",
@@ -157,11 +136,8 @@
     "year": 2017,
     "category": "Movie",
     "rating": "18+",
-    "genre": [
-      "War",
-      "Thriller",
-      "Romance"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "No Land Beyond",
@@ -175,11 +151,8 @@
     "year": 2019,
     "category": "Movie",
     "rating": "E",
-    "genre": [
-      "Comedy",
-      "Action",
-      "Crime"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "During the Hunt",
@@ -193,11 +166,8 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "PG",
-    "genre": [
-      "Thriller",
-      "Action",
-      "Horror"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Autosport the Series",
@@ -211,11 +181,8 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "18+",
-    "genre": [
-      "Romance",
-      "Comedy",
-      "Horror"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Same Answer II",
@@ -229,11 +196,8 @@
     "year": 2017,
     "category": "Movie",
     "rating": "E",
-    "genre": [
-      "Comedy",
-      "Thriller",
-      "Sci Fi"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Below Echo",
@@ -247,11 +211,8 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "PG",
-    "genre": [
-      "Romance",
-      "Horror",
-      "War"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "The Rockies",
@@ -265,11 +226,8 @@
     "year": 2015,
     "category": "TV Series",
     "rating": "E",
-    "genre": [
-      "Sci Fi",
-      "Comedy",
-      "Crime"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "Relentless",
@@ -283,11 +241,8 @@
     "year": 2017,
     "category": "Movie",
     "rating": "PG",
-    "genre": [
-      "Crime",
-      "Romance",
-      "War"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "Community of Ours",
@@ -301,11 +256,8 @@
     "year": 2018,
     "category": "TV Series",
     "rating": "18+",
-    "genre": [
-      "Action",
-      "Sci Fi",
-      "Comedy"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Van Life",
@@ -319,11 +271,8 @@
     "year": 2015,
     "category": "Movie",
     "rating": "PG",
-    "genre": [
-      "Horror",
-      "Comedy",
-      "Action"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "The Heiress",
@@ -337,11 +286,8 @@
     "year": 2021,
     "category": "Movie",
     "rating": "PG",
-    "genre": [
-      "Comedy",
-      "Crime",
-      "Romance"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "Off the Track",
@@ -355,11 +301,8 @@
     "year": 2017,
     "category": "Movie",
     "rating": "18+",
-    "genre": [
-      "Comedy",
-      "Sci Fi",
-      "War"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "Whispering Hill",
@@ -373,11 +316,8 @@
     "year": 2017,
     "category": "Movie",
     "rating": "E",
-    "genre": [
-      "Romance",
-      "Horror",
-      "Action"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "112",
@@ -391,11 +331,8 @@
     "year": 2013,
     "category": "TV Series",
     "rating": "PG",
-    "genre": [
-      "Romance",
-      "Crime",
-      "Comedy"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Lone Heart",
@@ -409,11 +346,8 @@
     "year": 2017,
     "category": "Movie",
     "rating": "E",
-    "genre": [
-      "Comedy",
-      "War",
-      "Action"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "Production Line",
@@ -427,11 +361,8 @@
     "year": 2018,
     "category": "TV Series",
     "rating": "PG",
-    "genre": [
-      "Romance",
-      "Sci Fi",
-      "Horror"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Dogs",
@@ -445,11 +376,8 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "E",
-    "genre": [
-      "War",
-      "Thriller",
-      "Action"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "Asia in 24 Days",
@@ -463,11 +391,8 @@
     "year": 2020,
     "category": "TV Series",
     "rating": "PG",
-    "genre": [
-      "Comedy",
-      "Action",
-      "Sci Fi"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "The Tasty Tour",
@@ -481,11 +406,8 @@
     "year": 2016,
     "category": "TV Series",
     "rating": "PG",
-    "genre": [
-      "Action",
-      "Horror",
-      "Thriller"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Darker",
@@ -499,11 +421,8 @@
     "year": 2017,
     "category": "Movie",
     "rating": "18+",
-    "genre": [
-      "War",
-      "Thriller",
-      "Sci Fi"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "Unresolved Cases",
@@ -517,11 +436,8 @@
     "year": 2018,
     "category": "TV Series",
     "rating": "18+",
-    "genre": [
-      "Horror",
-      "War",
-      "Crime"
-    ]
+    "isBookmarked": false,
+    "isTrending": false
   },
   {
     "title": "Mission: Saturn",
@@ -535,27 +451,16 @@
     "year": 2017,
     "category": "Movie",
     "rating": "PG",
-    "genre": [
-      "Comedy",
-      "Thriller",
-      "Crime"
-    ]
+    "isBookmarked": true,
+    "isTrending": false
   },
   {
     "title": "A Beautiful Soul",
     "thumbnail": {
       "regular": {
-        "large": "/assets/thumbnails/a-beautiful-soul/regular/large.jpg"
+        "large": "/assets/thumbnails/a-beautiful-soul/regular/large.png"
       }
-    },
-    "year": 2002,
-    "category": "18+",
-    "genre": [
-      "Comedy",
-      "Thriller",
-      "Horror"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "A Flash Of The Past",
@@ -563,15 +468,7 @@
       "regular": {
         "large": "/assets/thumbnails/a-flash-of-the-past/regular/large.png"
       }
-    },
-    "year": 2011,
-    "category": "18+",
-    "genre": [
-      "War",
-      "Action",
-      "Horror"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "A Forbidden Tale",
@@ -579,15 +476,7 @@
       "regular": {
         "large": "/assets/thumbnails/a-forbidden-tale/regular/large.jpg"
       }
-    },
-    "year": 2006,
-    "category": "E",
-    "genre": [
-      "Sci Fi",
-      "Crime",
-      "Action"
-    ],
-    "rating": "18+"
+    }
   },
   {
     "title": "A New Prairie",
@@ -595,15 +484,7 @@
       "regular": {
         "large": "/assets/thumbnails/a-new-prairie/regular/large.jpg"
       }
-    },
-    "year": 2011,
-    "category": "PG",
-    "genre": [
-      "Comedy",
-      "War",
-      "Horror"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "An Honest Living",
@@ -611,15 +492,7 @@
       "regular": {
         "large": "/assets/thumbnails/an-honest-living/regular/large.jpg"
       }
-    },
-    "year": 2017,
-    "category": "18+",
-    "genre": [
-      "Sci Fi",
-      "Comedy",
-      "Action"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "Arch Duke",
@@ -627,15 +500,7 @@
       "regular": {
         "large": "/assets/thumbnails/arch-duke/regular/large.jpg"
       }
-    },
-    "year": 2019,
-    "category": "PG",
-    "genre": [
-      "Action",
-      "War",
-      "Horror"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "Artificial",
@@ -643,15 +508,7 @@
       "regular": {
         "large": "/assets/thumbnails/artificial/regular/large.jpg"
       }
-    },
-    "year": 2018,
-    "category": "PG",
-    "genre": [
-      "Thriller",
-      "Sci Fi",
-      "Comedy"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "Augmented Life",
@@ -659,15 +516,7 @@
       "regular": {
         "large": "/assets/thumbnails/augmented-life/regular/large.jpg"
       }
-    },
-    "year": 2013,
-    "category": "E",
-    "genre": [
-      "Comedy",
-      "Crime",
-      "War"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Divergent",
@@ -675,15 +524,7 @@
       "regular": {
         "large": "/assets/thumbnails/divergent/regular/large.jpg"
       }
-    },
-    "year": 2018,
-    "category": "E",
-    "genre": [
-      "Comedy",
-      "Crime",
-      "Sci Fi"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "Good Hunting",
@@ -691,15 +532,7 @@
       "regular": {
         "large": "/assets/thumbnails/good-hunting/regular/large.jpg"
       }
-    },
-    "year": 2004,
-    "category": "E",
-    "genre": [
-      "Romance",
-      "Horror",
-      "Crime"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "How To Be",
@@ -707,15 +540,7 @@
       "regular": {
         "large": "/assets/thumbnails/how-to-be/regular/large.jpg"
       }
-    },
-    "year": 2001,
-    "category": "18+",
-    "genre": [
-      "Action",
-      "Comedy",
-      "Horror"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Infected",
@@ -723,15 +548,7 @@
       "regular": {
         "large": "/assets/thumbnails/infected/regular/large.jpg"
       }
-    },
-    "year": 2015,
-    "category": "PG",
-    "genre": [
-      "Comedy",
-      "Horror",
-      "Crime"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Johnny",
@@ -739,15 +556,7 @@
       "regular": {
         "large": "/assets/thumbnails/johnny/regular/large.jpg"
       }
-    },
-    "year": 2023,
-    "category": "PG",
-    "genre": [
-      "Crime",
-      "Sci Fi",
-      "War"
-    ],
-    "rating": "18+"
+    }
   },
   {
     "title": "Journey Home",
@@ -755,15 +564,7 @@
       "regular": {
         "large": "/assets/thumbnails/journey-home/regular/large.jpg"
       }
-    },
-    "year": 2015,
-    "category": "PG",
-    "genre": [
-      "Comedy",
-      "Crime",
-      "Action"
-    ],
-    "rating": "18+"
+    }
   },
   {
     "title": "Last Day On Earth",
@@ -771,15 +572,7 @@
       "regular": {
         "large": "/assets/thumbnails/last-day-on-earth/regular/large.jpg"
       }
-    },
-    "year": 2008,
-    "category": "E",
-    "genre": [
-      "Crime",
-      "Romance",
-      "Thriller"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Life After Chernobyl",
@@ -787,15 +580,7 @@
       "regular": {
         "large": "/assets/thumbnails/life-after-chernobyl/regular/large.jpg"
       }
-    },
-    "year": 2024,
-    "category": "E",
-    "genre": [
-      "Sci Fi",
-      "Comedy",
-      "Romance"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "Love 3000",
@@ -803,31 +588,15 @@
       "regular": {
         "large": "/assets/thumbnails/love-3000/regular/large.png"
       }
-    },
-    "year": 2007,
-    "category": "18+",
-    "genre": [
-      "Romance",
-      "War",
-      "Thriller"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "Manmande Marvels",
     "thumbnail": {
       "regular": {
-        "large": "/assets/thumbnails/manmade-marvels/regular/large.jpg"
+        "large": "/assets/thumbnails/manmande-marvels/regular/large.jpg"
       }
-    },
-    "year": 2003,
-    "category": "18+",
-    "genre": [
-      "Action",
-      "Comedy",
-      "Sci Fi"
-    ],
-    "rating": "18+"
+    }
   },
   {
     "title": "Mecha Reckoning",
@@ -835,15 +604,7 @@
       "regular": {
         "large": "/assets/thumbnails/mecha-reckoning/regular/large.jpg"
       }
-    },
-    "year": 2021,
-    "category": "E",
-    "genre": [
-      "Thriller",
-      "War",
-      "Comedy"
-    ],
-    "rating": "18+"
+    }
   },
   {
     "title": "Mona Elisa",
@@ -851,15 +612,7 @@
       "regular": {
         "large": "/assets/thumbnails/mona-elisa/regular/large.jpg"
       }
-    },
-    "year": 2014,
-    "category": "PG",
-    "genre": [
-      "Action",
-      "Comedy",
-      "Romance"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Money Puzzle",
@@ -867,15 +620,7 @@
       "regular": {
         "large": "/assets/thumbnails/money-puzzle/regular/large.jpg"
       }
-    },
-    "year": 2019,
-    "category": "PG",
-    "genre": [
-      "Romance",
-      "Action",
-      "Comedy"
-    ],
-    "rating": "18+"
+    }
   },
   {
     "title": "Mother Earth",
@@ -883,15 +628,7 @@
       "regular": {
         "large": "/assets/thumbnails/mother-earth/regular/large.png"
       }
-    },
-    "year": 2024,
-    "category": "E",
-    "genre": [
-      "Comedy",
-      "Thriller",
-      "Romance"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "No Way Home",
@@ -899,15 +636,7 @@
       "regular": {
         "large": "/assets/thumbnails/no-way-home/regular/large.jpg"
       }
-    },
-    "year": 2004,
-    "category": "18+",
-    "genre": [
-      "Thriller",
-      "Crime",
-      "Comedy"
-    ],
-    "rating": "18+"
+    }
   },
   {
     "title": "Private Eye",
@@ -915,15 +644,7 @@
       "regular": {
         "large": "/assets/thumbnails/private-eye/regular/large.png"
       }
-    },
-    "year": 2022,
-    "category": "18+",
-    "genre": [
-      "Action",
-      "War",
-      "Horror"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "Retribution",
@@ -931,15 +652,7 @@
       "regular": {
         "large": "/assets/thumbnails/retribution/regular/large.jpg"
       }
-    },
-    "year": 2017,
-    "category": "PG",
-    "genre": [
-      "Action",
-      "Sci Fi",
-      "Crime"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Robotical",
@@ -947,15 +660,7 @@
       "regular": {
         "large": "/assets/thumbnails/robotical/regular/large.jpg"
       }
-    },
-    "year": 2003,
-    "category": "PG",
-    "genre": [
-      "Action",
-      "Romance",
-      "Crime"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Sky Trekkers",
@@ -963,15 +668,7 @@
       "regular": {
         "large": "/assets/thumbnails/sky-trekkers/regular/large.jpg"
       }
-    },
-    "year": 2015,
-    "category": "18+",
-    "genre": [
-      "Comedy",
-      "Sci Fi",
-      "Action"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "The First Of Us",
@@ -979,15 +676,7 @@
       "regular": {
         "large": "/assets/thumbnails/the-first-of-us/regular/large.jpg"
       }
-    },
-    "year": 2005,
-    "category": "PG",
-    "genre": [
-      "Action",
-      "Comedy",
-      "Horror"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "The Future Is Here",
@@ -995,15 +684,7 @@
       "regular": {
         "large": "/assets/thumbnails/the-future-is-here/regular/large.jpg"
       }
-    },
-    "year": 2001,
-    "category": "18+",
-    "genre": [
-      "Romance",
-      "Sci Fi",
-      "Action"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "The Lost Age",
@@ -1011,15 +692,7 @@
       "regular": {
         "large": "/assets/thumbnails/the-lost-age/regular/large.jpg"
       }
-    },
-    "year": 2000,
-    "category": "E",
-    "genre": [
-      "Horror",
-      "Comedy",
-      "Crime"
-    ],
-    "rating": "E"
+    }
   },
   {
     "title": "Unsocial",
@@ -1027,15 +700,7 @@
       "regular": {
         "large": "/assets/thumbnails/unsocial/regular/large.jpg"
       }
-    },
-    "year": 2014,
-    "category": "18+",
-    "genre": [
-      "Comedy",
-      "Sci Fi",
-      "Romance"
-    ],
-    "rating": "18+"
+    }
   },
   {
     "title": "Until We Meet",
@@ -1043,15 +708,7 @@
       "regular": {
         "large": "/assets/thumbnails/until-we-meet/regular/large.jpg"
       }
-    },
-    "year": 2012,
-    "category": "E",
-    "genre": [
-      "Comedy",
-      "Romance",
-      "Thriller"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Vice Tour",
@@ -1059,15 +716,7 @@
       "regular": {
         "large": "/assets/thumbnails/vice-tour/regular/large.jpg"
       }
-    },
-    "year": 2020,
-    "category": "PG",
-    "genre": [
-      "Romance",
-      "Thriller",
-      "Crime"
-    ],
-    "rating": "PG"
+    }
   },
   {
     "title": "Warship Tales",
@@ -1075,14 +724,6 @@
       "regular": {
         "large": "/assets/thumbnails/warship-tales/regular/large.jpg"
       }
-    },
-    "year": 2010,
-    "category": "PG",
-    "genre": [
-      "Crime",
-      "Action",
-      "Sci Fi"
-    ],
-    "rating": "PG"
+    }
   }
 ]
