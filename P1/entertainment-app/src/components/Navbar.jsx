@@ -17,7 +17,7 @@ const Navbar = () =>
     };
 
     return (
-        <div className='desktop:h-[100vh]'>
+        <nav className='desktop:h-[100vh]'>
             <div className='tablet:p-[24px] desktop:p[32px] desktop:h-[100%]'>
                 <nav className="bg-ma-blue flex flex-row justify-between items-center p-[16px] mb-[24px] tablet:p-[20px] tablet:rounded-[10px] tablet:m-0 desktop:flex-col desktop:p-[28px] desktop:w-[96px] desktop:h-[100%] desktop:gap-0 desktop:justify-start" >
                     <Link to="/" className='desktop:pb-[75px]'>
@@ -42,7 +42,7 @@ const Navbar = () =>
                     </div>
                 </nav>
             </div>
-        </div>
+        </nav>
     )
 }
 

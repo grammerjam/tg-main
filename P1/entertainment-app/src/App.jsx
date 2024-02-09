@@ -26,9 +26,7 @@ function App() {
       <SignedIn>
         {/* Routes Signed in, Route found. */}
         <div className='flex flex-col desktop:flex-row'>
-          <nav>
-            <NavBar/>
-          </nav>
+          <NavBar/>
           <main className='w-full'>
             <SearchBar/>
             <Routes>
