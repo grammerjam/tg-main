@@ -9,6 +9,9 @@ import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import NotFound from './pages/NotFound.jsx';
 
+import NavBar from './components/Navbar.jsx';
+import SearchBar from './components/SearchBar.jsx';
+
 function App() {
   return (
     <div>
@@ -21,11 +24,24 @@ function App() {
         </Routes>
       </SignedOut>
       <SignedIn>
+        {/* Routes Signed in, Route found. */}
+        <header>
+          <SearchBar></SearchBar>
+        </header>
+        <nav>
+          <NavBar></NavBar>
+        </nav>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path='/movies' element={<Movies />} />
+            <Route path='/tv-series' element={<TVSeries />} />
+            <Route path='/bookmark' element={<Bookmarks />} />
+          </Routes>
+        </main>
+
+        {/* Route Signed In - Not Found */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/tv-series' element={<TVSeries />} />
-          <Route path='/bookmark' element={<Bookmarks />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </SignedIn>
