@@ -13,7 +13,7 @@ export default function MediaCard({ media }) {
             onMouseLeave={(e) => {e.stopPropagation(); e.target.childNodes[0].src = media.isBookmarked ? bookmarkFilled : bookmark;}}>
             <img src={media.isBookmarked ? bookmarkFilled : bookmark} onMouseEnter={(e) => e.stopPropagation()} onMouseLeave={ (e) => e.stopPropagation()}  />
         </div>
-        <img className='w-full rounded-lg' src={media.thumbnail.regular.large}></img>
+        <img className='w-full rounded-lg' src={media.tpath}></img>
       </div>
       <div className='flex items-center text-ma-gray text-b-sm mb-[0.25rem] tablet:mb-[0.30]'>
         <p> {media.year} </p>
