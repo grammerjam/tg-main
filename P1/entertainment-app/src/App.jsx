@@ -25,11 +25,11 @@ function App() {
       </SignedOut>
       <SignedIn>
         {/* Routes Signed in, Route found. */}
-        <div className='flex'>
+        <div className='flex flex-col tablet:flex-row'>
           <nav>
-            <NavBar></NavBar>
+            <NavBar/>
           </nav>
-          <main>
+          <main className='w-full'>
             <header>
               <SearchBar></SearchBar>
             </header>
