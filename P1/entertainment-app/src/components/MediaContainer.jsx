@@ -11,16 +11,17 @@ import {
 
 const queryClient = new QueryClient()
 
-export default function App() {
+export default function MediaContainer({ pageTitle }) {
     return (
         <QueryClientProvider client={queryClient}>
-            <MediaContainer />
+            <MediaContainerQuery pageTitle={pageTitle} />
         </QueryClientProvider>
     )
 }
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
+const backendRootUrlLocal = "http://127.0.0.1:10000/"
 
-function MediaContainer({ pageTitle }) {
+function MediaContainerQuery({ pageTitle }) {
 
 
     let [searchParams] = useSearchParams()
@@ -29,7 +30,7 @@ function MediaContainer({ pageTitle }) {
     const { isLoading, data, error } = useQuery({
         queryKey: ['media'],
         queryFn: () =>
-            fetch(backendRootUrl + "api/media").then((res) =>
+            fetch(backendRootUrlLocal + "api/" + getUrlQuery(pageTitle)).then((res) =>
                 res.json(),
             ),
     })
@@ -41,31 +42,30 @@ function MediaContainer({ pageTitle }) {
     console.log(pageTitle)
     let searchString = searchParams.get('search')
 
-    // function pageResultCategory(title) {
-    //     switch (title) {
-    //         case "Movies":
-    //             return "Movie"
-    //         case "TV Series":
-    //             return "TV Series"
-    //         case "Recommended":
-    //             return "Recommended"
-    //         case "Bookmarked":
-    //             return "isBookmarked"
-    //     }
+    function getUrlQuery(title) {
+        switch (title) {
+            case "Movies":
+                return "media/movies"
+            case "TV Series":
+                return "media/tv-series"
+            case "Recommended":
+                return "media"
+            case "Bookmarked":
+                return "isBookmarked"
+        }
+    }
+
+    // const getPageResults = async () => {
+    //     data.filter((results) => {
+    //         if (pageTitle === "Bookmarked") {
+    //             return results.isBookmarked === true
+    //         } else if (pageTitle === "Recommended") {
+    //             return results
+    //         } else {
+    //             return results.category === pageResultCategory(pageTitle)
+    //         }
+    //     })
     // }
-
-
-
-
-    // let pageResults = data.filter((results) => {
-    //     if (pageTitle === "Bookmarked") {
-    //         return results.isBookmarked === true
-    //     } else if (pageTitle === "Recommended") {
-    //         return results
-    //     } else {
-    //         return results.category === pageResultCategory(pageTitle)
-    //     }
-    // })
 
     // if (searchString === null) {
     //     setResults(() => {
@@ -94,5 +94,8 @@ function MediaContainer({ pageTitle }) {
 }
 
 MediaContainer.propTypes = {
+    pageTitle: PropTypes.string,
+}
+MediaContainerQuery.propTypes = {
     pageTitle: PropTypes.string,
 }
