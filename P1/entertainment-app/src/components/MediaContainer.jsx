@@ -9,7 +9,11 @@ import {
     useQuery,
 } from '@tanstack/react-query'
 
-const queryClient = new QueryClient()
+const msToMinute = 60000
+
+const queryClient = new QueryClient({
+    defaultOptions: { queries: { staleTime: msToMinute * 30 } }
+})
 
 export default function MediaContainer({ pageTitle }) {
     return (
@@ -19,69 +23,52 @@ export default function MediaContainer({ pageTitle }) {
     )
 }
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
-const backendRootUrlLocal = "http://127.0.0.1:10000/"
+
+function getUrlQuery(title) {
+    switch (title) {
+        case "Movies":
+            return "media/movies"
+        case "TV Series":
+            return "media/tv-series"
+        case "Recommended":
+            return "media"
+        case "Bookmarked":
+            return "isBookmarked"
+    }
+}
 
 function MediaContainerQuery({ pageTitle }) {
-
-
     let [searchParams] = useSearchParams()
-    // let [results, setResults] = useState([])
+    let [results, setResults] = useState([])
     let [resultsLength, setResultsLength] = useState(0)
+    //caching isn't implemented on the query key atm
     const { isLoading, data, error } = useQuery({
-        queryKey: ['media'],
+        queryKey: ['media', `${pageTitle}`],
         queryFn: () =>
-            fetch(backendRootUrlLocal + "api/" + getUrlQuery(pageTitle)).then((res) =>
+            fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle)).then((res) =>
                 res.json(),
             ),
+        keepPreviousData: true
     })
+
+
+
+    let searchString = searchParams.get('search')
+    if (searchString) {
+        console.log(searchString)
+        searchString = searchString.toLowerCase()
+        let filteredPageResults = data.filter((movie) => {
+            return movie.title.toLowerCase().includes(searchString)
+        })
+        setResults(() => {
+            return filteredPageResults
+        })
+        setResultsLength(filteredPageResults.length)
+    }
 
     if (isLoading) return 'Loading...'
 
     if (error) return 'An error has occurred: ' + error.message
-
-    console.log(pageTitle)
-    let searchString = searchParams.get('search')
-
-    function getUrlQuery(title) {
-        switch (title) {
-            case "Movies":
-                return "media/movies"
-            case "TV Series":
-                return "media/tv-series"
-            case "Recommended":
-                return "media"
-            case "Bookmarked":
-                return "isBookmarked"
-        }
-    }
-
-    // const getPageResults = async () => {
-    //     data.filter((results) => {
-    //         if (pageTitle === "Bookmarked") {
-    //             return results.isBookmarked === true
-    //         } else if (pageTitle === "Recommended") {
-    //             return results
-    //         } else {
-    //             return results.category === pageResultCategory(pageTitle)
-    //         }
-    //     })
-    // }
-
-    // if (searchString === null) {
-    //     setResults(() => {
-    //         return pageResults
-    //     })
-    // } else {
-    //     let searchString = searchParams.get('search')
-    //     searchString = searchString.toLowerCase()
-    //     let filteredMovieResults = pageResults.filter((movie) => {
-    //         return movie.title.toLowerCase().includes(searchString)
-    //     })
-    //     setResults(() => {
-    //         return filteredMovieResults
-    //     })
-    //     setResultsLength(filteredMovieResults.length)
-    // }
 
     return (
         <div className='flex flex-col'>
