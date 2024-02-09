@@ -25,20 +25,23 @@ function App() {
       </SignedOut>
       <SignedIn>
         {/* Routes Signed in, Route found. */}
-        <header>
-          <SearchBar></SearchBar>
-        </header>
-        <nav>
-          <NavBar></NavBar>
-        </nav>
-        
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/tv-series' element={<TVSeries />} />
-          <Route path='/bookmark' element={<Bookmarks />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        <div className='flex'>
+          <nav>
+            <NavBar></NavBar>
+          </nav>
+          <main>
+            <header>
+              <SearchBar></SearchBar>
+            </header>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path='/movies' element={<Movies />} />
+              <Route path='/tv-series' element={<TVSeries />} />
+              <Route path='/bookmark' element={<Bookmarks />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </main>
+        </div>
       </SignedIn>
     </div>
   )
