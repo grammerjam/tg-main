@@ -30,9 +30,7 @@ function App() {
             <NavBar/>
           </nav>
           <main className='w-full'>
-            <header>
-              <SearchBar></SearchBar>
-            </header>
+            <SearchBar/>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path='/movies' element={<Movies />} />
