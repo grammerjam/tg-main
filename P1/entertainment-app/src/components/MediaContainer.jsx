@@ -47,7 +47,6 @@ function MediaContainerQuery({ pageTitle }) {
         keepPreviousData: true,
         select: (response) => {
             if (searchString) {
-                console.log(searchString)
                 searchString = searchString.toLowerCase()
                 let filteredPageResults = response.filter((movie) => {
                     return movie.title.toLowerCase().includes(searchString)
