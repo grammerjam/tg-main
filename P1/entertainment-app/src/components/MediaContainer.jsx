@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-// import data from '../../data.json'
-import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import MediaList from './MediaList';
 import {
@@ -39,32 +37,27 @@ function getUrlQuery(title) {
 
 function MediaContainerQuery({ pageTitle }) {
     let [searchParams] = useSearchParams()
-    let [results, setResults] = useState([])
-    let [resultsLength, setResultsLength] = useState(0)
-    //caching isn't implemented on the query key atm
+    let searchString = searchParams.get('search')
     const { isLoading, data, error } = useQuery({
         queryKey: ['media', `${pageTitle}`],
         queryFn: () =>
             fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle)).then((res) =>
                 res.json(),
             ),
-        keepPreviousData: true
+        keepPreviousData: true,
+        select: (response) => {
+            if (searchString) {
+                console.log(searchString)
+                searchString = searchString.toLowerCase()
+                let filteredPageResults = response.filter((movie) => {
+                    return movie.title.toLowerCase().includes(searchString)
+                })
+                return filteredPageResults
+            } else {
+                return response
+            }
+        },
     })
-
-
-
-    let searchString = searchParams.get('search')
-    if (searchString) {
-        console.log(searchString)
-        searchString = searchString.toLowerCase()
-        let filteredPageResults = data.filter((movie) => {
-            return movie.title.toLowerCase().includes(searchString)
-        })
-        setResults(() => {
-            return filteredPageResults
-        })
-        setResultsLength(filteredPageResults.length)
-    }
 
     if (isLoading) return 'Loading...'
 
@@ -73,7 +66,7 @@ function MediaContainerQuery({ pageTitle }) {
     return (
         <div className='flex flex-col'>
             {(searchString !== null && searchString !== "") ? (
-                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{resultsLength !== 0 ? `Found ${resultsLength} result${resultsLength !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
+                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
             ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
             <MediaList results={data} />
         </div>
