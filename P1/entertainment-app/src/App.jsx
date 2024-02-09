@@ -25,7 +25,7 @@ function App() {
       </SignedOut>
       <SignedIn>
         {/* Routes Signed in, Route found. */}
-        <div className='flex flex-col tablet:flex-row'>
+        <div className='flex flex-col desktop:flex-row'>
           <nav>
             <NavBar/>
           </nav>
