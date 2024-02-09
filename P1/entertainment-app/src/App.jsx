@@ -31,17 +31,12 @@ function App() {
         <nav>
           <NavBar></NavBar>
         </nav>
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path='/movies' element={<Movies />} />
-            <Route path='/tv-series' element={<TVSeries />} />
-            <Route path='/bookmark' element={<Bookmarks />} />
-          </Routes>
-        </main>
-
-        {/* Route Signed In - Not Found */}
+        
         <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/tv-series' element={<TVSeries />} />
+          <Route path='/bookmark' element={<Bookmarks />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </SignedIn>
