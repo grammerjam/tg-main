@@ -25,10 +25,9 @@ function App() {
       </SignedOut>
       <SignedIn>
         {/* Routes Signed in, Route found. */}
-        {/* make them both sticky */}
-        <div className='flex flex-col desktop:flex-row'>
+        <div className='flex flex-col desktop:flex-row w-full relative'>
           <NavBar/>
-          <main className='w-full'>
+          <main className='w-full  pt-[64px]  '>
             <SearchBar/>
             <Routes>
               <Route path="/" element={<Home/>} />
