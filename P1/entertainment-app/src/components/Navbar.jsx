@@ -23,7 +23,7 @@ const Navbar = () =>
                     <Link to="/" className='desktop:pb-[75px]'>
                         <img src="/assets/logo.svg" alt="App-Icon" className='w-[25px] tablet:w-[32px]' />
                     </Link>
-                    <div className='flex gap-[16px] justify-between tablet:gap-[26px] desktop:flex-col'>
+                    <div className='flex gap-[24px] justify-between tablet:gap-[26px] desktop:flex-col'>
                         <Link to="/">
                             <img src={isActive("home")} alt="Home" className="h-[16px] tablet:h-[20px]" />
                         </Link>

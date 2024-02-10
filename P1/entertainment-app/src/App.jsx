@@ -27,15 +27,17 @@ function App() {
         {/* Routes Signed in, Route found. */}
         <div className='flex flex-col desktop:flex-row w-full relative'>
           <NavBar/>
-          <main className='w-full  pt-[64px]  '>
+          <main className='w-full pt-[64px]'>
             <SearchBar/>
-            <Routes>
-              <Route path="/" element={<Home/>} />
-              <Route path='/movies' element={<Movies/>} />
-              <Route path='/tv-series' element={<TVSeries/>} />
-              <Route path='/bookmark' element={<Bookmarks/>} />
-              <Route path='*' element={<NotFound/>} />
-            </Routes>
+            <div className='pt-[64px]'>
+              <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path='/movies' element={<Movies/>} />
+                <Route path='/tv-series' element={<TVSeries/>} />
+                <Route path='/bookmark' element={<Bookmarks/>} />
+                <Route path='*' element={<NotFound/>} />
+              </Routes>
+            </div>
           </main>
         </div>
       </SignedIn>
