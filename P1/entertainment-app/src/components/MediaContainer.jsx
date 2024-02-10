@@ -6,6 +6,7 @@ import {
     QueryClientProvider,
     useQuery,
 } from '@tanstack/react-query'
+import { useUser } from "@clerk/clerk-react";
 
 const msToMinute = 60000
 
@@ -14,15 +15,17 @@ const queryClient = new QueryClient({
 })
 
 export default function MediaContainer({ pageTitle }) {
+    const { user } = useUser();
+    console.log(user.primaryEmailAddress?.emailAddress)
     return (
         <QueryClientProvider client={queryClient}>
-            <MediaContainerQuery pageTitle={pageTitle} />
+            <MediaContainerQuery pageTitle={pageTitle} user={user} />
         </QueryClientProvider>
     )
 }
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
-function getUrlQuery(title) {
+function getUrlQuery(title, email) {
     switch (title) {
         case "Movies":
             return "media/movies"
@@ -31,13 +34,14 @@ function getUrlQuery(title) {
         case "Recommended":
             return "media"
         case "Bookmarked":
-            return "isBookmarked"
+            return `user/?userEmail=${email}`
     }
 }
 
-function MediaContainerQuery({ pageTitle }) {
+function MediaContainerQuery({ pageTitle}) {
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
+
     const { isLoading, data, error } = useQuery({
         queryKey: ['media', `${pageTitle}`],
         queryFn: () =>

@@ -5,9 +5,14 @@ import Login from './pages/Login.jsx'
 import Movies from './pages/Movies.jsx'
 import TVSeries from './pages/TVSeries.jsx';
 import Bookmarks from './pages/Bookmarks.jsx';
-import { SignedIn, SignedOut } from '@clerk/clerk-react';
+import {
+  // AuthenticateWithRedirectCallback, 
+  SignedIn,
+  SignedOut
+} from '@clerk/clerk-react';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import NotFound from './pages/NotFound.jsx';
+// import CreateAccount from './pages/CreateAccount.jsx';
 
 function App() {
   return (
@@ -23,6 +28,8 @@ function App() {
       <SignedIn>
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* <Route path="/create-account" element={<CreateAccount />} /> */}
+          {/* <Route path="/sso-callback" element={<AuthenticateWithRedirectCallback />} /> */}
           <Route path='/movies' element={<Movies />} />
           <Route path='/tv-series' element={<TVSeries />} />
           <Route path='/bookmark' element={<Bookmarks />} />

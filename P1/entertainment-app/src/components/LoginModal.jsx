@@ -14,15 +14,15 @@ export default function LoginModal() {
         e.preventDefault();
         setSignUpError("")
         setHasSubmited(true)
-        
+
         if (!isLoaded) {
             return;
         }
 
-        if(!emailAddress || !password){
+        if (!emailAddress || !password) {
             return;
         }
-        
+
 
         try {
             const result = await signIn.create({
@@ -79,20 +79,23 @@ export default function LoginModal() {
 
 function SignInOAuthButtons() {
     const { signIn } = useSignIn();
+    console.log(signIn)
 
     const signInWith = (strategy) => {
-        return signIn.authenticateWithRedirect({
-            strategy,
-            redirectUrl: "/sso-callback",
-            redirectUrlComplete: "/",
-        });
+        console.log(signIn)
+        console.log(strategy)
+        // signIn.authenticateWithRedirect({
+        //     strategy,
+        //     redirectUrl: "/sso-callback",
+        //     redirectUrlComplete: "/",
+        // });
     };
-
-    // Render a button for each supported OAuth provider
-    // you want to add to your app
     return (
         <div className="w-full bg-white rounded-[6px]">
-            <button onClick={() => signInWith("oauth_google")} className="text-black flex justify-center w-full gap-[16px] py-[16px] ">
+            <button onClick={(e) => {
+                e.preventDefault()
+                signInWith("oauth_google")
+            }} className="text-black flex justify-center w-full gap-[16px] py-[16px] ">
                 Sign In With Gmail <img src={Logo} />
             </button>
         </div>

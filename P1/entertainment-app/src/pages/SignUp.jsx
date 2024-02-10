@@ -14,26 +14,22 @@ const SignUp = () => {
     const [code, setCode] = useState("")
     const [verifyError, setVerifyError] = useState("")
 
-
     const [hasSubmited, setHasSubmited] = useState(false)
-
     const nav = useNavigate();
 
+    const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmited(true);
         setSignUpError("")
-
         if (!isLoaded) {
             return;
         }
-
         if (password !== repeatPassword) {
             setSignUpError("Passwords do not match")
             return;
         }
-        //If any fields are empty, return.
         if (!email || !password || !repeatPassword) {
             return;
         }
@@ -43,10 +39,9 @@ const SignUp = () => {
                 emailAddress: email,
                 password: password,
             });
-
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
             setVerify(true);
-            await setHasSubmited(false);
+            setHasSubmited(false);
 
         } catch (error) {
             setSignUpError(error.errors[0].longMessage)
@@ -60,33 +55,33 @@ const SignUp = () => {
         if (!isLoaded) {
             return;
         }
-
         if (!code) {
             return;
         }
-
         try {
-            // Submit the code that the user provides to attempt verification
             const completeSignUp = await signUp.attemptEmailAddressVerification({
                 code,
             });
 
             if (completeSignUp.status !== "complete") {
-                // The status can also be `abandoned` or `missing_requirements`
-                // Please see https://clerk.com/docs/references/react/use-sign-up#result-status for  more information
                 console.log(JSON.stringify(completeSignUp, null, 2));
             }
-
-            // Check the status to see if it is complete
-            // If complete, the user has been created -- set the session active
             if (completeSignUp.status === "complete") {
                 await setActive({ session: completeSignUp.createdSessionId })
-                // Handle your own logic here, like redirecting to a new page if needed.
-                nav("/")
+                const dataToSend = {
+                    email: email
+                };
+                await fetch(backendRootUrl + "api/users", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // Specify the content type
+                    },
+                    body: JSON.stringify(dataToSend)
+                }).then(
+                    nav("/")
+                )
             }
         } catch (error) {
-            // This can return an array of errors.
-            // See https://clerk.com/docs/custom-flows/error-handling to learn about error handling
             setVerifyError(error.errors[0].longMessage)
         }
     };
