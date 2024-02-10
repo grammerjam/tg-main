@@ -17,9 +17,9 @@ const Navbar = () =>
     };
 
     return (
-        <nav className='desktop:h-[100vh]'>
-            <div className='tablet:p-[24px] desktop:p[32px] desktop:h-[100%]'>
-                <nav className="bg-ma-blue flex flex-row justify-between items-center p-[16px] mb-[24px] tablet:p-[20px] tablet:rounded-[10px] tablet:m-0 desktop:flex-col desktop:p-[28px] desktop:w-[96px] desktop:h-[100%] desktop:gap-0 desktop:justify-start" >
+        <nav className='desktop:top-0 desktop:h-[100vh]'>
+            <div className='tablet:mbx-[24px] desktop:mb-[32px] desktop:h-[100%]'>
+                <div className="bg-ma-blue flex flex-row justify-between items-center p-[16px] tablet:p-[20px] tablet:rounded-[10px] tablet:m-0 desktop:flex-col desktop:p-[28px] desktop:w-[96px] desktop:h-[100%] desktop:gap-0 desktop:justify-start" >
                     <Link to="/" className='desktop:pb-[75px]'>
                         <img src="/assets/logo.svg" alt="App-Icon" className='w-[25px] tablet:w-[32px]' />
                     </Link>
@@ -40,7 +40,7 @@ const Navbar = () =>
                     <div className='desktop:mt-auto'>
                         <UserButton />
                     </div>
-                </nav>
+                </div>
             </div>
         </nav>
     )
