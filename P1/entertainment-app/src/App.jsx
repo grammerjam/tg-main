@@ -6,13 +6,13 @@ import Movies from './pages/Movies.jsx'
 import TVSeries from './pages/TVSeries.jsx';
 import Bookmarks from './pages/Bookmarks.jsx';
 import {
-  // AuthenticateWithRedirectCallback, 
   SignedIn,
   SignedOut
 } from '@clerk/clerk-react';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import NotFound from './pages/NotFound.jsx';
-// import CreateAccount from './pages/CreateAccount.jsx';
+import SSOCallback from './components/SSOCallback.jsx';
+import CreateAccount from './pages/CreateAccount.jsx';
 
 function App() {
   return (
@@ -23,13 +23,13 @@ function App() {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='*' element={<Login />} />
+          <Route path="/sso-callback" element={<SSOCallback />} />
         </Routes>
       </SignedOut>
       <SignedIn>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/create-account" element={<CreateAccount />} /> */}
-          {/* <Route path="/sso-callback" element={<AuthenticateWithRedirectCallback />} /> */}
+          <Route path="/create-account" element={<CreateAccount />} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/tv-series' element={<TVSeries />} />
           <Route path='/bookmark' element={<Bookmarks />} />
@@ -39,5 +39,7 @@ function App() {
     </div>
   )
 }
+
+
 
 export default App

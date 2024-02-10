@@ -79,16 +79,16 @@ export default function LoginModal() {
 
 function SignInOAuthButtons() {
     const { signIn } = useSignIn();
-    console.log(signIn)
+    // console.log(signIn)
 
     const signInWith = (strategy) => {
-        console.log(signIn)
-        console.log(strategy)
-        // signIn.authenticateWithRedirect({
-        //     strategy,
-        //     redirectUrl: "/sso-callback",
-        //     redirectUrlComplete: "/",
-        // });
+        // console.log(signIn)
+        // console.log(strategy)
+        signIn.authenticateWithRedirect({
+            strategy,
+            redirectUrl: "/sso-callback",
+            redirectUrlComplete: "/create-account",
+        });
     };
     return (
         <div className="w-full bg-white rounded-[6px]">

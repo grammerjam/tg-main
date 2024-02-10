@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
 
 export default function MediaContainer({ pageTitle }) {
     const { user } = useUser();
-    console.log(user.primaryEmailAddress?.emailAddress)
+    // console.log(user.primaryEmailAddress?.emailAddress)
     return (
         <QueryClientProvider client={queryClient}>
             <MediaContainerQuery pageTitle={pageTitle} user={user} />

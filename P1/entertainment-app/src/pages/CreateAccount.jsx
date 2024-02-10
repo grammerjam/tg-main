@@ -1,12 +1,12 @@
 import { useUser } from "@clerk/clerk-react";
 import {
-    useEffect,
+    useEffect, useRef,
     // useRef 
 } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CreateAccount = () => {
-    // const renderAfterCalled = useRef(false);
+    const renderAfterCalled = useRef(false);
     const nav = useNavigate();
     const { user } = useUser();
     const email = user.primaryEmailAddress?.emailAddress
@@ -14,26 +14,23 @@ const CreateAccount = () => {
     const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
     useEffect(() => {
-        console.log(user)
-        console.log(email)
-        console.log(backendRootUrl)
         const dataToSend = {
             email: email
         };
-        // if (!renderAfterCalled.current) {
-        fetch(backendRootUrl + "api/users", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json' // Specify the content type
-            },
-            body: JSON.stringify(dataToSend)
-        }).then(() => {
-            nav("/");
-        }).catch(error => {
-            console.error('Error:', error);
-        });
-        // }
-        // renderAfterCalled.current = true;
+        if (!renderAfterCalled.current) {
+            fetch(backendRootUrl + "api/users", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' // Specify the content type
+                },
+                body: JSON.stringify(dataToSend)
+            }).then(() => {
+                nav("/");
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+        renderAfterCalled.current = true;
     }, [nav, backendRootUrl, email, user])
 
     return (
