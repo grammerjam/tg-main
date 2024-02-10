@@ -42,3 +42,6 @@ dist-ssr
 
 # .env in the entertainment-app directory
 */*/.env
+
+.env.local
+.env.production
