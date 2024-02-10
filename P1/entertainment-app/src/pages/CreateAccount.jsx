@@ -1,7 +1,6 @@
 import { useUser } from "@clerk/clerk-react";
 import {
     useEffect, useRef,
-    // useRef 
 } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +16,7 @@ const CreateAccount = () => {
         const dataToSend = {
             email: email
         };
+        //needed for development so it doesn't make 2 post calls
         if (!renderAfterCalled.current) {
             fetch(backendRootUrl + "api/users", {
                 method: 'POST',

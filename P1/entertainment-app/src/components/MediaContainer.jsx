@@ -16,7 +16,6 @@ const queryClient = new QueryClient({
 
 export default function MediaContainer({ pageTitle }) {
     const { user } = useUser();
-    // console.log(user.primaryEmailAddress?.emailAddress)
     return (
         <QueryClientProvider client={queryClient}>
             <MediaContainerQuery pageTitle={pageTitle} user={user} />
@@ -38,7 +37,7 @@ function getUrlQuery(title, email) {
     }
 }
 
-function MediaContainerQuery({ pageTitle}) {
+function MediaContainerQuery({ pageTitle }) {
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
 

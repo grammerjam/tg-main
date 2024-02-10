@@ -79,11 +79,8 @@ export default function LoginModal() {
 
 function SignInOAuthButtons() {
     const { signIn } = useSignIn();
-    // console.log(signIn)
 
     const signInWith = (strategy) => {
-        // console.log(signIn)
-        // console.log(strategy)
         signIn.authenticateWithRedirect({
             strategy,
             redirectUrl: "/sso-callback",
