@@ -7,11 +7,11 @@ const Home = () => {
     let searchString = searchParams.get('search')
 
     return (
-        <div className="flex flex-col desktop:flex-row">
+        <div className="flex flex-col">
             <div className="pl-[1rem] tablet:pl-[1.5rem] w-full">
                 {!searchString && <TrendingContainer />}
             </div>
-            <MediaContainer pageTitle={"Recommended"} />
+                <MediaContainer pageTitle={"Recommended"} />
         </div>
     )
 
