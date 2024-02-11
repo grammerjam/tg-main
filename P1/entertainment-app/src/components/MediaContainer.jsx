@@ -15,10 +15,10 @@ const queryClient = new QueryClient({
 })
 
 export default function MediaContainer({ pageTitle }) {
-    const { user } = useUser();
+
     return (
         <QueryClientProvider client={queryClient}>
-            <MediaContainerQuery pageTitle={pageTitle} user={user} />
+            <MediaContainerQuery pageTitle={pageTitle} />
         </QueryClientProvider>
     )
 }
@@ -33,18 +33,20 @@ function getUrlQuery(title, email) {
         case "Recommended":
             return "media"
         case "Bookmarked":
-            return `user/?userEmail=${email}`
+            return `users/bookmarks/?userEmail=${email}`
     }
 }
 
 function MediaContainerQuery({ pageTitle }) {
+    const { user } = useUser();
+    let userEmail = user.primaryEmailAddress.emailAddress
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
 
     const { isLoading, data, error } = useQuery({
         queryKey: ['media', `${pageTitle}`],
         queryFn: () =>
-            fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle)).then((res) =>
+            fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle, userEmail)).then((res) =>
                 res.json(),
             ),
         keepPreviousData: true,
