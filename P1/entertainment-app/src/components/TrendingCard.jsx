@@ -3,8 +3,7 @@ import bookmark from '/assets/icon-bookmark-empty.svg'
 import bookmarkHover from '/assets/icon-bookmark-empty-hover.svg'
 import bookmarkFilled from '/assets/icon-bookmark-full.svg'
 
-const TrendingCard = ({ trendingResults }) =>
-{
+const TrendingCard = ({ trendingResults }) => {
     return (
         <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative'>
             <div className='w-full flex relative justify-end mb-[0.5rem]' >
@@ -18,11 +17,8 @@ const TrendingCard = ({ trendingResults }) =>
                     <div className='flex items-center text-ma-white text-b-sm tablet:text-b-med mb-[0.25rem] tablet:mb-[0.30]'>
                         <p> {trendingResults.year} </p>
                         <p className='mx-[0.5rem]'> {"•"} </p>
-                        {trendingResults.category === "Movie " ? (
-                            <img src='/assets/icon-category-movie.svg' className='h-[0.75rem] w-[0.75rem] mr-[0.4rem]' alt='Movie Icon' />
-                        ) : (
-                            <img src='/assets/icon-category-tv.svg' className='h-[0.75rem] w-[0.75rem] mr-[0.4rem]' alt='Movie Icon' />
-                        )}
+                        <img src={`${trendingResults.category === 'Movie' ? '/assets/icon-category-movie.svg' : '/assets/icon-category-tv.svg'
+                            }`} alt={trendingResults.category} className='h-[0.75rem] w-[0.75rem] mr-[0.4rem]'></img>
                         <p> {trendingResults.category} </p>
                         <p className='mx-[0.5rem]'> {"•"} </p>
                         <p> {trendingResults.rating} </p>
