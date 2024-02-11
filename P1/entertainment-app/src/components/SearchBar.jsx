@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 
 const SearchBar = () => {
 
@@ -10,6 +10,30 @@ const SearchBar = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [currentSearch, setCurrentSearch] = useState(searchParams.get("search") || "");
+    const [placeholder, setPlaceholder] = useState("Search for movies or TV series");
+
+    
+    
+    const location = useLocation();
+    useEffect(() => {  
+        switch (location.pathname) {
+            case "/":
+                setPlaceholder("Search for movies or TV series")
+                break;
+            case "/movies":
+                setPlaceholder("Search for movies")
+                break;
+            case "/tv-series":
+                setPlaceholder("Search for TV series")
+                break;
+            case "/bookmark":
+                setPlaceholder("Search for bookmarked media")
+                break;
+            default:
+                break;
+        }
+
+    }, [location])
 
     const handleChange = (e) => {
         const query = e.target.value;
@@ -32,7 +56,7 @@ const SearchBar = () => {
                     </div>
                     <input
                         type="text"
-                        placeholder={}
+                        placeholder={placeholder}
                         onChange={handleChange}
                         className={`outline-none border-b ${currentSearch ? 'border-5A698F w-10/12 tablet:w-6/12' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
                     />
