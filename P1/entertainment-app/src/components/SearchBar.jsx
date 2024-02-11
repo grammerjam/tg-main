@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types'
 import { useSearchParams } from "react-router-dom";
 
-const SearchBar = ({ filterType }) => {
+const SearchBar = () => {
 
     SearchBar.propTypes = {
         filterType: PropTypes.string.isRequired,
@@ -22,7 +22,6 @@ const SearchBar = ({ filterType }) => {
         setSearchParams({ search: currentSearch });
     }
 
-    let placeholderText = `Search for ${filterType}`
 
     return (
         <div className="fixed tablet:relative rounded-b-[10px] desktop:fixed w-full flex items-center desktop:h-[5.5rem] desktop:items-end bg-ma-black h-[4rem] z-10 tablet:z-0 desktop:z-10">
@@ -33,7 +32,7 @@ const SearchBar = ({ filterType }) => {
                     </div>
                     <input
                         type="text"
-                        placeholder={placeholderText}
+                        placeholder={}
                         onChange={handleChange}
                         className={`outline-none border-b ${currentSearch ? 'border-5A698F w-10/12 tablet:w-6/12' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
                     />
