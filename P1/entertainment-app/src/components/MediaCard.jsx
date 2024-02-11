@@ -1,17 +1,41 @@
 import PropTypes from 'prop-types';
-import bookmark from '/assets/icon-bookmark-empty.svg'
-import bookmarkHover from '/assets/icon-bookmark-empty-hover.svg'
-import bookmarkFilled from '/assets/icon-bookmark-full.svg'
+import { useState } from 'react';
 
 export default function MediaCard({ media }) {
+
+  const [isBookmarked, setIsBookmarked] = useState(media.isBookmarked)
+  const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
+
+  const handleBookmark = () => {
+    setIsBookmarked(prev => !prev)
+  }
+
+  const handleHoverBookmark = () => {
+    console.log("mouse entered")
+    // e.stopPropagration()
+    setIsBookmarkHovered(true)
+    // e.target.childNodes[0].src = bookmarkHover
+  }
+
+  const handleHoverLeaveBookmark = () => {
+    console.log("mouse left")
+    // e.stopPropagration()
+    setIsBookmarkHovered(false)
+  }
 
   return (
     <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[45%] tablet:w-[30%] desktop:w-[22%]'>
       <div className='w-full flex relative justify-end mb-[0.5rem]'>
-        <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`} 
-            onMouseEnter={(e) => {e.stopPropagation(); e.target.childNodes[0].src = bookmarkHover }}
-            onMouseLeave={(e) => {e.stopPropagation(); e.target.childNodes[0].src = media.isBookmarked ? bookmarkFilled : bookmark;}}>
-            <img src={media.isBookmarked ? bookmarkFilled : bookmark} onMouseEnter={(e) => e.stopPropagation()} onMouseLeave={ (e) => e.stopPropagation()}  />
+        <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center `}
+          onClick={handleBookmark}
+          onMouseEnter={(e) => { handleHoverBookmark(e) }}
+          onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
+        >
+          <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill="none" className={`${isBookmarkHovered && "stroke-[#5A698F]"} ${isBookmarked && "fill-[#FFFFFF]"}`} /></svg>
+          {/* <img
+          onMouseEnter={(e) => e.stopPropagation()}
+          onMouseLeave={(e) => e.stopPropagation()}
+          /> */}
         </div>
         <img className='w-full rounded-lg' src={media.tpath}></img>
       </div>
