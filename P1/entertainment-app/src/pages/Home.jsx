@@ -10,8 +10,8 @@ const Home = () => {
         <div className="flex flex-col desktop:flex-row">
             <div className="pl-[1rem] tablet:pl-[1.5rem] w-full">
                 {!searchString && <TrendingContainer />}
-                <MediaContainer pageTitle={"Recommended"} />
             </div>
+            <MediaContainer pageTitle={"Recommended"} />
         </div>
     )
 
