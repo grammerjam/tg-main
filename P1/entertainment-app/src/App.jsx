@@ -45,7 +45,7 @@ function App() {
             <div className='tablet:hidden desktop:flex'>
               <SearchBar/>
             </div>
-            <div className='pt-[98px]'>
+            <div className='pt-[64px] desktop:pt-[98px]'>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path='/movies' element={<Movies />} />
