@@ -1,24 +1,42 @@
-import { QueryClientProvider, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { updateBookmark } from '../hooks/handleBookmark';
+import { useUser } from '@clerk/clerk-react';
 
+// export default function MediaCard({ media }) {
+//   const queryClient = useQueryClient()
+//   return (
+//     <QueryClientProvider client={queryClient}>
+//       <MediaCardQuery media={media} />
+//     </QueryClientProvider>
+//   )
+// }
 
 export default function MediaCard({ media }) {
+  const { user } = useUser();
+  let userEmail = user.primaryEmailAddress.emailAddress
   const queryClient = useQueryClient()
-  return (
-    <QueryClientProvider client={queryClient}>
-      <MediaCardQuery media={media} />
-    </QueryClientProvider>
-  )
-}
-
-export function MediaCardQuery({ media }) {
-
   const [isBookmarked, setIsBookmarked] = useState(media.isBookmarked)
   const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
+  const updateBookmarkMutation = useMutation({
+    mutationFn: (dataToSend) => updateBookmark(dataToSend),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
+    },
+  });
 
-  const handleBookmarkMedia = () => {
-    setIsBookmarked(prev => !prev)
+  const handleBookmarkMedia = async () => {
+    const dataToSend = {
+      userEmail: userEmail,
+      bookmarkId: media.id
+    }
+    try {
+      await updateBookmarkMutation.mutate(dataToSend)
+      setIsBookmarked(prev => !prev)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   const handleHoverBookmark = () => {
@@ -59,6 +77,6 @@ MediaCard.propTypes = {
   media: PropTypes.object,
 }
 
-MediaCardQuery.propTypes = {
-  media: PropTypes.object,
-}
+// MediaCardQuery.propTypes = {
+//   media: PropTypes.object,
+// }
