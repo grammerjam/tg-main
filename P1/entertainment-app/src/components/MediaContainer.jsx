@@ -2,26 +2,12 @@ import PropTypes from 'prop-types';
 import { useSearchParams } from "react-router-dom";
 import MediaList from './MediaList';
 import {
-    QueryClient,
-    QueryClientProvider,
+    // QueryClient,
+    // QueryClientProvider,
     useQuery,
 } from '@tanstack/react-query'
 import { useUser } from "@clerk/clerk-react";
 
-const msToMinute = 60000
-
-const queryClient = new QueryClient({
-    defaultOptions: { queries: { staleTime: msToMinute * 30 } }
-})
-
-export default function MediaContainer({ pageTitle }) {
-
-    return (
-        <QueryClientProvider client={queryClient}>
-            <MediaContainerQuery pageTitle={pageTitle} />
-        </QueryClientProvider>
-    )
-}
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
 function getUrlQuery(title, email) {
@@ -37,11 +23,12 @@ function getUrlQuery(title, email) {
     }
 }
 
-function MediaContainerQuery({ pageTitle }) {
+export default function MediaContainer({ pageTitle }) {
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
+    console.log(pageTitle)
 
     const { isLoading, data, error } = useQuery({
         queryKey: ['media', `${pageTitle}`],
@@ -80,6 +67,6 @@ function MediaContainerQuery({ pageTitle }) {
 MediaContainer.propTypes = {
     pageTitle: PropTypes.string,
 }
-MediaContainerQuery.propTypes = {
-    pageTitle: PropTypes.string,
-}
+// MediaContainerQuery.propTypes = {
+//     pageTitle: PropTypes.string,
+// }

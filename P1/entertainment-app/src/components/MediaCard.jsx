@@ -4,15 +4,6 @@ import { useState } from 'react';
 import { updateBookmark } from '../hooks/handleBookmark';
 import { useUser } from '@clerk/clerk-react';
 
-// export default function MediaCard({ media }) {
-//   const queryClient = useQueryClient()
-//   return (
-//     <QueryClientProvider client={queryClient}>
-//       <MediaCardQuery media={media} />
-//     </QueryClientProvider>
-//   )
-// }
-
 export default function MediaCard({ media }) {
   const { user } = useUser();
   let userEmail = user.primaryEmailAddress.emailAddress
