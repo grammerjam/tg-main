@@ -48,7 +48,7 @@ function App() {
             <div className='desktop:pl-[32px] desktop:pt-[32px] tablet:hidden desktop:flex'>
               <NavBar />
             </div>
-            <main className='w-full pt-[64px] desktop:pl-[132px] tablet:pt-[128px] desktop:pt-[0px]'>
+            <main className='w-full pt-[64px] desktop:pl-[108px] tablet:pt-[128px] desktop:pt-[0px]'>
               <div className='tablet:hidden desktop:flex'>
                 <SearchBar />
               </div>
