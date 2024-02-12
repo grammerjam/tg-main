@@ -50,10 +50,12 @@ export default function MediaCard({ media }) {
         </div>
         <img className='w-full rounded-lg' src={media.tpath}></img>
       </div>
-      <div className='flex items-center text-ma-gray text-b-sm mb-[0.25rem] tablet:mb-[0.30]'>
+      <div className='flex items-center text-ma-white  text-b-sm mb-[0.25rem] tablet:mb-[0.30]'>
         <p> {media.year} </p>
         <p className='mx-[0.5rem]'> {"•"} </p>
-        <img src='/assets/icon-nav-movies.svg' className='h-[0.75rem] w-[0.75rem] mr-[0.4rem]'></img>
+        <img src={`${ 
+          media.category === 'Movie' ? '/assets/icon-category-movie.svg' : '/assets/icon-category-tv.svg'
+        }`} alt={media.category} className='h-[0.75rem] w-[0.75rem] mr-[0.4rem]'></img>
         <p> {media.category} </p>
         <p className='mx-[0.5rem]'> {"•"} </p>
         <p> {media.rating} </p>
