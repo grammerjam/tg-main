@@ -23,7 +23,7 @@ export default function MediaCard({ media }) {
       bookmarkId: media.id
     }
     try {
-      await updateBookmarkMutation.mutate(dataToSend)
+      updateBookmarkMutation.mutate(dataToSend)
       setIsBookmarked(prev => !prev)
     } catch (e) {
       console.log(e)

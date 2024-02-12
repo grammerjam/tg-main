@@ -4,8 +4,7 @@ import Navbar from "../components/Navbar.jsx";
 import MediaContainer from "../components/MediaContainer.jsx";
 import TrendingContainer from "../components/TrendingContainer.jsx"
 
-const Home = () =>
-{
+const Home = () => {
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
 

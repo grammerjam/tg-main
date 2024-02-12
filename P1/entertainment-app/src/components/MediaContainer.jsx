@@ -26,7 +26,6 @@ export default function MediaContainer({ pageTitle }) {
     let userEmail = user.primaryEmailAddress.emailAddress
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
-    console.log(pageTitle)
 
     const { isLoading, data, error } = useQuery({
         queryKey: [`${pageTitle}`],
@@ -48,16 +47,39 @@ export default function MediaContainer({ pageTitle }) {
         },
     })
 
-    if (isLoading) return 'Loading...'
+    const { isLoading2, data: bookmarks, error2 } = useQuery({
+        queryKey: [`Bookmarked`],
+        queryFn: () => {
+            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?userEmail=${userEmail}`).then((res) =>
+                res.json(),
+            )
+            return bookmarks
+        },
+        keepPreviousData: true,
+    })
 
-    if (error) return 'An error has occurred: ' + error.message
+    if (isLoading || isLoading2 || bookmarks == undefined || data == undefined) return 'Loading...'
+    if (error || error2) return 'An error has occurred: ' + error.message
+
+    const joinArrays = (arr1, arr2, uniqueKey) => {
+        const map = new Map();
+        function addItemsToMap(array) {
+            for (const item of array) {
+                map.set(item[uniqueKey], item);
+            }
+        }
+        addItemsToMap(arr2);
+        addItemsToMap(arr1);
+        const newArray = Array.from(map.values())
+        return newArray
+    }
 
     return (
         <div className='flex flex-col'>
             {(searchString !== null && searchString !== "") ? (
                 <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
             ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
-            <MediaList results={data} />
+            <MediaList results={joinArrays(bookmarks, data, "id")} />
         </div>
     )
 }
@@ -65,6 +87,3 @@ export default function MediaContainer({ pageTitle }) {
 MediaContainer.propTypes = {
     pageTitle: PropTypes.string,
 }
-// MediaContainerQuery.propTypes = {
-//     pageTitle: PropTypes.string,
-// }
