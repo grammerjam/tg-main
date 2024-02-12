@@ -29,7 +29,7 @@ const Navbar = () =>
         setMovieIcon(isActive("movies"));
         setTvSeriesIcon(isActive("tv-series"));
         setBookmarkIcon(isActive("bookmark"));
-        console.log("Reloaded Navbar")
+
     }, [location]);
 
     
