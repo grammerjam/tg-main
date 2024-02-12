@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import { useSearchParams } from "react-router-dom";
 import MediaList from './MediaList';
 import {
-    // QueryClient,
-    // QueryClientProvider,
     useQuery,
 } from '@tanstack/react-query'
 import { useUser } from "@clerk/clerk-react";
@@ -31,7 +29,7 @@ export default function MediaContainer({ pageTitle }) {
     console.log(pageTitle)
 
     const { isLoading, data, error } = useQuery({
-        queryKey: ['media', `${pageTitle}`],
+        queryKey: [`${pageTitle}`],
         queryFn: () =>
             fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle, userEmail)).then((res) =>
                 res.json(),
