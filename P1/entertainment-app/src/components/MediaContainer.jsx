@@ -21,6 +21,19 @@ function getUrlQuery(title, email) {
     }
 }
 
+const joinArrays = (arr1, arr2, uniqueKey) => {
+    const map = new Map();
+    function addItemsToMap(array) {
+        for (const item of array) {
+            map.set(item[uniqueKey], item);
+        }
+    }
+    addItemsToMap(arr2);
+    addItemsToMap(arr1);
+    const newArray = Array.from(map.values())
+    return newArray
+}
+
 export default function MediaContainer({ pageTitle }) {
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
@@ -34,17 +47,9 @@ export default function MediaContainer({ pageTitle }) {
                 res.json(),
             ),
         keepPreviousData: true,
-        select: (response) => {
-            if (searchString) {
-                searchString = searchString.toLowerCase()
-                let filteredPageResults = response.filter((movie) => {
-                    return movie.title.toLowerCase().includes(searchString)
-                })
-                return filteredPageResults
-            } else {
-                return response
-            }
-        },
+        // select: (response) => {
+
+        // },
     })
 
     const { isLoading2, data: bookmarks, error2 } = useQuery({
@@ -78,31 +83,32 @@ export default function MediaContainer({ pageTitle }) {
                 {(searchString !== null && searchString !== "") ? (
                     <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
                 ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
-                <MediaList results={emptyCardArray} loading={true}/>
+                <MediaList results={emptyCardArray} loading={true} />
             </div>
         )
     }
     if (error || error2) return 'An error has occurred: ' + error.message
 
-    const joinArrays = (arr1, arr2, uniqueKey) => {
-        const map = new Map();
-        function addItemsToMap(array) {
-            for (const item of array) {
-                map.set(item[uniqueKey], item);
-            }
+
+
+    const allData = joinArrays(bookmarks, data, "id")
+
+    function filterData(data) {
+        if (searchString) {
+            searchString = searchString.toLowerCase()
+            let filteredPageResults = data.filter((movie) => {
+                return movie.title.toLowerCase().includes(searchString)
+            })
+            return filteredPageResults
         }
-        addItemsToMap(arr2);
-        addItemsToMap(arr1);
-        const newArray = Array.from(map.values())
-        return newArray
     }
 
     return (
         <div className='flex flex-col px-[1rem] tablet:pl-[1.5rem] w-full desktop:pr-[36px]'>
             {(searchString !== null && searchString !== "") ? (
-                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
+                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{filterData(allData).length !== 0 ? `Found ${filterData(allData).length} result${filterData(allData).length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
             ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
-            <MediaList results={joinArrays(bookmarks, data, "id")} />
+            <MediaList results={searchString ? filterData(allData) : allData} />
         </div>
     )
 }

@@ -5,7 +5,6 @@ import { updateBookmark } from '../hooks/handleBookmark';
 import { useUser } from '@clerk/clerk-react';
 
 export default function MediaCard({ media, loading }) {
-  console.log(loading)
   const { user } = useUser();
   let userEmail = user.primaryEmailAddress.emailAddress
   const queryClient = useQueryClient()
