@@ -1,4 +1,4 @@
-import data from "../../data.json"
+import data from "../../dataOld.json"
 import { useEffect, useState } from "react";
 import TrendingList from "./TrendingList";
 
