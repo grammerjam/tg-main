@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { updateBookmark } from '../hooks/handleBookmark';
 import { useUser } from '@clerk/clerk-react';
 
-export default function MediaCard({ media }) {
+export default function MediaCard({ media, loading }) {
+  console.log(loading)
   const { user } = useUser();
   let userEmail = user.primaryEmailAddress.emailAddress
   const queryClient = useQueryClient()
@@ -39,16 +40,16 @@ export default function MediaCard({ media }) {
   }
 
   return (
-    <div className='pb-[1rem] tablet:pb-[1.5rem] desktop:pb-[2rem] w-[calc((100%-15px)/2)] tablet:w-[calc((100%-60px)/3)] desktop:w-[calc((100%-120px)/4)] text-[11px] tablet:text-b-sm font-[300] text-[#FFFFFFBF]'>
-      <div className='w-full flex relative justify-end mb-[0.5rem]'>
-        <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center `}
+    <div className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[calc((100%-15px)/2)] tablet:w-[calc((100%-60px)/3)] desktop:w-[calc((100%-120px)/4)] text-[11px] tablet:text-b-sm font-[300] text-[#FFFFFFBF] `}>
+      <div className={`w-full flex relative justify-end mb-[0.5rem] rounded-lg ${loading && "skeleton"}`}>
+        <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center ${loading && "hidden"}`}
           onClick={handleBookmarkMedia}
           onMouseEnter={(e) => { handleHoverBookmark(e) }}
           onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
         >
           <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill="none" className={`${isBookmarkHovered && "stroke-[#5A698F]"} ${isBookmarked && "fill-[#FFFFFF]"}`} /></svg>
         </div>
-        <img className='w-full rounded-lg' src={media.tpath}></img>
+        <img className={`w-full rounded-lg ${loading && "invisible"}`} src={media.tpath}></img>
       </div>
       <div className='flex items-center pb-[0.25rem] tablet:pb-[0.30] gap-[6px]'>
         <p>{media.year}</p>
@@ -63,12 +64,12 @@ export default function MediaCard({ media }) {
       </div>
       <p className='text-ma-white font-[500] tablet:text-h-xsm'> {media.title} </p>
     </div>
-
   )
 }
 
 MediaCard.propTypes = {
   media: PropTypes.object,
+  loading: PropTypes.bool,
 }
 
 // MediaCardQuery.propTypes = {

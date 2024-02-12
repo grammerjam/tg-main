@@ -58,7 +58,30 @@ export default function MediaContainer({ pageTitle }) {
         keepPreviousData: true,
     })
 
-    if (isLoading || isLoading2 || bookmarks == undefined || data == undefined) return 'Loading...'
+    if (isLoading || isLoading2 || bookmarks == undefined || data == undefined) {
+
+        const emptyCardNumber = 20
+        const emptyCardArray = []
+        for (let i = 0; i < emptyCardNumber; i++) {
+            const newEmptyCardObject = {
+                id: i,
+                year: "YYYY",
+                category: "Movie",
+                title: "Loading",
+                rating: "PG",
+                tpath: "/assets/grayBox.jpg"
+            }
+            emptyCardArray.push(newEmptyCardObject)
+        }
+        return (
+            <div className='flex flex-col px-[1rem] tablet:pl-[1.5rem] w-full desktop:pr-[36px]'>
+                {(searchString !== null && searchString !== "") ? (
+                    <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
+                ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
+                <MediaList results={emptyCardArray} loading={true}/>
+            </div>
+        )
+    }
     if (error || error2) return 'An error has occurred: ' + error.message
 
     const joinArrays = (arr1, arr2, uniqueKey) => {
