@@ -2,6 +2,10 @@
 
 Cinemate is a web application that helps users wind down to watch their favorite movies and TV shows. Users can explore trending content, filter by various categories, and bookmark their favorite shows and movies for easy access.
 
+
+<img width="1851" alt="ent-app" src="https://github.com/grammerjam/team-miamiangels-backend/assets/53446311/bf3e9596-dd74-4a10-8eae-1c9a88e5acd8">
+
+
 ### Website Link
 
 [Visit Cinemate](https://develop--transcendent-arithmetic-b66dd1.netlify.app/)
@@ -100,12 +104,17 @@ Here are some related projects
 
 https://movie-web.app/browse/game
 
+
 ## Credit - Team MiamiAngels
 
-* Jose Facade - Full Stack Developer /Audio Engineer & Director | LinkedIn | GitHub
-* Alejandro Vecchio - Lead Developer  | LinkedIn | GitHub
-* Olivia Banks - Project Manager / Athlete | LinkedIn
-* Luis Perez - Full Stack Developer / Powerlifter | LinkedIn | GitHub
+[Jose Facade](https://www.linkedin.com/in/jfacade/) - Full Stack Developer / Audio Engineer & Director | [GitHub](https://github.com/jluiscool)
+
+[Alejandro Vecchio](https://www.linkedin.com/in/alejandro-vecchio/) - Lead Developer | [GitHub](https://github.com/aliv314)
+
+[Olivia Banks](https://www.linkedin.com/in/olivia-banks-/) - Project Manager / Athlete
+
+[Luis Perez](https://www.linkedin.com/in/lperezdev/) - Full Stack Developer / Powerlifter | [GitHub](https://github.com/LEPII)
+
 
 ## Acknowledgements
 
