@@ -2,8 +2,9 @@
 
 Cinemate is a web application that helps users wind down to watch their favorite movies and TV shows. Users can explore trending content, filter by various categories, and bookmark their favorite shows and movies for easy access.
 
-
 <img width="1851" alt="ent-app" src="https://github.com/grammerjam/team-miamiangels-backend/assets/53446311/bf3e9596-dd74-4a10-8eae-1c9a88e5acd8">
+
+![51A8l+FxFNL _SL300_](https://github.com/grammerjam/tg-main/assets/53446311/d94e2932-631c-4333-b29b-5dae7845adce)
 
 
 ### Website Link
