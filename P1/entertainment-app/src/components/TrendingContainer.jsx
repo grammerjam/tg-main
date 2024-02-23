@@ -15,7 +15,6 @@ const TrendingContainer = () => {
             const trending = fetch(backendUrl + "api/" + `trending/?email=${userEmail}`).then((res) =>
                 res.json(),
             )
-            console.log(trending)
             return trending
         },
         keepPreviousData: true,
