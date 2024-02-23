@@ -12,7 +12,7 @@ const TrendingCard = ({ trendingResults }) => {
                     onMouseLeave={(e) => { e.stopPropagation(); e.target.childNodes[0].src = trendingResults.isBookmarked ? bookmarkFilled : bookmark; }}>
                     <img src={trendingResults.isBookmarked ? bookmarkFilled : bookmark} onMouseEnter={(e) => e.stopPropagation()} onMouseLeave={(e) => e.stopPropagation()} />
                 </div>
-                <img className='w-full rounded-lg' src={trendingResults.thumbnail.regular.large} />
+                <img className='w-full rounded-lg' src={trendingResults.tpathTrending} />
                 <div className='absolute bottom-0 left-0 right-0 p-5 text-white'>
                     <div className='flex items-center text-ma-white text-b-sm tablet:text-b-med mb-[0.25rem] tablet:mb-[0.30]'>
                         <p> {trendingResults.year} </p>
