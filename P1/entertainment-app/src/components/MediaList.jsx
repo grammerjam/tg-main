@@ -6,9 +6,9 @@ export default function MediaList({ results, loading }) {
     
     return (
         <div className={`w-full flex flex-wrap justify-between tablet:justify-stretch gap-x-[15px] tablet:gap-x-[30px] desktop:gap-x-[2.5rem]`}>
-            {results.map((result) => {
+            {results.map((result, index) => {
                 return (
-                    <MediaCard key={result.id} media={result} loading={loading}/>
+                    <MediaCard key={result.id || index} media={result} loading={loading}/>
                 )
             })}
         </div>

@@ -5,6 +5,7 @@ import {
     useQuery,
 } from '@tanstack/react-query'
 import { useUser } from "@clerk/clerk-react";
+// import { useState } from 'react';
 
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -54,9 +55,9 @@ export default function MediaContainer({ pageTitle }) {
     })
 
     const { isLoading2, data: bookmarks, error2 } = useQuery({
-        queryKey: [`Bookmarked`],
+        queryKey: ["Bookmarked"],
         queryFn: () => {
-            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`).then((res) =>
+            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks?userEmail=${userEmail}`).then((res) =>
                 res.json(),
             )
             return bookmarks
@@ -64,8 +65,20 @@ export default function MediaContainer({ pageTitle }) {
         keepPreviousData: true,
     })
 
-    if (isLoading || isLoading2 || bookmarks == undefined || data == undefined) {
+    // useQuery({
+    //     queryKey: ["BookmarkedIdList"],
+    //     queryFn: () => {
+    //         const getBookmarksIds = bookmarks.map((media) => {
+    //             return media.id
+    //         })
+    //         return getBookmarksIds
+    //     },
+    //     // keepPreviousData: true,
+    //     enabled: !!bookmarks
+    // })
+    // console.log(bookmarksList)
 
+    if (isLoading || isLoading2 || bookmarks == undefined || data == undefined) {
         const emptyCardNumber = 20
         const emptyCardArray = []
         for (let i = 0; i < emptyCardNumber; i++) {
@@ -82,18 +95,17 @@ export default function MediaContainer({ pageTitle }) {
         return (
             <div className='flex flex-col px-[1rem] tablet:pl-[1.5rem] w-full desktop:pr-[36px]'>
                 {(searchString !== null && searchString !== "" && !isLoading && !isLoading2) ? (
-                    <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
+                    <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>
+                        {data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}
+                    </h1>
                 ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
                 <MediaList results={emptyCardArray} loading={true} />
             </div>
         )
     }
+
     if (error || error2) return 'An error has occurred: ' + error.message
-
-
-
     const allData = joinArrays(bookmarks, data, "id")
-
     function filterData(data) {
         if (searchString) {
             searchString = searchString.toLowerCase()

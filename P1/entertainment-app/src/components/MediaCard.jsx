@@ -11,10 +11,18 @@ export default function MediaCard({ media, loading }) {
   const [isBookmarked, setIsBookmarked] = useState(media.isBookmarked)
   const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
   const updateBookmarkMutation = useMutation({
-    mutationFn: (dataToSend) => updateBookmark(dataToSend),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
+    mutationFn: (dataToSend) => {
+      const bookmarks = queryClient.getQueryData(["Bookmarked"])
+      const getBookmarksIds = bookmarks.map((media) => {
+        return media.id
+      })
+      updateBookmark(dataToSend, getBookmarksIds).then(() => {
+        queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
+      })
     },
+    // onSuccess: () => {
+    //   queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
+    // },
   });
 
   const handleBookmarkMedia = async () => {

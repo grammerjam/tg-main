@@ -1,15 +1,22 @@
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 const bookmarkRoute = "users/bookmarks"
 
-export const updateBookmark = async (data) => {
+export const updateBookmark = async (data, list) => {
+    let indexOfBookmark = list.indexOf(data.bookmarkId)
+    if (indexOfBookmark !== -1) {
+        list.splice(indexOfBookmark, 1)
+    } else {
+        list.push(data.bookmarkId)
+    }
+    console.log(list)
     const dataToSend = {
         email: data.userEmail,
-        mediaId: data.bookmarkId
+        bookmarks: list
     }
 
     try {
         await fetch(backendRootUrl + "api/" + bookmarkRoute, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json' // Specify the content type
             },
