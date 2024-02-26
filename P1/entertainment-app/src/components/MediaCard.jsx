@@ -10,6 +10,7 @@ export default function MediaCard({ media, loading }) {
   const queryClient = useQueryClient()
   const [isBookmarked, setIsBookmarked] = useState(media.isBookmarked)
   const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
+  
   const updateBookmarkMutation = useMutation({
     mutationFn: (dataToSend) => updateBookmark(dataToSend),
     onSuccess: () => {
