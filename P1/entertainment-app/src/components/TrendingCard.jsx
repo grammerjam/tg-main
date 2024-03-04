@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
+
 import { updateBookmark } from '../hooks/handleBookmark';
 import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const TrendingCard = ({ trendingResults }) => {
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
 
+    const queryClient = useQueryClient()
     const [isBookmarked, setIsBookmarked] = useState(trendingResults.isBookmarked)
     const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
 
@@ -17,13 +20,20 @@ const TrendingCard = ({ trendingResults }) => {
         setIsBookmarkHovered(false)
     }
 
+    const updateBookmarkMutation = useMutation({
+        mutationFn: (dataToSend) => updateBookmark(dataToSend),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
+        },
+    });
+
     const handleBookmarkMedia = async () => {
         const dataToSend = {
             userEmail: userEmail,
             bookmarkId: trendingResults.id
         }
-        try {
-            updateBookmark(dataToSend)
+        try {   
+            updateBookmarkMutation.mutate(dataToSend)
             setIsBookmarked(prev => !prev)
         } catch (e) {
             console.log(e)
