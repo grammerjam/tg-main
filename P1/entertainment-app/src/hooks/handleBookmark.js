@@ -9,7 +9,7 @@ export const updateBookmark = async (data) => {
 
     try {
         await fetch(backendRootUrl + "api/" + bookmarkRoute, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Specify the content type
             },
