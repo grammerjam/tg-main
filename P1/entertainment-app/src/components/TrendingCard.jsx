@@ -23,7 +23,8 @@ const TrendingCard = ({ trendingResults }) => {
     const updateBookmarkMutation = useMutation({
         mutationFn: (dataToSend) => updateBookmark(dataToSend),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
+            queryClient.invalidateQueries({ queryKey: ["Recommended"]});
+            queryClient.invalidateQueries({ queryKey: ["Bookmarked"]});
         },
     });
 

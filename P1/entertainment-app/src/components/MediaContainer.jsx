@@ -56,7 +56,8 @@ export default function MediaContainer({ pageTitle }) {
     const { isLoading2, data: bookmarks, error2 } = useQuery({
         queryKey: [`Bookmarked`],
         queryFn: () => {
-            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`).then((res) =>
+            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`)
+            .then((res) =>
                 res.json(),
             )
             return bookmarks
