@@ -14,10 +14,11 @@ function getUrlQuery(title, email) {
             return "media/movies"
         case "TV Series":
             return "media/tv-series"
-        case "Recommended":
-            return "media"
         case "Bookmarked":
             return `users/bookmarks/?email=${email}`
+        default:
+            // Home
+            return "media"
     }
 }
 
