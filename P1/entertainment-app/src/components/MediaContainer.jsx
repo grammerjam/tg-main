@@ -17,7 +17,7 @@ function getUrlQuery(title, email) {
         case "Recommended":
             return "media"
         case "Bookmarked":
-            return `users/bookmarks/?user=${email}`
+            return `users/bookmarks/?email=${email}`
     }
 }
 
