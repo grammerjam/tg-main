@@ -2,6 +2,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import LoginModal from '../components/LoginModal';
 
+
 describe('LoginModal Component', () =>
 {
     it('renders with input fields, buttons, and links', () =>
