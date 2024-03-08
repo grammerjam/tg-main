@@ -1,14 +1,17 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { updateBookmark } from '../hooks/handleBookmark';
 import { useUser } from '@clerk/clerk-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { updateBookmark } from '../hooks/handleBookmark';
+
 
 export default function MediaCard({ media, loading }) {
   const { user } = useUser();
+
   let userEmail = user.primaryEmailAddress.emailAddress
   const queryClient = useQueryClient()
-  const [isBookmarked, setIsBookmarked] = useState(media.isBookmarked)
+
+  const [isBookmarked, setIsBookmarked] = useState(false)
   const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
   
   const updateBookmarkMutation = useMutation({

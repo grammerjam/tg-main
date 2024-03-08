@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSearchParams } from "react-router-dom";
-import MediaList from './MediaList';
-import {
-    useQuery,
-} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useUser } from "@clerk/clerk-react";
+
+import MediaList from './MediaList';
 
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -35,7 +34,7 @@ const joinArrays = (arr1, arr2, uniqueKey) => {
 }
 
 export default function MediaContainer({ pageTitle }) {
-    // const navigate = useNavigate();
+
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
     let [searchParams] = useSearchParams()
@@ -90,8 +89,6 @@ export default function MediaContainer({ pageTitle }) {
         )
     }
     if (error || error2) return 'An error has occurred: ' + error.message
-
-
 
     const allData = joinArrays(bookmarks, data, "id")
 
