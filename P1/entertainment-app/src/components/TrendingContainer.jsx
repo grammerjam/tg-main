@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import TrendingList from "./TrendingList";
 import { useUser } from "@clerk/clerk-react";
+import { joinArrays } from "../Utils";
+
+
 
 const TrendingContainer = () => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -19,8 +22,21 @@ const TrendingContainer = () => {
         },
         keepPreviousData: true,
     })
+    const { isLoading2, data: bookmarks, error2 } = useQuery({
+        queryKey: [`Bookmarked`],
+        queryFn: () => {
+            const bookmarks = fetch(backendUrl + "api/" + `users/bookmarks/?email=${userEmail}`)
+            .then((res) =>
+                res.json(),
+            )
+            return bookmarks
+        },
+        keepPreviousData: true,
+    })
 
-    if (isLoading|| trending == undefined) {
+
+
+    if (isLoading|| trending == undefined || isLoading2 || bookmarks == undefined) {
         const loadingCards = []
         for (let i = 0; i < 10; i++) {
             const newEmptyCardObject = {
@@ -43,14 +59,16 @@ const TrendingContainer = () => {
         )
     }
 
-    if (error) {
+    if (error || error2) {
         return 'An error has occurred: ' + error.message
     }
+
+    const trendingData = joinArrays(bookmarks, trending, "id")
 
     return (
         <div className='flex flex-col '>
             <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> Trending </h1>
-            <TrendingList trendingResults={trending} />
+            <TrendingList trendingResults={trendingData} />
         </div>
     )
 }

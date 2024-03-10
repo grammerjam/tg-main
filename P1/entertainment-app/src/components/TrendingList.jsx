@@ -10,7 +10,7 @@ const TrendingList = ({ trendingResults }) =>
                 {trendingResults.map((trendingResults) =>
                 {
                     return (
-                        <TrendingCard key={trendingResults.id} trendingResults={trendingResults} />
+                        <TrendingCard key={trendingResults.id} trendingMedia={trendingResults} />
                     )
                 })}
             </div>

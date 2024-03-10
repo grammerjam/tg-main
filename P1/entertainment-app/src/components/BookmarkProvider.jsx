@@ -6,7 +6,7 @@ export const BookmarkContext = createContext([]);
 const BookmarkProvider = ({ children }) => {
     const [contextBookmarks, setContextBookmarks] = useState([])
     
-
+    
     return (<>
         <BookmarkContext.Provider value={[contextBookmarks, setContextBookmarks]}>
             {children}
