@@ -5,15 +5,14 @@ import bookmarkFilled from '/assets/icon-bookmark-full.svg'
 
 const TrendingCard = ({ trendingResults }) => {
     return (
-        <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative'>
-            <div className='w-full flex relative justify-end mb-[0.5rem]' >
-                <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`}
+        <div className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative flex justify-end`}>
+                <div className={`absolute top-[1rem] right-[1rem] tablet:top-[1.3rem] tablet:right-[1.5rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`}
                     onMouseEnter={(e) => { e.stopPropagation(); e.target.childNodes[0].src = bookmarkHover }}
                     onMouseLeave={(e) => { e.stopPropagation(); e.target.childNodes[0].src = trendingResults.isBookmarked ? bookmarkFilled : bookmark; }}>
                     <img src={trendingResults.isBookmarked ? bookmarkFilled : bookmark} onMouseEnter={(e) => e.stopPropagation()} onMouseLeave={(e) => e.stopPropagation()} />
                 </div>
-                <img className='w-[240px] tablet:w-[470px] h-[140px] tablet:h-[270px] object-cover rounded-lg' src={trendingResults.thumbnail.regular.large} />
-                <div className='absolute bottom-0 left-0 right-0 p-5 text-white'>
+
+                <div className='absolute bottom-0 left-0 right-0 p-5'>
                     <div className='flex items-center text-ma-white text-b-sm tablet:text-b-med mb-[0.25rem] tablet:mb-[0.30]'>
                         <p> {trendingResults.year} </p>
                         <p className='mx-[0.5rem]'> {"•"} </p>
@@ -25,7 +24,14 @@ const TrendingCard = ({ trendingResults }) => {
                     </div>
                     <p className="font-light text-h-sm tablet:text-h-med"> {trendingResults.title} </p>
                 </div>
-            </div>
+
+                <img className='
+                min-w-[320px] 
+                w-[60vw] tablet:w-[45vw] desktop:w-[30vw]
+                max-w-[480px] tablet:max-w-[720px] 
+                object-cover aspect-[2/1] rounded-lg
+                ' 
+                src={trendingResults.thumbnail.regular.large} />
         </div>
     )
 }
