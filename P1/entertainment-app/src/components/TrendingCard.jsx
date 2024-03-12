@@ -27,8 +27,8 @@ const TrendingCard = ({ trendingResults }) => {
 
                 <img className='
                 min-w-[320px] 
-                w-[60vw] tablet:w-[45vw] desktop:w-[30vw]
-                max-w-[480px] tablet:max-w-[720px] 
+                w-[60vw] tablet:w-[50vw] desktop:w-[30vw]
+                max-w-[480px] tablet:max-w-[720px] desktop:max-w-[1080px]
                 object-cover aspect-[2/1] rounded-lg
                 ' 
                 src={trendingResults.thumbnail.regular.large} />
