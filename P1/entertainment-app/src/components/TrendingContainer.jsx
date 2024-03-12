@@ -13,8 +13,8 @@ const TrendingContainer = () =>
     }, [])
 
     return (
-        <div className='flex flex-col '>
-            <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> Trending </h1>
+        <div className='flex flex-col' role="region" aria-label="Trending Feed" tabIndex="0">
+            <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]' role="heading" aria-level="2"> Trending </h1>
             <TrendingList trendingResults={trendingResults} />
         </div>)
 }

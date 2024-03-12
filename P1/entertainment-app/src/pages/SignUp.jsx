@@ -89,7 +89,7 @@ const SignUp = () => {
     return (
         <div className="flex w-full flex-col pt-[3rem] tablet:pt-[5rem] px-[1.5rem]  justify-center items-center">
             {/* Icon */}
-            <img src="../../assets/logo.svg" className="mb-[3.5rem] tablet:mb-[4.5rem] desktop:mb-[5rem]" />
+            <img src="../../assets/logo.svg" alt="App-Logo" className="mb-[3.5rem] tablet:mb-[4.5rem] desktop:mb-[5rem]" />
             {/* SignUp */}
             <div className="w-full tablet:w-[25rem] p-[1.5rem] rounded-[0.66rem] bg-ma-blue flex flex-col">
                 <h2 className="font-light text-h-lg mb-[2.5rem]"> Sign Up </h2>
