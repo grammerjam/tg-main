@@ -11,7 +11,7 @@ const Home = () => {
             <div className="pl-[1rem] tablet:pl-[1.5rem] w-full">
                 {!searchString && <TrendingContainer />}
             </div>
-                <MediaContainer pageTitle={"Recommended for you"} />
+                <MediaContainer pageTitle={"Trending"} />
         </div>
     )
 
