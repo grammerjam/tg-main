@@ -15,15 +15,12 @@ export const updateBookmark = async (data) => {
             },
             body: JSON.stringify(dataToSend)
         }).then(async (res) => {
-            const response = await res.json()
-            console.log(response)
-
+            await res.json()
         }).then(() => {
-            console.log('hello govnor')
-            return false
+            return true
         })
     } catch (error) {
         console.error('Error:', error);
-        return true
+        return false
     }
 };
