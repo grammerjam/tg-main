@@ -9,7 +9,7 @@ const SearchBar = () => {
     };
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [currentSearch, setCurrentSearch] = useState(searchParams.get("search") || "");
+    const [currentSearch] = useState(searchParams.get("search") || "");
     const [placeholder, setPlaceholder] = useState("Search for movies or TV series");
     
     const location = useLocation();

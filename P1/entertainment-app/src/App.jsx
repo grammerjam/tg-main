@@ -18,6 +18,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import NavBar from './components/Navbar.jsx';
 import SearchBar from './components/SearchBar.jsx';
 import BookmarkContext from './components/BookmarkProvider.jsx';
+import VideoPage from './pages/VideoPage.jsx';
 
 function App() {
   const msToMinute = 60000
@@ -62,6 +63,7 @@ function App() {
                     <Route path='/tv-series' element={<TVSeries />} />
                     <Route path='/bookmark' element={<Bookmarks />} />
                     <Route path='*' element={<NotFound />} />
+                    <Route path='/video/:id' element={<VideoPage />} />
                   </Routes>
                 </BookmarkContext>
               </div>
