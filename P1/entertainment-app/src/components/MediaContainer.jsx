@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { useSearchParams } from "react-router-dom";
-import MediaList from './MediaList';
-import {
-    useQuery,
-} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useUser } from "@clerk/clerk-react";
+
+import { joinArrays } from '../Utils';
+
+import MediaList from './MediaList';
 
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -21,21 +22,9 @@ function getUrlQuery(title, email) {
     }
 }
 
-const joinArrays = (arr1, arr2, uniqueKey) => {
-    const map = new Map();
-    function addItemsToMap(array) {
-        for (const item of array) {
-            map.set(item[uniqueKey], item);
-        }
-    }
-    addItemsToMap(arr2);
-    addItemsToMap(arr1);
-    const newArray = Array.from(map.values())
-    return newArray
-}
 
 export default function MediaContainer({ pageTitle }) {
-    // const navigate = useNavigate();
+
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
     let [searchParams] = useSearchParams()
@@ -48,15 +37,13 @@ export default function MediaContainer({ pageTitle }) {
                 res.json(),
             ),
         keepPreviousData: true,
-        // select: (response) => {
-
-        // },
     })
 
     const { isLoading2, data: bookmarks, error2 } = useQuery({
         queryKey: [`Bookmarked`],
         queryFn: () => {
-            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`).then((res) =>
+            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`)
+            .then((res) =>
                 res.json(),
             )
             return bookmarks
@@ -90,10 +77,8 @@ export default function MediaContainer({ pageTitle }) {
     }
     if (error || error2) return 'An error has occurred: ' + error.message
 
-
-
     const allData = joinArrays(bookmarks, data, "id")
-
+    
     function filterData(data) {
         if (searchString) {
             searchString = searchString.toLowerCase()

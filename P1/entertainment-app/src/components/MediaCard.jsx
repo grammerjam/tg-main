@@ -1,15 +1,18 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { updateBookmark } from '../hooks/handleBookmark';
 import { useUser } from '@clerk/clerk-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { updateBookmark } from '../hooks/handleBookmark';
+
 
 export default function MediaCard({ media, loading }) {
   const { user } = useUser();
+
   let userEmail = user.primaryEmailAddress.emailAddress
   const queryClient = useQueryClient()
-  const [isBookmarked, setIsBookmarked] = useState(media.isBookmarked)
+
   const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
+
   const updateBookmarkMutation = useMutation({
     mutationFn: (dataToSend) => updateBookmark(dataToSend),
     onSuccess: () => {
@@ -24,7 +27,6 @@ export default function MediaCard({ media, loading }) {
     }
     try {
       updateBookmarkMutation.mutate(dataToSend)
-      setIsBookmarked(prev => !prev)
     } catch (e) {
       console.log(e)
     }
@@ -46,7 +48,9 @@ export default function MediaCard({ media, loading }) {
           onMouseEnter={(e) => { handleHoverBookmark(e) }}
           onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
         >
-          <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill="none" className={`${isBookmarkHovered && "stroke-[#5A698F]"} ${isBookmarked && "fill-[#FFFFFF]"}`} /></svg>
+          <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
+            <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill="none" className={`${isBookmarkHovered && "stroke-[#5A698F]"} ${media.isBookmarked && "fill-[#FFFFFF]"}`} />
+          </svg>
         </div>
         <img className={`w-full rounded-lg ${loading && "invisible"}`} src={media.tpath}></img>
       </div>
