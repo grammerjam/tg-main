@@ -17,8 +17,13 @@ export const updateBookmark = async (data) => {
         }).then(async (res) => {
             const response = await res.json()
             console.log(response)
+
+        }).then(() => {
+            console.log('hello govnor')
+            return false
         })
     } catch (error) {
         console.error('Error:', error);
+        return true
     }
 };
