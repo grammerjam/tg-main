@@ -11,6 +11,7 @@ const TrendingCard = ({ trendingMedia }) => {
 
     const queryClient = useQueryClient()
     const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
+    const [isBookmarked, setIsBookmarked] = useState(trendingMedia.isBookmarked)
 
     const handleHoverBookmark = () => {
         setIsBookmarkHovered(true)
@@ -20,18 +21,21 @@ const TrendingCard = ({ trendingMedia }) => {
     }
 
     const updateBookmarkMutation = useMutation({
-        mutationFn: (dataToSend) => updateBookmark(dataToSend),
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["Bookmarked"]});
+        mutationFn: (dataToSend) => {
+            return updateBookmark(dataToSend)
+        },
+        onSettled: () => {
+            queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
         },
     });
 
     const handleBookmarkMedia = async () => {
+        setIsBookmarked((prev) => !prev)
         const dataToSend = {
             userEmail: userEmail,
             bookmarkId: trendingMedia.id
         }
-        try {   
+        try {
             updateBookmarkMutation.mutate(dataToSend)
         } catch (e) {
             console.log(e)
@@ -41,12 +45,15 @@ const TrendingCard = ({ trendingMedia }) => {
     return (
         <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative'>
             <div className='w-full flex relative justify-end mb-[0.5rem]' >
-                <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`}
-                    onClick={handleBookmarkMedia}
-                    onMouseEnter={(e) => { handleHoverBookmark(e) }}
-                    onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}>
-                    <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill="none" className={`${isBookmarkHovered && "fill-[#FFFFFF]"} "}`} /></svg>
-                </div>
+            <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full opacity-50 flex justify-center items-center ${isBookmarked ? "bg-ma-white opacity-100" : ""}`}
+          onClick={handleBookmarkMedia}
+          onMouseEnter={(e) => { handleHoverBookmark(e) }}
+          onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
+        >
+          <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" className={`${isBookmarkHovered ? "fill-[#FFFFFF]" : "fill-none"}  ${isBookmarked ? "stroke-ma-black" : "stroke-ma-white"}`}>
+            <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" strokeWidth="1.5" />
+          </svg>
+        </div>
                 <img className='w-full rounded-lg' src={trendingMedia.tpathTrending} />
                 <div className='absolute bottom-0 left-0 right-0 p-5 text-white'>
                     <div className='flex items-center text-ma-white text-b-sm tablet:text-b-med mb-[0.25rem] tablet:mb-[0.30]'>
