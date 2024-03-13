@@ -23,3 +23,15 @@ html {
         background-color: hsl(200, 20%, 95%);
     }
 }
+
+::-webkit-scrollbar {
+    background-color: #10141E;
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FC4747;
+    border-radius: 20px;
+
+}
