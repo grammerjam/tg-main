@@ -33,5 +33,20 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #FC4747;
     border-radius: 20px;
+}
 
+/* video::-webkit-media-controls-panel {
+    background-color:  !important;
+} */
+
+/* video::-webkit-full-page-media::-webkit-media-controls-panel,
+video::-webkit-media-controls-timeline-container {
+    color: #FC4747 !important;
+    background-color: green !important;
+} */
+
+video::-webkit-media-controls-timeline {
+    background-color: #FC4747;
+    padding-bottom: 0;
+    margin-bottom: 20px;
 }

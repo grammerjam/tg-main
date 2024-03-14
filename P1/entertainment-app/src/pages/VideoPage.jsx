@@ -17,9 +17,18 @@ export default function VideoPage() {
     return (
         <div className='px-[16px] flex flex-col justify-start items-start gap-[16px] tablet:px-[24px]'>
             {videoId && <VideoPlayer videoId={videoId} />}
-            <h1 className='text-h-sm'>
-                {id}
-            </h1>
+            <div>
+                <h1 className='text-h-sm font-[600]'>
+                    {id}
+                </h1>
+                <ul className='flex gap-[8px] justify-start items-start font-[300]'>
+                    <li>{`2007`}</li>
+                    <li>{"•"}</li>
+                    <li>TV Series</li>
+                    <li>{"•"}</li>
+                    <li>E</li>
+                </ul>
+            </div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quam, ducimus numquam dicta fuga ex inventore molestias quisquam voluptas laborum, iusto sunt recusandae debitis enim. Deserunt reprehenderit ducimus voluptatum dolorum?</p>
             <div className='w-full flex items-center justify-start gap-[8px]'>
                 <p className='px-[8px] py-[4px] bg-ma-blue rounded-[10px]'>Nature</p>
