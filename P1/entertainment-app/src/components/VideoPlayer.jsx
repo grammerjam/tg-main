@@ -33,10 +33,10 @@ export default function VideoPlayer({ videoId }) {
         checkVideoStatus();
     }, [getVideoStatus])
     return (
-        <div>
+        <div className="w-full rounded-[10px]">
             {
                 validVideo ?
-                    <video ref={videoRef} width={320} height={240} controls autoPlay>
+                    <video ref={videoRef} className="w-full rounded-[10px]" controls autoPlay>
                         <source src={`http://localhost:10000/videos/${videoId}`} type="video/mp4"></source>
                         Your browser does not support the video tag or mp4s
                     </ video>
