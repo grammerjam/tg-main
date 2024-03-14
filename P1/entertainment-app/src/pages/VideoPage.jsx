@@ -17,8 +17,8 @@ export default function VideoPage() {
     return (
         <div className='px-[16px] flex flex-col justify-start items-start gap-[16px] tablet:px-[24px]'>
             {videoId && <VideoPlayer videoId={videoId} />}
-            <div>
-                <h1 className='text-h-sm font-[600]'>
+            <div className='flex flex-col justify-start items-start gap-[4px] tablet:gap-[8px]'>
+                <h1 className='text-h-sm font-[600] tablet:text-h-med desktop:text-h-lg'>
                     {id}
                 </h1>
                 <ul className='flex gap-[8px] justify-start items-start font-[300]'>
