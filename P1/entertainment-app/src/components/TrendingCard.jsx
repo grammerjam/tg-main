@@ -45,7 +45,7 @@ const TrendingCard = ({ trendingMedia }) => {
     return (
         <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative'>
             <div className='w-full flex relative justify-end mb-[0.5rem]' >
-            <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full opacity-50 flex justify-center items-center ${isBookmarked ? "bg-ma-white opacity-100" : ""}`}
+            <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full  flex justify-center items-center ${isBookmarked ? "bg-ma-white opacity-100" : "opacity-50"}`}
           onClick={handleBookmarkMedia}
           onMouseEnter={(e) => { handleHoverBookmark(e) }}
           onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
