@@ -38,22 +38,12 @@ function App() {
       <SignedIn>
         <QueryClientProvider client={queryClient}>
           <div className='flex flex-col desktop:flex-row w-full relative'>
-            <div className='hidden tablet:flex desktop:hidden'>
-              <div className='fixed z-10 w-full h-auto tablet:flex-col p-[24px]'>
-                <div className=' rounded-[10px] border-2 border-ma-gray'>
-                  <NavBar />
-                  <SearchBar />
-                </div>
-              </div>
-            </div>
-            <div className='desktop:pl-[32px] desktop:pt-[32px] tablet:hidden desktop:flex'>
+            <div className='desktop:pl-[32px] desktop:pt-[32px] desktop:flex'>
               <NavBar />
             </div>
-            <main className='w-full pt-[64px] desktop:pl-[108px] tablet:pt-[128px] desktop:pt-[0px]'>
-              <div className='tablet:hidden desktop:flex'>
-                <SearchBar />
-              </div>
-              <div className='pt-[64px] desktop:pt-[98px]'>
+            <main className='w-full pt-[64px] tablet:pt-[16px] desktop:pl-[108px] '>
+              <SearchBar />
+              <div className='pt-[64px] tablet:pt-[16px] desktop:pt-[98px]'>
                 <BookmarkContext>
                   <Routes>
                     <Route path="/" element={<Home />} />
