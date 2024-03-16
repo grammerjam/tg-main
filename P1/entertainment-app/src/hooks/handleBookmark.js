@@ -1,7 +1,7 @@
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 const bookmarkRoute = "users/bookmarks"
 
-export const updateBookmark = async (data) => {
+export const updateBookmark = async (data, token) => {
     const dataToSend = {
         email: data.userEmail,
         mediaId: data.bookmarkId
@@ -11,7 +11,8 @@ export const updateBookmark = async (data) => {
         await fetch(backendRootUrl + "api/" + bookmarkRoute, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json' // Specify the content type
+                'Content-Type': 'application/json', // Specify the content type
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(dataToSend)
         }).then(async (res) => {

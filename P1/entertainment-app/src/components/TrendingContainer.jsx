@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import TrendingList from "./TrendingList";
-import { useUser } from "@clerk/clerk-react";
+import { useUser, useAuth } from "@clerk/clerk-react";
+
 import { joinArrays } from "../Utils";
+
+import TrendingList from "./TrendingList";
 
 
 
@@ -9,13 +11,19 @@ const TrendingContainer = () => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
     const { user } = useUser();
+    const { getToken } = useAuth();
     const userEmail = user.primaryEmailAddress.emailAddress;
 
 
     const { isLoading, data: trending, error} = useQuery({
         queryKey: ["Trending"],
         queryFn: () =>{
-            const trending = fetch(backendUrl + "api/" + `trending/?email=${userEmail}`).then((res) =>
+            const trending = fetch(backendUrl + "api/" + `trending/?email=${userEmail}`,
+            {
+                headers:{
+                    Authorization: `Bearer ${getToken}`
+                }
+            }).then((res) =>
                 res.json(),
             )
             return trending
@@ -25,7 +33,12 @@ const TrendingContainer = () => {
     const { isLoading2, data: bookmarks, error2 } = useQuery({
         queryKey: [`Bookmarked`],
         queryFn: () => {
-            const bookmarks = fetch(backendUrl + "api/" + `users/bookmarks/?email=${userEmail}`)
+            const bookmarks = fetch(backendUrl + "api/" + `users/bookmarks/?email=${userEmail}`,
+            {
+                headers:{
+                    Authorization: `Bearer ${getToken}`
+                }
+            })
             .then((res) =>
                 res.json(),
             )

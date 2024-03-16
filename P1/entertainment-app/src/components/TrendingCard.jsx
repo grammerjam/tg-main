@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 
 import { updateBookmark } from '../hooks/handleBookmark';
 import { useState } from 'react';
-import { useUser } from '@clerk/clerk-react';
+import { useUser, useAuth } from '@clerk/clerk-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const TrendingCard = ({ trendingMedia }) => {
     const { user } = useUser();
+    const { getToken } = useAuth();
     let userEmail = user.primaryEmailAddress.emailAddress
 
     const queryClient = useQueryClient()
@@ -20,7 +21,7 @@ const TrendingCard = ({ trendingMedia }) => {
     }
 
     const updateBookmarkMutation = useMutation({
-        mutationFn: (dataToSend) => updateBookmark(dataToSend),
+        mutationFn: (dataToSend) => updateBookmark(dataToSend, getToken),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["Bookmarked"]});
         },

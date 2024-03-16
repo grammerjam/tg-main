@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query'
-import { useUser } from "@clerk/clerk-react";
+import { useUser, useAuth } from "@clerk/clerk-react";
 
 import { joinArrays } from '../Utils';
 
@@ -26,6 +26,8 @@ function getUrlQuery(title, email) {
 export default function MediaContainer({ pageTitle }) {
 
     const { user } = useUser();
+    const { getToken } = useAuth();
+
     let userEmail = user.primaryEmailAddress.emailAddress
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
@@ -33,19 +35,29 @@ export default function MediaContainer({ pageTitle }) {
     const { isLoading, data, error } = useQuery({
         queryKey: [`${pageTitle}`],
         queryFn: () =>
-            fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle, userEmail)).then((res) =>
-                res.json(),
-            ),
+            fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle, userEmail),
+                {
+                    headers: {
+                        Authorization: `Bearer ${getToken}`
+                    }
+                }).then((res) =>
+                    res.json(),
+                ),
         keepPreviousData: true,
     })
 
     const { isLoading2, data: bookmarks, error2 } = useQuery({
         queryKey: [`Bookmarked`],
         queryFn: () => {
-            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`)
-            .then((res) =>
-                res.json(),
-            )
+            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${getToken}`
+                    }
+                })
+                .then((res) =>
+                    res.json(),
+                )
             return bookmarks
         },
         keepPreviousData: true,
@@ -78,7 +90,7 @@ export default function MediaContainer({ pageTitle }) {
     if (error || error2) return 'An error has occurred: ' + error.message
 
     const allData = joinArrays(bookmarks, data, "id")
-    
+
     function filterData(data) {
         if (searchString) {
             searchString = searchString.toLowerCase()

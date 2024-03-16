@@ -1,16 +1,19 @@
-import { useUser } from "@clerk/clerk-react";
+import { useUser, useAuth } from "@clerk/clerk-react";
 import {
     useEffect, useRef,
 } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CreateAccount = () => {
+    const email = user.primaryEmailAddress?.emailAddress
+    const backendRootUrl = import.meta.env.VITE_BACKEND_URL
+
+    const { user } = useUser();
+    const { getToken } = useAuth();
+
     const renderAfterCalled = useRef(false);
     const nav = useNavigate();
-    const { user } = useUser();
-    const email = user.primaryEmailAddress?.emailAddress
 
-    const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
     useEffect(() => {
         const dataToSend = {
@@ -21,7 +24,8 @@ const CreateAccount = () => {
             fetch(backendRootUrl + "api/users", {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json' // Specify the content type
+                    'Content-Type': 'application/json', // Specify the content type
+                    Authorization: `Bearer ${getToken}`
                 },
                 body: JSON.stringify(dataToSend)
             }).then(() => {

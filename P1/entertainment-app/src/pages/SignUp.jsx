@@ -1,10 +1,15 @@
-import { useSignUp } from "@clerk/clerk-react";
-import Button from "../components/Button.jsx";
 import { useState } from "react";
+import { useSignUp, useAuth } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 
+import Button from "../components/Button.jsx";
+
 const SignUp = () => {
+    const backendRootUrl = import.meta.env.VITE_BACKEND_URL
+    
     const { isLoaded, signUp, setActive } = useSignUp();
+    const { getToken } = useAuth();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
@@ -15,9 +20,9 @@ const SignUp = () => {
     const [verifyError, setVerifyError] = useState("")
 
     const [hasSubmited, setHasSubmited] = useState(false)
+    
     const nav = useNavigate();
 
-    const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -74,7 +79,8 @@ const SignUp = () => {
                 await fetch(backendRootUrl + "api/users", {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json' // Specify the content type
+                        'Content-Type': 'application/json', // Specify the content type
+                        Authorization: `Bearer ${getToken}`
                     },
                     body: JSON.stringify(dataToSend)
                 }).then(
