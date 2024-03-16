@@ -32,7 +32,7 @@ export default function MediaContainer({ pageTitle }) {
     let searchString = searchParams.get('search')
 
     const { isLoading, data, error } = useQuery({
-        queryKey: [`${pageTitle}`],
+        queryKey: [`${pageTitle}Media`],
         queryFn: () =>
             fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle, userEmail)).then((res) =>
                 res.json(),
