@@ -2,6 +2,7 @@ import { useSignUp } from "@clerk/clerk-react";
 import Button from "../components/Button.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
     const { isLoaded, signUp, setActive } = useSignUp();
@@ -88,6 +89,10 @@ const SignUp = () => {
 
     return (
         <div className="flex w-full flex-col pt-[3rem] tablet:pt-[5rem] px-[1.5rem]  justify-center items-center">
+            <Helmet>
+                <title>Sign Up - Entertainment App </title>
+                <meta name="description" content="Join the Entertainment App community and unlock exclusive features. Create your account today to personalize your entertainment experience and discover content tailored to your tastes."/>
+            </Helmet>    
             {/* Icon */}
             <img src="../../assets/logo.svg" alt="App-Logo" className="mb-[3.5rem] tablet:mb-[4.5rem] desktop:mb-[5rem]" />
             {/* SignUp */}
