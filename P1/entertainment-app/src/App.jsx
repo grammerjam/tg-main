@@ -41,7 +41,7 @@ function App() {
             <div className='desktop:pl-[32px] desktop:pt-[32px] desktop:flex'>
               <NavBar />
             </div>
-            <main className='w-full pt-[64px] tablet:pt-[16px] desktop:pl-[108px] '>
+            <main className='w-full pt-[64px] tablet:pt-[16px] desktop:pt-0 desktop:pl-[108px] '>
               <SearchBar />
               <div className='pt-[64px] tablet:pt-[16px] desktop:pt-[98px]'>
                 <BookmarkContext>
