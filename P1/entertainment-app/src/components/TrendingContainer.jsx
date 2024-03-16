@@ -67,16 +67,10 @@ const TrendingContainer = () => {
 
     return (
         <div className='flex flex-col '>
-<<<<<<< HEAD
-            <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> Recommended </h1>
-            <TrendingList trendingResults={trendingResults} />
-        </div>)
-=======
             <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> Trending </h1>
             <TrendingList trendingResults={trendingData} />
         </div>
     )
->>>>>>> develop
 }
 
 export default TrendingContainer
