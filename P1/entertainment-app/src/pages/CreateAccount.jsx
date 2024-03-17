@@ -21,18 +21,20 @@ const CreateAccount = () => {
         };
         //needed for development so it doesn't make 2 post calls
         if (!renderAfterCalled.current) {
-            fetch(backendRootUrl + "api/users", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // Specify the content type
-                    Authorization: `Bearer ${getToken}`
-                },
-                body: JSON.stringify(dataToSend)
-            }).then(() => {
-                nav("/");
-            }).catch(error => {
-                console.error('Error:', error);
-            });
+            async () => {
+                fetch(backendRootUrl + "api/users", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Specify the content type
+                        Authorization: `Bearer ${await getToken()}`
+                    },
+                    body: JSON.stringify(dataToSend)
+                }).then(() => {
+                    nav("/");
+                }).catch(error => {
+                    console.error('Error:', error);
+                });
+            }
         }
         renderAfterCalled.current = true;
     }, [nav, backendRootUrl, email, user])

@@ -12,7 +12,7 @@ export const updateBookmark = async (data, token) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', // Specify the content type
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${await token()}`
             },
             body: JSON.stringify(dataToSend)
         }).then(async (res) => {

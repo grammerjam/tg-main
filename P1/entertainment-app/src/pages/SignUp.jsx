@@ -80,7 +80,7 @@ const SignUp = () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json', // Specify the content type
-                        Authorization: `Bearer ${getToken}`
+                        Authorization: `Bearer ${await getToken()}`
                     },
                     body: JSON.stringify(dataToSend)
                 }).then(

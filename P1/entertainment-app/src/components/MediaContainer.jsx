@@ -34,11 +34,11 @@ export default function MediaContainer({ pageTitle }) {
 
     const { isLoading, data, error } = useQuery({
         queryKey: [`${pageTitle}`],
-        queryFn: () =>
+        queryFn: async () =>
             fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle, userEmail),
                 {
                     headers: {
-                        Authorization: `Bearer ${getToken}`
+                        Authorization: `Bearer ${await getToken()}`
                     }
                 }).then((res) =>
                     res.json(),
@@ -48,11 +48,11 @@ export default function MediaContainer({ pageTitle }) {
 
     const { isLoading2, data: bookmarks, error2 } = useQuery({
         queryKey: [`Bookmarked`],
-        queryFn: () => {
+        queryFn: async () => {
             const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`,
                 {
                     headers: {
-                        Authorization: `Bearer ${getToken}`
+                        Authorization: `Bearer ${ await getToken()}`
                     }
                 })
                 .then((res) =>

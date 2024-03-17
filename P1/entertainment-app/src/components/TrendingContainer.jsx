@@ -17,11 +17,11 @@ const TrendingContainer = () => {
 
     const { isLoading, data: trending, error} = useQuery({
         queryKey: ["Trending"],
-        queryFn: () =>{
+        queryFn: async () =>{
             const trending = fetch(backendUrl + "api/" + `trending/?email=${userEmail}`,
             {
                 headers:{
-                    Authorization: `Bearer ${getToken}`
+                    Authorization: `Bearer ${await getToken()}`
                 }
             }).then((res) =>
                 res.json(),
@@ -32,11 +32,11 @@ const TrendingContainer = () => {
     })
     const { isLoading2, data: bookmarks, error2 } = useQuery({
         queryKey: [`Bookmarked`],
-        queryFn: () => {
+        queryFn: async () => {
             const bookmarks = fetch(backendUrl + "api/" + `users/bookmarks/?email=${userEmail}`,
             {
                 headers:{
-                    Authorization: `Bearer ${getToken}`
+                    Authorization: `Bearer ${await getToken()}`
                 }
             })
             .then((res) =>
