@@ -47,12 +47,13 @@ export default function MediaCard({ media, loading }) {
           onClick={handleBookmarkMedia}
           onMouseEnter={(e) => { handleHoverBookmark(e) }}
           onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
+          role="button" aria-pressed={isBookmarkHovered ? "true" : "false"} aria-label={isBookmarkHovered ? "Remove Bookmark" : "Add Bookmark"} tabIndex="0"
         >
           <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
             <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill="none" className={`${isBookmarkHovered && "stroke-[#5A698F]"} ${media.isBookmarked && "fill-[#FFFFFF]"}`} />
           </svg>
         </div>
-        <img className={`w-full rounded-lg ${loading && "invisible"}`} src={media.tpath}></img>
+        <img className={`w-full rounded-lg ${loading && "invisible"}`} src={media.tpath} alt={media.title} role="button" tabIndex="0"></img>
       </div>
       <div className='flex items-center pb-[0.25rem] tablet:pb-[0.30] gap-[6px]'>
         <p>{media.year}</p>
@@ -65,7 +66,7 @@ export default function MediaCard({ media, loading }) {
         <p className=''> {"•"} </p>
         <p> {media.rating} </p>
       </div>
-      <p className='text-ma-white font-[500] tablet:text-h-xsm'> {media.title} </p>
+      <p className='text-ma-white font-[500] tablet:text-h-xsm' role="heading" aria-level="3"> {media.title} </p>
     </div>
   )
 }

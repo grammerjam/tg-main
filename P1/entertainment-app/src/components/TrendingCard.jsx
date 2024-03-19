@@ -44,7 +44,8 @@ const TrendingCard = ({ trendingMedia }) => {
                 <div className={`absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`}
                     onClick={handleBookmarkMedia}
                     onMouseEnter={(e) => { handleHoverBookmark(e) }}
-                    onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}>
+                    onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
+                    role="button" aria-pressed={trendingMedia.isBookmarked ? "true" : "false"} aria-label={trendingMedia.isBookmarked ? "Remove Bookmark" : "Add Bookmark"} tabIndex="0">
                     <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill="none" className={`${isBookmarkHovered && "stroke-[#5A698F]"} ${trendingMedia.isBookmarked && "fill-[#FFFFFF]"}`} /></svg>
                 </div>
                 <img className='w-full rounded-lg' src={trendingMedia.tpathTrending} />
@@ -58,7 +59,7 @@ const TrendingCard = ({ trendingMedia }) => {
                         <p className='mx-[0.5rem]'> {"•"} </p>
                         <p> {trendingMedia.rating} </p>
                     </div>
-                    <p className="font-light text-h-sm tablet:text-h-med"> {trendingMedia.title} </p>
+                    <p className="font-light text-h-sm tablet:text-h-med" role="heading" aria-level="3"> {trendingMedia.title} </p>
                 </div>
             </div>
         </div>
