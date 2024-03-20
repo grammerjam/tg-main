@@ -1,7 +1,7 @@
 import { useUser } from "@clerk/clerk-react";
 import { useQueryClient } from "@tanstack/react-query"
 import { useCallback, useEffect, useMemo, useState } from "react";
-import TrendingCard from "./TrendingCard";
+import WatchMoreCard from "./WatchMoreCard";
 
 export default function WatchMore() {
     const queryClient = useQueryClient()
@@ -33,10 +33,10 @@ export default function WatchMore() {
     }, [queryClient, queryFn, queryKey, getWatchMoreData])
 
     return (
-        <div className='desktop:flex-grow-[1]'>
+        <div className='w-full flex flex-col gap-[16px] desktop:flex-grow-[1]'>
             {watchMoreVideosArray.map((videoObj) => {
                 return (
-                    <TrendingCard key={videoObj.id} trendingMedia={videoObj} />
+                    <WatchMoreCard key={videoObj.id} trendingMedia={videoObj} />
                 )
             })}
         </div>
