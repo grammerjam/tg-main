@@ -13,7 +13,6 @@ export default function VideoPlayer() {
     const getVideoStatus = useCallback(async () => {
         try {
             let res = await fetch(`${backendRootUrl}videos/${videoId}`)
-            // console.log(res.status)
             if (res.status === 404) {
                 return false
             } else {
@@ -22,20 +21,17 @@ export default function VideoPlayer() {
         } catch (e) {
             console.log(e)
         }
-    }, [videoId])
+    }, [videoId, backendRootUrl])
 
     const checkVideoStatus = useCallback(async () => {
         if (videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.removeAttribute('src');
-            videoRef.current.load();
+            videoRef.current.pause()
+            videoRef.current.removeAttribute('src')
+            videoRef.current.load()
         }
-        let result = await getVideoStatus(); // Use await here to wait for the promise to resolve
-        // console.log(result);
-        setValidVideo(result); // This will now correctly set the state based on the boolean value
+        let result = await getVideoStatus()
+        setValidVideo(result)
     }, [getVideoStatus])
-
-    // checkVideoStatus();
 
     useEffect(() => {
         if (id) {
@@ -48,16 +44,12 @@ export default function VideoPlayer() {
         }
     }, [id, videoId, checkVideoStatus])
 
-
-    // useEffect(() => {
-
-    // }, [getVideoStatus])
     return (
         <div className="w-full rounded-[10px]">
             {
                 validVideo ?
                     <video ref={videoRef} className="w-full rounded-[10px]" controls autoPlay>
-                        <source src={`http://localhost:10000/videos/${videoId}`} type="video/mp4"></source>
+                        <source src={`${backendRootUrl}videos/${videoId}`} type="video/mp4"></source>
                         Your browser does not support the video tag or mp4s
                     </ video>
                     :
