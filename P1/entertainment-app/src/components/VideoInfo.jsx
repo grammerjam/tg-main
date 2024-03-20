@@ -5,7 +5,6 @@ export default function VideoInfo() {
     const { id } = useParams()
     const [folded, setFolded] = useState(true)
     const handleDescriptionClick = (e) => {
-        console.log('hello')
         e.preventDefault()
         setFolded((prev) => !prev)
     }
