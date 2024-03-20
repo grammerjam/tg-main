@@ -25,7 +25,6 @@ export default function WatchMore() {
     // const watchMoreData = queryClient.getQueryData(["Trending"])
     useEffect(() => {
         getWatchMoreData().then(recommendedVideos => {
-            console.log(recommendedVideos);
             setWatchMoreVideosArray(recommendedVideos)
         }).catch(err => {
             console.error(err);
