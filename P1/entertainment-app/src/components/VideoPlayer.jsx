@@ -1,9 +1,13 @@
 import { useRef, useEffect, useState, useCallback } from "react"
 import PropTypes from 'prop-types'
+import { useParams } from 'react-router-dom';
 
-export default function VideoPlayer({ videoId }) {
+export default function VideoPlayer() {
+    const { id } = useParams()
+    const [videoId, setVideoId] = useState(null)
     const videoRef = useRef(null)
     const [validVideo, setValidVideo] = useState(false)
+
     const getVideoStatus = useCallback(async () => {
         try {
             let res = await fetch(`http://localhost:10000/videos/${videoId}`)
@@ -18,20 +22,34 @@ export default function VideoPlayer({ videoId }) {
         }
     }, [videoId])
 
-    useEffect(() => {
-        const checkVideoStatus = async () => {
-            if (videoRef.current) {
-                videoRef.current.pause();
-                videoRef.current.removeAttribute('src');
-                videoRef.current.load();
-            }
-            let result = await getVideoStatus(); // Use await here to wait for the promise to resolve
-            // console.log(result);
-            setValidVideo(result); // This will now correctly set the state based on the boolean value
-        };
-
-        checkVideoStatus();
+    const checkVideoStatus = useCallback(async () => {
+        if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.removeAttribute('src');
+            videoRef.current.load();
+        }
+        let result = await getVideoStatus(); // Use await here to wait for the promise to resolve
+        // console.log(result);
+        setValidVideo(result); // This will now correctly set the state based on the boolean value
     }, [getVideoStatus])
+
+    // checkVideoStatus();
+
+    useEffect(() => {
+        if (id) {
+            setVideoId(id)
+        } else {
+            setVideoId(null)
+        }
+        if (videoId) {
+            checkVideoStatus();
+        }
+    }, [id, videoId, checkVideoStatus])
+
+
+    // useEffect(() => {
+
+    // }, [getVideoStatus])
     return (
         <div className="w-full rounded-[10px]">
             {
