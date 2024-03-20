@@ -8,9 +8,11 @@ export default function VideoPlayer() {
     const videoRef = useRef(null)
     const [validVideo, setValidVideo] = useState(false)
 
+    const backendRootUrl = import.meta.env.VITE_BACKEND_URL
+
     const getVideoStatus = useCallback(async () => {
         try {
-            let res = await fetch(`http://localhost:10000/videos/${videoId}`)
+            let res = await fetch(`${backendRootUrl}videos/${videoId}`)
             // console.log(res.status)
             if (res.status === 404) {
                 return false

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import VideoPlayer from "../components/VideoPlayer";
+import WatchMore from '../components/WatchMore';
 
 export default function VideoPage() {
     const { id } = useParams()
@@ -28,12 +29,7 @@ export default function VideoPage() {
                     <p className='px-[8px] py-[4px] bg-ma-blue rounded-[10px]'>Soothing</p>
                 </div>
             </div>
-            <div className='desktop:flex-grow-[1]'>
-                <p>Hello</p>
-                <p>Hello</p>
-                <p>Hello</p>
-                <p>Hello</p>
-            </div>
+            <WatchMore />
         </div>
     )
 }
