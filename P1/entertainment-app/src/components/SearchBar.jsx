@@ -56,6 +56,7 @@ const SearchBar = () => {
                         type="text"
                         placeholder={placeholder}
                         onChange={handleChange}
+                        spellCheck = "false"
                         className={`outline-none border-b ${currentSearch ? 'border-5A698F w-10/12 tablet:w-6/12' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
                     />
                 </div>
