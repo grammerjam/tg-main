@@ -46,7 +46,7 @@ const SearchBar = () => {
 
 
     return (
-        <div className="fixed rounded-b-[10px] w-full flex items-center desktop:h-[5.5rem] desktop:items-end bg-ma-black h-[4rem] z-10">
+        <div className="fixed w-full flex items-center desktop:h-[5.5rem] desktop:items-end bg-ma-black h-[4rem] z-10">
             <form className="w-full text-h-med tablet:text-h-lg px-[1rem] flex items-center">
                 <div className={`flex items-center desktop:py-[10px] w-full`}>
                     <div className="max-w-[24px] tablet:max-h-[24px]">
