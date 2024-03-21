@@ -6,13 +6,13 @@ import { useQuery } from '@tanstack/react-query';
 
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 
-export const BookmarkContext = createContext();
+export const BookmarkContext = createContext({});
 
 const BookmarkProvider = ({ children }) => {
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
 
-    const { data: bookmarks } = useQuery({
+    const {data: bookmarks, error } = useQuery({
         queryKey: [`bookmarks`],
         queryFn: async () => {
             const res = await fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`);
@@ -26,7 +26,7 @@ const BookmarkProvider = ({ children }) => {
     });
     return (
         <>
-            <BookmarkContext.Provider value={bookmarks}>
+            <BookmarkContext.Provider value={{bookmarks: bookmarks, error: error}}>
                 {children}
             </BookmarkContext.Provider>
         </>
