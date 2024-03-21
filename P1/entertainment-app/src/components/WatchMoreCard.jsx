@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const WatchMoreCard = ({ trendingMedia }) => {
 
     return (
-        <div className='w-full flex flex-col gap-[4px] tablet:flex-row tablet:gap-[32px] desktop:gap-[16px]'>
+        <Link to={`/video/${trendingMedia.id}`} className='w-full flex flex-col gap-[4px] tablet:flex-row tablet:gap-[32px] desktop:gap-[16px] cursor-pointer'>
             <img className='w-full rounded-[10px] tablet:w-[30%] desktop:min-w-[150px] desktop:w-[50%]' src={trendingMedia.tpathTrending} />
             <div className='w-full flex flex-col gap-[8px] desktop:w-auto desktop:gap-0'>
                 <div className='flex gap-[8px] items-baseline tablet:gap-[16px] desktop:flex-col desktop:gap-[4px]'>
@@ -21,7 +22,7 @@ const WatchMoreCard = ({ trendingMedia }) => {
                     })}
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
