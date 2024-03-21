@@ -1,9 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import TrendingList from "./TrendingList";
 import { useUser } from "@clerk/clerk-react";
-import { joinArrays } from "../Utils";
-
-
+import TrendingList from "./TrendingList";
 
 const TrendingContainer = () => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -12,9 +9,9 @@ const TrendingContainer = () => {
     const userEmail = user.primaryEmailAddress.emailAddress;
 
 
-    const { isLoading, data: trending, error} = useQuery({
+    const { isLoading, data: trendingMedia, error } = useQuery({
         queryKey: ["Trending"],
-        queryFn: () =>{
+        queryFn: () => {
             const trending = fetch(backendUrl + "api/" + `trending/?email=${userEmail}`).then((res) =>
                 res.json(),
             )
@@ -22,21 +19,8 @@ const TrendingContainer = () => {
         },
         keepPreviousData: true,
     })
-    const { isLoading2, data: bookmarks, error2 } = useQuery({
-        queryKey: [`Bookmarked`],
-        queryFn: () => {
-            const bookmarks = fetch(backendUrl + "api/" + `users/bookmarks/?email=${userEmail}`)
-            .then((res) =>
-                res.json(),
-            )
-            return bookmarks
-        },
-        keepPreviousData: true,
-    })
 
-
-
-    if (isLoading|| trending == undefined || isLoading2 || bookmarks == undefined) {
+    if (isLoading || trendingMedia == undefined) {
         const loadingCards = []
         for (let i = 0; i < 10; i++) {
             const newEmptyCardObject = {
@@ -59,16 +43,14 @@ const TrendingContainer = () => {
         )
     }
 
-    if (error || error2) {
+    if (error) {
         return 'An error has occurred: ' + error.message
     }
-
-    const trendingData = joinArrays(bookmarks, trending, "id")
 
     return (
         <div className='flex flex-col '>
             <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> Recommended </h1>
-            <TrendingList trendingResults={trendingData} />
+            <TrendingList trendingResults={trendingMedia} />
         </div>
     )
 }

@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query'
 import { useUser } from "@clerk/clerk-react";
 
-import { joinArrays } from '../Utils';
 
 import MediaList from './MediaList';
 
@@ -23,7 +22,6 @@ function getUrlQuery(title, email) {
     }
 }
 
-
 export default function MediaContainer({ pageTitle }) {
 
     const { user } = useUser();
@@ -31,7 +29,24 @@ export default function MediaContainer({ pageTitle }) {
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
 
-    const { isLoading, data, error } = useQuery({
+    function filterData(data) {
+        if (searchString) {
+            searchString = searchString.toLowerCase()
+            let filteredPageResults = data.filter((movie) => {
+                return movie.title.toLowerCase().includes(searchString)
+            })
+            return filteredPageResults
+        }
+    }
+
+    function searchTitle(media) {
+        return filterData(media).length !== 0 ?
+            `Found ${filterData(media).length} result${filterData(media).length !== 1 ? "s" : ""} for "${searchString}"` :
+            "No results found for \"" + searchString + "\""
+    }
+
+
+    const { isLoading, data: media, error } = useQuery({
         queryKey: [`${pageTitle}Media`],
         queryFn: () =>
             fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle, userEmail)).then((res) =>
@@ -40,19 +55,8 @@ export default function MediaContainer({ pageTitle }) {
         keepPreviousData: true,
     })
 
-    const { isLoading2, data: bookmarks, error2 } = useQuery({
-        queryKey: [`Bookmarked`],
-        queryFn: () => {
-            const bookmarks = fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`)
-            .then((res) =>
-                res.json(),
-            )
-            return bookmarks
-        },
-        keepPreviousData: true,
-    })
 
-    if (isLoading || isLoading2 || bookmarks == undefined || data == undefined) {
+    if (isLoading || media == undefined) {
 
         const emptyCardNumber = 20
         const emptyCardArray = []
@@ -69,33 +73,23 @@ export default function MediaContainer({ pageTitle }) {
         }
         return (
             <div className='flex flex-col px-[1rem] tablet:pl-[1.5rem] w-full desktop:pr-[36px]'>
-                {(searchString !== null && searchString !== "" && !isLoading && !isLoading2) ? (
-                    <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
+                {(searchString !== null && searchString !== "" && !isLoading) ? (
+                    <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{searchTitle(media)}</h1>
                 ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
                 <MediaList results={emptyCardArray} loading={true} />
             </div>
         )
     }
-    if (error || error2) return 'An error has occurred: ' + error.message
+    if (error) return 'An error has occurred: ' + error.message
 
-    const allData = joinArrays(bookmarks, data, "id")
-    
-    function filterData(data) {
-        if (searchString) {
-            searchString = searchString.toLowerCase()
-            let filteredPageResults = data.filter((movie) => {
-                return movie.title.toLowerCase().includes(searchString)
-            })
-            return filteredPageResults
-        }
-    }
+
 
     return (
         <div className='flex flex-col px-[1rem] tablet:pl-[1.5rem] w-full desktop:pr-[36px]'>
             {(searchString !== null && searchString !== "") ? (
-                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{filterData(allData).length !== 0 ? `Found ${filterData(allData).length} result${filterData(allData).length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
+                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{searchTitle(media)}</h1>
             ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
-            <MediaList results={searchString ? filterData(allData) : allData} />
+            <MediaList results={searchString ? filterData(media) : media} />
         </div>
     )
 }
