@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateBookmark } from '../hooks/handleBookmark';
+import { Link } from 'react-router-dom';
 
 
 export default function MediaCard({ media, loading }) {
@@ -23,7 +24,9 @@ export default function MediaCard({ media, loading }) {
     },
   });
 
-  const handleBookmarkMedia = async () => {
+  const handleBookmarkMedia = async (e) => {
+    e.preventDefault()
+    e.stopPropagation();
     setIsBookmarked((prev) => !prev)
     const dataToSend = {
       userEmail: userEmail,
@@ -45,10 +48,10 @@ export default function MediaCard({ media, loading }) {
   }
 
   return (
-    <div className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[calc((100%-15px)/2)] tablet:w-[calc((100%-60px)/3)] desktop:w-[calc((100%-120px)/4)] text-[11px] tablet:text-b-sm font-[300] text-[#FFFFFFBF] `}>
+    <Link to={`/video/${media.id}`} className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[calc((100%-15px)/2)] tablet:w-[calc((100%-60px)/3)] desktop:w-[calc((100%-120px)/4)] text-[11px] tablet:text-b-sm font-[300] text-[#FFFFFFBF] `}>
       <div className={`w-full flex relative justify-end mb-[0.5rem] rounded-lg ${loading && "skeleton"}`}>
         <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full  flex justify-center items-center ${loading && "hidden"} ${isBookmarked ? "bg-ma-white opacity-100" : "opacity-50"}`}
-          onClick={handleBookmarkMedia}
+          onClick={(e) => handleBookmarkMedia(e)}
           onMouseEnter={(e) => { handleHoverBookmark(e) }}
           onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
         >
@@ -70,7 +73,7 @@ export default function MediaCard({ media, loading }) {
         <p> {media.rating} </p>
       </div>
       <p className='text-ma-white font-[500] tablet:text-h-xsm'> {media.title} </p>
-    </div>
+    </Link>
   )
 }
 

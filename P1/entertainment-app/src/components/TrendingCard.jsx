@@ -4,6 +4,7 @@ import { updateBookmark } from '../hooks/handleBookmark';
 import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const TrendingCard = ({ trendingMedia }) => {
     const { user } = useUser();
@@ -29,7 +30,9 @@ const TrendingCard = ({ trendingMedia }) => {
         },
     });
 
-    const handleBookmarkMedia = async () => {
+    const handleBookmarkMedia = async (e) => {
+        e.preventDefault()
+        e.stopPropagation();
         setIsBookmarked((prev) => !prev)
         const dataToSend = {
             userEmail: userEmail,
@@ -43,17 +46,17 @@ const TrendingCard = ({ trendingMedia }) => {
     }
 
     return (
-        <div className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative'>
+        <Link to={`/video/${trendingMedia.id}`} className='mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative'>
             <div className='w-full flex relative justify-end mb-[0.5rem]' >
-            <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full  flex justify-center items-center ${isBookmarked ? "bg-ma-white opacity-100" : "opacity-50"}`}
-          onClick={handleBookmarkMedia}
-          onMouseEnter={(e) => { handleHoverBookmark(e) }}
-          onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
-        >
-          <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" className={`${isBookmarkHovered ? "fill-[#FFFFFF]" : "fill-none"}  ${isBookmarked ? "stroke-ma-black" : "stroke-ma-white"}`}>
-            <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" strokeWidth="1.5" />
-          </svg>
-        </div>
+                <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full  flex justify-center items-center ${isBookmarked ? "bg-ma-white opacity-100" : "opacity-50"}`}
+                    onClick={(e) => handleBookmarkMedia(e)}
+                    onMouseEnter={(e) => { handleHoverBookmark(e) }}
+                    onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
+                >
+                    <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" className={`${isBookmarkHovered ? "fill-[#FFFFFF]" : "fill-none"}  ${isBookmarked ? "stroke-ma-black" : "stroke-ma-white"}`}>
+                        <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" strokeWidth="1.5" />
+                    </svg>
+                </div>
                 <img className='w-full rounded-lg' src={trendingMedia.tpathTrending} />
                 <div className='absolute bottom-0 left-0 right-0 p-5 text-white'>
                     <div className='flex items-center text-ma-white text-b-sm tablet:text-b-med mb-[0.25rem] tablet:mb-[0.30]'>
@@ -68,7 +71,7 @@ const TrendingCard = ({ trendingMedia }) => {
                     <p className="font-light text-h-sm tablet:text-h-med"> {trendingMedia.title} </p>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
