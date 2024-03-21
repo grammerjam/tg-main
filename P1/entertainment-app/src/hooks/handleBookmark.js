@@ -1,6 +1,7 @@
 const backendRootUrl = import.meta.env.VITE_BACKEND_URL
 const bookmarkRoute = "users/bookmarks"
 
+
 export const updateBookmark = async (data) => {
     const dataToSend = {
         email: data.userEmail,
