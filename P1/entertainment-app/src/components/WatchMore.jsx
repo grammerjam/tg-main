@@ -2,20 +2,21 @@ import { useUser } from "@clerk/clerk-react";
 import { useQueryClient } from "@tanstack/react-query"
 import { useCallback, useEffect, useMemo, useState } from "react";
 import WatchMoreCard from "./WatchMoreCard";
+import PropTypes from 'prop-types';
 
-export default function WatchMore() {
+export default function WatchMore({ videoId }) {
     const queryClient = useQueryClient()
-    const queryKey = useMemo(() => ["Trending"], []);
+    const queryKey = useMemo(() => ["WatchMore", videoId], []);
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const { user } = useUser();
     const userEmail = user.primaryEmailAddress.emailAddress;
     const [watchMoreVideosArray, setWatchMoreVideosArray] = useState([])
     let queryFn = useCallback(async () => {
-        const trending = fetch(backendUrl + "api/" + `trending/?email=${userEmail}`).then((res) =>
+        const trending = fetch(backendUrl + "api/" + `watchMore/?email=${userEmail}&videoId=${videoId}`).then((res) =>
             res.json(),
         )
         return trending
-    }, [backendUrl, userEmail])
+    }, [backendUrl, userEmail, videoId])
 
     const getWatchMoreData = useCallback(async () => {
         const watchMoreData = await queryClient.ensureQueryData({ queryKey, queryFn })
@@ -40,4 +41,8 @@ export default function WatchMore() {
             })}
         </div>
     )
+}
+
+WatchMore.propTypes = {
+    videoId: PropTypes.string,
 }
