@@ -22,8 +22,6 @@ function getUrlQuery(title, email) {
             return "media"
     }
 }
-
-
 export default function MediaContainer({ pageTitle }) {
 
     const { user } = useUser();
@@ -68,10 +66,10 @@ export default function MediaContainer({ pageTitle }) {
             emptyCardArray.push(newEmptyCardObject)
         }
         return (
-            <div className='flex flex-col px-[1rem] tablet:px-[1.5rem] w-full desktop:pr-[36px]'>
+            <div className='flex flex-col px-[1rem] tablet:px-[1.5rem] w-full desktop:pr-[36px]' role="region" aria-label="Media Container" tabIndex="0">
                 {(searchString !== null && searchString !== "" && !isLoading && !isLoading2) ? (
-                    <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
-                ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
+                    <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]' aria-live="assertive">{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
+                ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]' aria-live="polite"> {pageTitle}</h1>}
                 <MediaList results={emptyCardArray} loading={true} />
             </div>
         )

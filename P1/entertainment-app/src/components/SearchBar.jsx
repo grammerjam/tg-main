@@ -46,11 +46,11 @@ const SearchBar = () => {
 
 
     return (
-        <div className="fixed w-full flex items-center desktop:h-[5.5rem] desktop:items-end bg-ma-black h-[4rem] z-10">
-            <form className="w-full text-h-med tablet:text-h-lg px-[1rem] flex items-center">
-                <div className={`flex items-center desktop:py-[10px] w-full`}>
-                    <div className="max-w-[24px] tablet:max-h-[24px]">
-                        <img src={"/assets/icon-searchbar-search.svg"} />
+        <div className="fixed w-full flex items-center desktop:h-[5.5rem] desktop:items-end bg-ma-black h-[4rem] z-10" role="search">
+            <form className="w-full text-h-med tablet:text-h-lg px-[1rem] flex items-center" aria-label="Search Form">
+                <div className={`flex items-center desktop:py-[10px] w-full`} role="searchbox">
+                    <div className="max-w-[24px] tablet:max-h-[24px]" role="img" aria-label="Search Icon">
+                        <img src={"/assets/icon-searchbar-search.svg"} alt="Search Icon" />
                     </div>
                     <input
                         type="text"
@@ -58,6 +58,8 @@ const SearchBar = () => {
                         onChange={handleChange}
                         spellCheck = "false"
                         className={`outline-none border-b ${currentSearch ? 'border-5A698F w-10/12 tablet:w-6/12' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
+                        aria-label="Search Input"
+                        aria-controls="searchResults"
                     />
                 </div>
             </form>

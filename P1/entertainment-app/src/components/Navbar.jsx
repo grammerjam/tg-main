@@ -34,27 +34,27 @@ const Navbar = () =>
 
     
     return (
-        <nav className='fixed desktop:rounded-[10px] z-10 w-full desktop:w-auto desktop:h-[92vh]'>
+        <nav className='fixed desktop:rounded-[10px] z-10 w-full desktop:w-auto desktop:h-[92vh]' aria-label="Main Navigation">
             <div className=' desktop:p[32px] desktop:h-[100%]'>
                 <div className="bg-ma-blue flex flex-row justify-between items-center p-[16px] desktop:rounded-[10px] desktop:flex-col desktop:p-[28px] desktop:w-[96px] desktop:h-[100%] desktop:gap-0 desktop:justify-start" >
                     <Link to="/" className='desktop:pb-[75px]'>
-                        <img src="/assets/logo.svg" alt="App-Icon" className='w-[25px] tablet:w-[32px]' />
+                        <img src="/assets/logo.svg" alt="App-Icon" className='w-[25px] tablet:w-[32px]' aria-label="Home Page" />
                     </Link>
-                    <div className='flex gap-[24px] justify-between tablet:gap-[26px] desktop:flex-col'>
-                        <Link to="/">
+                    <div className='flex gap-[24px] justify-between tablet:gap-[26px] desktop:flex-col' role="menu">
+                        <Link to="/" role="menuitem">
                             <img src={homeIcon} alt="Home" className="h-[16px] tablet:h-[20px]" />
                         </Link>
-                        <Link to="/movies" >
+                        <Link to="/movies" role="menuitem">
                             <img src={movieIcon} alt="Movies" className="h-[16px] tablet:h-[20px]" />
                         </Link>
-                        <Link to="/tv-series">
+                        <Link to="/tv-series" role="menuitem">
                             <img src={tvSeriesIcon} alt="TV-Series" className="h-[16px] tablet:h-[20px]" />
                         </Link>
-                        <Link to="/bookmark" >
+                        <Link to="/bookmark" role="menuitem">
                             <img src={bookmarkIcon} alt="bookmark" className="h-[16px] tablet:h-[20px]" />
                         </Link>
                     </div>
-                    <div className='desktop:mt-auto'>
+                    <div className='desktop:mt-auto' role="menuitem">
                         <UserButton />
                     </div>
                 </div>

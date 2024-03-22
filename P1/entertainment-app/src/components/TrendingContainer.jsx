@@ -66,8 +66,8 @@ const TrendingContainer = () => {
     const trendingData = joinArrays(bookmarks, trending, "id")
 
     return (
-        <div className='flex flex-col '>
-            <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> Recommended </h1>
+        <div className='flex flex-col ' role="region" aria-label="Trending Feed" tabIndex="0">
+            <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]' role="heading" aria-level="2"> Recommended </h1>
             <TrendingList trendingResults={trendingData} />
         </div>
     )

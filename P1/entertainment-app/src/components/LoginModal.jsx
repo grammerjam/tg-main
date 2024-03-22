@@ -92,8 +92,8 @@ function SignInOAuthButtons() {
             <button onClick={(e) => {
                 e.preventDefault()
                 signInWith("oauth_google")
-            }} className="text-black flex justify-center w-full gap-[16px] py-[16px] ">
-                Sign In With Gmail <img src={Logo} />
+            }} className="text-black flex justify-center w-full gap-[16px] py-[16px]" aria-label="Sign in with Gmail" >
+                Sign In With Gmail <img src={Logo} alt="Sign in with Gmail" />
             </button>
         </div>
     );
