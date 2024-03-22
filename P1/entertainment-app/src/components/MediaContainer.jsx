@@ -15,10 +15,11 @@ function getUrlQuery(title, email) {
             return "media/movies"
         case "TV Series":
             return "media/tv-series"
-        case "Recommended":
-            return "media"
         case "Bookmarked":
             return `users/bookmarks/?email=${email}`
+        default:
+            // Home
+            return "media"
     }
 }
 
@@ -31,7 +32,7 @@ export default function MediaContainer({ pageTitle }) {
     let searchString = searchParams.get('search')
 
     const { isLoading, data, error } = useQuery({
-        queryKey: [`${pageTitle}`],
+        queryKey: [`${pageTitle}Media`],
         queryFn: () =>
             fetch(backendRootUrl + "api/" + getUrlQuery(pageTitle, userEmail)).then((res) =>
                 res.json(),
@@ -67,7 +68,7 @@ export default function MediaContainer({ pageTitle }) {
             emptyCardArray.push(newEmptyCardObject)
         }
         return (
-            <div className='flex flex-col px-[1rem] tablet:pl-[1.5rem] w-full desktop:pr-[36px]'>
+            <div className='flex flex-col px-[1rem] tablet:px-[1.5rem] w-full desktop:pr-[36px]'>
                 {(searchString !== null && searchString !== "" && !isLoading && !isLoading2) ? (
                     <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{data.length !== 0 ? `Found ${data.length} result${data.length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
                 ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
@@ -90,7 +91,7 @@ export default function MediaContainer({ pageTitle }) {
     }
 
     return (
-        <div className='flex flex-col px-[1rem] tablet:pl-[1.5rem] w-full desktop:pr-[36px]'>
+        <div className='flex flex-col px-[1rem] tablet:px-[1.5rem] w-full desktop:pr-[36px]'>
             {(searchString !== null && searchString !== "") ? (
                 <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{filterData(allData).length !== 0 ? `Found ${filterData(allData).length} result${filterData(allData).length !== 1 ? "s" : ""} for "${searchString}"` : "No results found for \"" + searchString + "\""}</h1>
             ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
