@@ -6,7 +6,7 @@ const TrendingList = ({ trendingResults }) =>
 
     return (
         <div className='overflow-x-auto' role="list" aria-label="Trending Items">
-            <div className='h-full flex tablet:flex-row justify-start gap-x-[0.94rem] tablet:gap-x-[1.88rem] desktop:gap-x-[2.5rem]' role="listitem">
+            <div className='h-full flex tablet:flex-row justify-start gap-x-[15px] tablet:gap-x-[40px]' role="listitem">
                 {trendingResults.map((trendingResults) =>
                 {
                     return (
