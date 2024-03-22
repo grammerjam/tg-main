@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export default function WatchMore({ videoId }) {
     const queryClient = useQueryClient()
-    const queryKey = useMemo(() => ["WatchMore", videoId], []);
+    const queryKey = useMemo(() => ["WatchMore", videoId], [videoId]);
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const { user } = useUser();
     const userEmail = user.primaryEmailAddress.emailAddress;
