@@ -27,7 +27,7 @@ const TrendingCard = ({ trendingMedia }) => {
             return updateBookmark(dataToSend)
         },
         onSettled: () => {
-            queryClient.setQueriesData(["bookmarks"], (bookmarks) => {
+            queryClient.setQuerData(["bookmarks"], (bookmarks) => {
                 bookmarks[trendingMedia.id] = !bookmarks[trendingMedia.id]
             });
         },

@@ -15,13 +15,12 @@ export default function MediaCard({ media, loading }) {
 
   const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
 
-
   const updateBookmarkMutation = useMutation({
     mutationFn: (dataToSend) => {
       return updateBookmark(dataToSend)
     },
     onSettled: () => {
-      queryClient.setQueriesData(["bookmarks"], (bookmarks) => {
+      queryClient.setQueryData(["bookmarks"], (bookmarks) => {
         bookmarks[media.id] = !bookmarks[media.id]
       });
     },
