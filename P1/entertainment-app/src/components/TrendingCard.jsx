@@ -3,6 +3,7 @@ import { updateBookmark } from '../hooks/handleBookmark';
 import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const TrendingCard = ({ trendingMedia }) => {
     const { user } = useUser();
@@ -28,7 +29,9 @@ const TrendingCard = ({ trendingMedia }) => {
         },
     });
 
-    const handleBookmarkMedia = async () => {
+    const handleBookmarkMedia = async (e) => {
+        e.preventDefault()
+        e.stopPropagation();
         setIsBookmarked((prev) => !prev)
         const dataToSend = {
             userEmail: userEmail,
@@ -42,7 +45,7 @@ const TrendingCard = ({ trendingMedia }) => {
     }
 
     return (
-        <div className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative flex justify-end`}>
+        <Link to={`/video/${trendingMedia.id}`} className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative flex justify-end`}>
             <div className={`absolute top-[1rem] right-[1rem] tablet:top-[1.3rem] tablet:right-[1.5rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`}
                 onClick={handleBookmarkMedia}
                 onMouseEnter={(e) => { handleHoverBookmark(e) }}
@@ -73,7 +76,7 @@ const TrendingCard = ({ trendingMedia }) => {
                 object-cover aspect-[2/1] rounded-lg
                 '
                 src={trendingMedia.tpathTrending} />
-        </div>
+        </Link>
     )
 }
 
