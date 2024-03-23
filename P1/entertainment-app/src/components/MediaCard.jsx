@@ -5,7 +5,6 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateBookmark } from '../hooks/handleBookmark';
 import { Link } from 'react-router-dom';
 
-
 export default function MediaCard({ media, loading }) {
   const { user } = useUser();
 
@@ -48,18 +47,19 @@ export default function MediaCard({ media, loading }) {
   }
 
   return (
-    <Link to={`/video/${media.id}`} className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] w-[calc((100%-15px)/2)] tablet:w-[calc((100%-48px)/3)] desktop:w-[calc((100%-108px)/4)] text-[11px] tablet:text-b-sm font-[300] text-[#FFFFFFBF] `}>
+    <Link to={`/video/${media.id}`} className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] aspect-[3/2] w-[calc((100%-15px)/2)] tablet:w-[calc((100%-60px)/3)] desktop:w-[calc((100%-120px)/4)] text-[11px] tablet:text-b-sm font-[300] text-[#FFFFFFBF] `}>
       <div className={`w-full flex relative justify-end mb-[0.5rem] rounded-lg ${loading && "skeleton"}`}>
         <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full  flex justify-center items-center ${loading && "hidden"} ${isBookmarked ? "bg-ma-white opacity-100" : "opacity-50"}`}
           onClick={(e) => handleBookmarkMedia(e)}
           onMouseEnter={(e) => { handleHoverBookmark(e) }}
           onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
+          role="button" aria-pressed={isBookmarkHovered ? "true" : "false"} aria-label={isBookmarkHovered ? "Remove Bookmark" : "Add Bookmark"} tabIndex="0"
         >
           <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" className={`${isBookmarkHovered ? "fill-[#FFFFFF]" : "fill-none"}  ${isBookmarked ? "stroke-ma-black" : "stroke-ma-white"}`}>
             <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" strokeWidth="1.5" />
           </svg>
         </div>
-        <img className={`w-full rounded-lg ${loading && "invisible"}`} src={media.tpath}></img>
+        <img className={`w-full rounded-lg ${loading && "invisible"}`} src={media.tpath} alt={media.title} role="button" tabIndex="0"></img>
       </div>
       <div className='flex items-center pb-[0.25rem] tablet:pb-[0.30] gap-[6px]'>
         <p>{media.year}</p>
@@ -72,7 +72,7 @@ export default function MediaCard({ media, loading }) {
         <p className=''> {"•"} </p>
         <p> {media.rating} </p>
       </div>
-      <p className='text-ma-white font-[500] tablet:text-h-xsm'> {media.title} </p>
+      <p className='text-ma-white font-[500] tablet:text-h-xsm' role="heading" aria-level="3"> {media.title} </p>
     </Link>
   )
 }

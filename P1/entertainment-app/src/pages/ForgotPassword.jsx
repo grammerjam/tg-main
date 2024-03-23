@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Logo from '/assets/logo.svg'
 import { useSignIn } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function ForgotPassword() {
     const [signUpError, setSignUpError] = useState("")
@@ -77,6 +78,10 @@ export default function ForgotPassword() {
 
     return (
         <div className="w-[100dvw] h-[100dvh] px-[24px] pt-[48px]  gap-[58px] flex flex-col items-center tablet:pt-[80px] tablet:gap-[72.4px] desktop:gap-[83px]">
+            <Helmet>
+                <title>Forgot Password - Entertainment App</title>
+                <meta name="description" content="Forgot your password? No worries! Follow the steps on this page to reset your password and regain access to your Entertainment App account." />
+            </Helmet>
             <img src={Logo} />
             <div className="w-[100%] rounded-[10px] bg-ma-blue p-[24px] pb-[32px] tablet:max-w-[400px] tablet:p-[32px]">
                 <form
