@@ -35,19 +35,19 @@ const SearchBar = () => {
 
     const handleChange = (e) => {
         const query = e.target.value;
-        setCurrentSearch(query)
-
+        // setCurrentSearch(query)
+        setSearchParams({ search: query });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setSearchParams({ search: currentSearch });
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     setSearchParams({ search: currentSearch });
+    // }
 
 
     return (
-        <div className="fixed tablet:relative rounded-b-[10px] desktop:fixed w-full flex items-center desktop:h-[5.5rem] desktop:items-end bg-ma-black h-[4rem] z-10 tablet:z-0 desktop:z-10">
-            <form onSubmit={handleSubmit} className="w-full text-h-med tablet:text-h-lg px-[1rem] flex items-center">
+        <div className="fixed w-full flex items-center desktop:h-[5.5rem] desktop:items-end bg-ma-black h-[4rem] z-10">
+            <form className="w-full text-h-med tablet:text-h-lg px-[1rem] flex items-center">
                 <div className={`flex items-center desktop:py-[10px] w-full`}>
                     <div className="max-w-[24px] tablet:max-h-[24px]">
                         <img src={"/assets/icon-searchbar-search.svg"} />
@@ -56,6 +56,7 @@ const SearchBar = () => {
                         type="text"
                         placeholder={placeholder}
                         onChange={handleChange}
+                        spellCheck = "false"
                         className={`outline-none border-b ${currentSearch ? 'border-5A698F w-10/12 tablet:w-6/12' : 'border-transparent'} w-full px-4 py-[2px] text-lg bg-transparent text-[16px] font-[300] tablet:text-[24px] desktop:ml-[8px]`}
                     />
                 </div>

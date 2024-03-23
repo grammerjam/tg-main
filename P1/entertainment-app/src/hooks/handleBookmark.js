@@ -9,16 +9,18 @@ export const updateBookmark = async (data) => {
 
     try {
         await fetch(backendRootUrl + "api/" + bookmarkRoute, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Specify the content type
             },
             body: JSON.stringify(dataToSend)
         }).then(async (res) => {
-            const response = await res.json()
-            console.log(response)
+            await res.json()
+        }).then(() => {
+            return true
         })
     } catch (error) {
         console.error('Error:', error);
+        return false
     }
 };
