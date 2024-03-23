@@ -7,7 +7,7 @@ export const useBookmarks = () => {
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
 
-    const {data: bookmarks} = useQuery({
+    const {isStale, data: bookmarks} = useQuery({
         queryKey: [`bookmarks`],
         queryFn: async () => {
             const res = await fetch(backendRootUrl + "api/" + `users/bookmarks/?email=${userEmail}`);
@@ -20,5 +20,5 @@ export const useBookmarks = () => {
         },
     });
 
-    return bookmarks;
+    return {bookmarks: bookmarks, isStale: isStale};
 }
