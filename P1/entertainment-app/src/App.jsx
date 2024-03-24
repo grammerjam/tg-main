@@ -17,6 +17,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import NavBar from './components/Navbar.jsx';
 import SearchBar from './components/SearchBar.jsx';
+import BookmarkProvider from './components/BookmarkProvider.jsx';
 
 function App() {
   const msToMinute = 60000
@@ -43,6 +44,7 @@ function App() {
             <main className='w-full pt-[64px] tablet:pt-[16px] desktop:pt-0 desktop:pl-[108px] '>
               <SearchBar />
               <div className='pt-[64px] tablet:pt-[16px] desktop:pt-[98px]'>
+                <BookmarkProvider>
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/create-account" element={<CreateAccount />} />
@@ -51,6 +53,7 @@ function App() {
                     <Route path='/bookmark' element={<Bookmarks />} />
                     <Route path='*' element={<NotFound />} />
                   </Routes>
+                </BookmarkProvider>
               </div>
             </main>
           </div>

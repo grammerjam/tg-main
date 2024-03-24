@@ -5,14 +5,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateBookmark } from '../hooks/handleBookmark';
 import { useBookmarks } from '../hooks/useBookmarks';
 
-
 export default function MediaCard({ media, loading }) {
   const { user } = useUser();
-  let userEmail = user.primaryEmailAddress.emailAddress
 
+  let userEmail = user.primaryEmailAddress.emailAddress
   const queryClient = useQueryClient()
 
-  const { isStale: bookmarkStale, bookmarks } = useBookmarks();
+  const { bookmarks } = useBookmarks();
 
   const [isBookmark, setIsBookmark] = useState(false)
   const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
@@ -21,7 +20,7 @@ export default function MediaCard({ media, loading }) {
     if (bookmarks && bookmarks[media.id]) {
       setIsBookmark(bookmarks[media.id])
     }
-  }, [bookmarkStale])
+  }, [])
 
   const updateBookmarkMutation = useMutation({
     mutationFn: (dataToSend) => {
@@ -35,6 +34,7 @@ export default function MediaCard({ media, loading }) {
   });
 
   const handleBookmarkMedia = async () => {
+    setIsBookmark((prev) => !prev)
     const dataToSend = {
       userEmail: userEmail,
       bookmarkId: media.id
