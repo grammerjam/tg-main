@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { useUser } from "@clerk/clerk-react";
 import TrendingList from "./TrendingList";
+import { useEffect, useState } from "react";
 
 const TrendingContainer = () => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
     const { user } = useUser();
     const userEmail = user.primaryEmailAddress.emailAddress;
-
-
-    const { isLoading, data: trendingMedia, error } = useQuery({
+    const [trendingMedia, setTrendingMedia] = useState([]);
+    const { isSuccess, isLoading, data, error } = useQuery({
         queryKey: ["Trending"],
         queryFn: () => {
             const trending = fetch(backendUrl + "api/" + `trending/?email=${userEmail}`).then((res) =>
@@ -19,6 +19,12 @@ const TrendingContainer = () => {
         },
         keepPreviousData: true,
     })
+    
+    useEffect(() => {
+        if (!isLoading && trendingMedia) {
+            setTrendingMedia(data)
+        }
+    }, [isSuccess])
 
     if (isLoading || trendingMedia == undefined) {
         const loadingCards = []

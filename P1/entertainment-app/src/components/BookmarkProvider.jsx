@@ -23,7 +23,9 @@ const BookmarkProvider = ({ children }) => {
             });
             return bookmarkIds;
         },
+        keepPreviousData: true,
     });
+
     return (
         <>
             <BookmarkContext.Provider value={bookmarks}>
