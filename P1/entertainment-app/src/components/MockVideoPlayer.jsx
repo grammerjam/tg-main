@@ -9,6 +9,8 @@ export default function MockVideoPlayer() {
     const [show, setShow] = useState(false)
     const [playerMode, setPlayerMode] = useState("window")
     const [volumeHover, setVolumeHover] = useState(false)
+    const [currentTime, setCurrentTime] = useState(0)
+    const [totalTime, setTotalTime] = useState(0)
 
     useEffect(() => {
         setShow(true)
@@ -23,7 +25,14 @@ export default function MockVideoPlayer() {
 
     useEffect(() => {
         const video = videoRef.current
+
+        const handleTimeUpdate = () => {
+            setCurrentTime(video.currentTime);
+        };
+
         const handleMetadataLoaded = () => {
+            // console.log(video.duration)
+            setTotalTime(video.duration)
             const aspectRatio = video.videoWidth / video.videoHeight
             const targetAspectRatio = 16 / 9
 
@@ -41,11 +50,30 @@ export default function MockVideoPlayer() {
         }
 
         video.addEventListener('loadedmetadata', handleMetadataLoaded)
+        video.addEventListener('timeupdate', handleTimeUpdate);
 
         return () => {
+            video.removeEventListener('timeupdate', handleTimeUpdate);
             video.removeEventListener('loadedmetadata', handleMetadataLoaded)
         }
     }, [playerMode])
+
+    const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
+        minimumIntegerDigits: 2,
+    })
+    
+    function formatTime(time) {
+        const seconds = Math.floor(time % 60)
+        const minutes = Math.floor(time / 60) % 60
+        const hours = Math.floor(time / 3600)
+        if (hours === 0) {
+            return `${minutes}:${leadingZeroFormatter.format(seconds)}`
+        } else {
+            return `${hours}:${leadingZeroFormatter.format(
+                minutes
+            )}:${leadingZeroFormatter.format(seconds)}`
+        }
+    }
 
     const toggleTheaterMode = (e) => {
         e.preventDefault()
@@ -111,7 +139,7 @@ export default function MockVideoPlayer() {
         e.preventDefault()
         const video = videoRef.current
         let targetVolume = e.target.value
-        console.log(targetVolume)
+        // console.log(targetVolume)
         if (targetVolume === 0) {
             video.muted = true
         } else {
@@ -175,6 +203,11 @@ export default function MockVideoPlayer() {
                                     </svg>
                                 </button>
                                 <input className={`${volumeHover ? "w-full transition-width ease-in-out duration-[150ms]" : "transition-all w-0 ease-in duration-[150ms] scale-x-0 origin-left"}`} type="range" min="0" max="100" step="1" value={volume} onChange={(e) => handleVolumeSlider(e)} ></input>
+                            </div>
+                            <div className="duration-container flex items-center justify-start gap-[8px]">
+                                <div>{formatTime(currentTime)}</div>
+                                <p>/</p>
+                                <div>{formatTime(totalTime)}</div>
                             </div>
                         </div>
                         <div className="flex items-center justify-end gap-[16px] py-[16px] px-[24px]">
