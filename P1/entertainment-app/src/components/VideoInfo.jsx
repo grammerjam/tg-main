@@ -39,7 +39,7 @@ export default function VideoInfo() {
     }
 
     return (
-        <div>
+        <div className='px-[16px] tablet:px-[24px] desktop:px-0'>
             {
                 mediaInfo ?
                     <div className='flex flex-col w-full gap-[16px]'>
