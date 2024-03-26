@@ -58,8 +58,6 @@ export default function VideoPlayer() {
                     </p>
             }
         </div>
-
-
     )
 }
 
