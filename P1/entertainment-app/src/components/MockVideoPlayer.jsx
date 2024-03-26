@@ -11,6 +11,7 @@ export default function MockVideoPlayer() {
     const [volumeHover, setVolumeHover] = useState(false)
     const [currentTime, setCurrentTime] = useState(0)
     const [totalTime, setTotalTime] = useState(0)
+    const [videoSpeed, setVideoSpeed] = useState(1)
 
     useEffect(() => {
         setShow(true)
@@ -61,7 +62,7 @@ export default function MockVideoPlayer() {
     const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
         minimumIntegerDigits: 2,
     })
-    
+
     function formatTime(time) {
         const seconds = Math.floor(time % 60)
         const minutes = Math.floor(time / 60) % 60
@@ -163,6 +164,24 @@ export default function MockVideoPlayer() {
         }
     }
 
+    const handleChangeVideoSpeed = (e) => {
+        e.preventDefault()
+        const video = videoRef.current
+        console.log(video)
+        if (videoSpeed === 1) {
+            video.playbackRate = 1.5
+            setVideoSpeed(1.5)
+        }
+        if (videoSpeed === 1.5) {
+            video.playbackRate = 2
+            setVideoSpeed(2)
+        }
+        if (videoSpeed === 2) {
+            video.playbackRate = 1
+            setVideoSpeed(1)
+        }
+    }
+
     return (
         <div ref={videoContainerRef} className={`w-full rounded-[10px] relative bg-black ${playerMode === "theater" && "bg-black w-full max-h-[80vh]"}`}>
             <div>
@@ -211,11 +230,15 @@ export default function MockVideoPlayer() {
                             </div>
                         </div>
                         <div className="flex items-center justify-end gap-[16px] py-[16px] px-[24px]">
+                            <button onClick={(e) => handleChangeVideoSpeed(e)}>
+                                {`${videoSpeed}x`}
+                            </button>
                             <button onClick={(e) => toggleMiniPlayerMode(e)}>
                                 <svg height={24} width={24} viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z" />
                                 </svg>
                             </button>
+
                             <button >
                                 <svg height={24} width={24} viewBox="0 0 24 24">
                                     <path fill="white" d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" />
