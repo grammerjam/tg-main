@@ -2,47 +2,90 @@ import { useEffect, useRef, useState } from "react"
 
 export default function MockVideoPlayer() {
     const videoRef = useRef(null)
+    const videoContainerRef = useRef(null)
     const [hover, setHover] = useState(false)
     const [playing, setPlaying] = useState(false)
     // const [volume, setVolume] = useState(100)
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false)
     const [playerMode, setPlayerMode] = useState("window")
 
     useEffect(() => {
-        setShow(true);
+        setShow(true)
         // Set a timeout to change the opacity to 0 after 1 second
         const timer = setTimeout(() => {
-            setShow(false);
-        }, 1000);
+            setShow(false)
+        }, 1000)
 
         // Clear the timeout if the component unmounts
-        return () => clearTimeout(timer);
-    }, [playing]);
+        return () => clearTimeout(timer)
+    }, [playing])
 
     useEffect(() => {
-        const video = videoRef.current;
+        const video = videoRef.current
         const handleMetadataLoaded = () => {
-            const aspectRatio = video.videoWidth / video.videoHeight;
-            const targetAspectRatio = 16 / 9;
+            const aspectRatio = video.videoWidth / video.videoHeight
+            const targetAspectRatio = 16 / 9
+
             if (aspectRatio !== targetAspectRatio) {
                 if (aspectRatio < targetAspectRatio) {
-                    video.style.maxWidth = `${video.offsetHeight * aspectRatio}px`;
-                    video.style.width = 'auto';
-                    video.style.height = '100%';
+                    video.style.maxWidth = `${video.offsetHeight * aspectRatio}px`
+                    video.style.width = 'auto'
+                    video.style.height = '100%'
                 } else {
-                    video.style.height = `${video.offsetWidth / aspectRatio}px`;
-                    video.style.width = '100%';
-                    video.style.height = 'auto';
+                    video.style.height = `${video.offsetWidth / aspectRatio}px`
+                    video.style.width = '100%'
+                    video.style.height = 'auto'
                 }
             }
-        };
+        }
 
-        video.addEventListener('loadedmetadata', handleMetadataLoaded);
+        video.addEventListener('loadedmetadata', handleMetadataLoaded)
 
         return () => {
-            video.removeEventListener('loadedmetadata', handleMetadataLoaded);
-        };
-    }, []);
+            video.removeEventListener('loadedmetadata', handleMetadataLoaded)
+        }
+    }, [playerMode])
+
+    const toggleTheaterMode = (e) => {
+        e.preventDefault()
+        setPlayerMode("theater")
+    }
+
+    const toggleFullScreenMode = (e) => {
+        e.preventDefault()
+        const videoContainer = videoContainerRef.current
+
+        if (playerMode !== "fullScreen") {
+            setPlayerMode("fullScreen")
+            videoContainer.requestFullscreen()
+        } else {
+            setPlayerMode("window")
+            document.exitFullscreen()
+        }
+    }
+
+    const toggleMiniPlayerMode = async (e) => {
+        e.preventDefault();
+        const video = videoRef.current
+
+        if (playerMode !== "miniPlayer") {
+            setPlayerMode("miniPlayer")
+            try {
+                await video.requestPictureInPicture()
+            } catch (error) {
+                console.error("Error entering Picture-in-Picture mode:", error)
+            }
+        } else {
+            setPlayerMode("window")
+            try {
+                if (document.pictureInPictureElement) {
+                    await document.exitPictureInPicture()
+                }
+            } catch (error) {
+                console.error("Error exiting Picture-in-Picture mode:", error)
+            }
+        }
+    };
 
     const handleHoverVideo = () => {
         setHover(true)
@@ -64,7 +107,7 @@ export default function MockVideoPlayer() {
     }
 
     return (
-        <div className={`w-full rounded-[10px] relative bg-black ${playerMode === "theater" && "bg-black w-full max-h-[80vh]"}`}>
+        <div ref={videoContainerRef} className={`w-full rounded-[10px] relative bg-black ${playerMode === "theater" && "bg-black w-full max-h-[80vh]"}`}>
             <div>
                 <div>
                     <div className={`top-1/2 left-1/2 absolute bg-ma-black rounded-full p-[16px] transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-1000 ease-in-out ${show ? 'opacity-75' : 'opacity-0'}`}>
@@ -92,17 +135,17 @@ export default function MockVideoPlayer() {
                             </button>
                         </div>
                         <div className="flex items-center justify-end gap-[16px] py-[16px] px-[24px]">
-                            <button>
+                            <button onClick={(e) => toggleMiniPlayerMode(e)}>
                                 <svg height={24} width={24} viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z" />
                                 </svg>
                             </button>
-                            <button>
+                            <button >
                                 <svg height={24} width={24} viewBox="0 0 24 24">
                                     <path fill="white" d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" />
                                 </svg>
                             </button>
-                            <button>
+                            <button onClick={(e) => toggleFullScreenMode(e)}>
                                 <svg className="fill-white" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-120v-200h80v120h120v80H120Zm520 0v-80h120v-120h80v200H640ZM120-640v-200h200v80H200v120h-80Zm640 0v-120H640v-80h200v200h-80Z" /></svg>
                             </button>
                         </div>
