@@ -33,7 +33,7 @@ export default function WatchMore({ videoId }) {
     }, [queryClient, queryFn, queryKey, getWatchMoreData])
 
     return (
-        <div className='w-full flex flex-col gap-[16px] desktop:w-[35%] px-[16px] tablet:px-[24px] desktop:pr-[36px] desktop:pl-0'>
+        <div className='w-full flex flex-col gap-[16px] desktop:w-[35%] px-[16px] tablet:px-[24px] desktop:pr-[36px] desktop:pl-0 desktop:pt-[16px]'>
             {watchMoreVideosArray.map((videoObj) => {
                 return (
                     <WatchMoreCard key={videoObj.id} trendingMedia={videoObj} />

@@ -34,6 +34,9 @@ export default {
         'tablet': '20px',
         'desktop': '24px',
       },
+      transitionProperty: {
+        'width': 'width'
+      },
     },
   },
   plugins: [],

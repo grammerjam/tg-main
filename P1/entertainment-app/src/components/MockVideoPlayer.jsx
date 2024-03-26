@@ -5,9 +5,10 @@ export default function MockVideoPlayer() {
     const videoContainerRef = useRef(null)
     const [hover, setHover] = useState(false)
     const [playing, setPlaying] = useState(false)
-    // const [volume, setVolume] = useState(100)
+    const [volume, setVolume] = useState(0)
     const [show, setShow] = useState(false)
     const [playerMode, setPlayerMode] = useState("window")
+    const [volumeHover, setVolumeHover] = useState(false)
 
     useEffect(() => {
         setShow(true)
@@ -106,6 +107,34 @@ export default function MockVideoPlayer() {
         }
     }
 
+    const handleVolumeSlider = (e) => {
+        e.preventDefault()
+        const video = videoRef.current
+        let targetVolume = e.target.value
+        console.log(targetVolume)
+        if (targetVolume === 0) {
+            video.muted = true
+        } else {
+            video.muted = false
+            let refactoredVolume = targetVolume / 100
+            video.volume = refactoredVolume
+        }
+        setVolume(targetVolume)
+    }
+
+    const toggleMute = (e) => {
+        const video = videoRef.current
+        e.preventDefault()
+        if (volume !== 0) {
+            setVolume(0)
+            video.muted = true
+        } else {
+            setVolume(100)
+            video.muted = false
+            video.volume = 1
+        }
+    }
+
     return (
         <div ref={videoContainerRef} className={`w-full rounded-[10px] relative bg-black ${playerMode === "theater" && "bg-black w-full max-h-[80vh]"}`}>
             <div>
@@ -116,11 +145,10 @@ export default function MockVideoPlayer() {
                             : <svg xmlns="http://www.w3.org/2000/svg" className="fill-white transition-opacity" height="24" viewBox="0 -960 960 960" width="24"><path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z" /></svg>
                         }
                     </div>
-                    <div
-                        className={`
+                    <div className={`
                     absolute bottom-0 left-0 right-0 z-[100] transition-opacity focus-within:opacity-100   text-[16px] video-controls-container flex items-center justify-between hover:opacity-100 ${hover || !playing ? "opacity-100" : "opacity-0"}
                     `}>
-                        <div className="flex items-center gap-[16px] py-[16px] px-[24px]">
+                        <div className="flex items-center gap-[16px] py-[16px] px-[24px] justify-start">
                             <button onClick={(e) => togglePlayPause(e)}>
                                 {playing ?
                                     <svg xmlns="http://www.w3.org/2000/svg" className="fill-white opacity-75 hover:opacity-100" height="24" viewBox="0 -960 960 960" width="24"><path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z" /></svg>
@@ -130,9 +158,24 @@ export default function MockVideoPlayer() {
                                     </div>
                                 }
                             </button>
-                            <button>
-                                <svg className="fill-white opacity-75 hover:opacity-100" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z" /></svg>
-                            </button>
+                            <div
+                                onMouseEnter={() => setVolumeHover(true)}
+                                onMouseLeave={() => setVolumeHover(false)}
+                                className="flex items-center gap-[16px]"
+                            >
+                                <button onClick={(e) => toggleMute(e)}>
+                                    <svg className={`${volume >= 50 ? "block" : "hidden"}`} height={24} width={24} viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                                    </svg>
+                                    <svg className={`${volume < 50 && volume > 1 ? "block" : "hidden"}`} height={24} width={24} viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M5,9V15H9L14,20V4L9,9M18.5,12C18.5,10.23 17.5,8.71 16,7.97V16C17.5,15.29 18.5,13.76 18.5,12Z" />
+                                    </svg>
+                                    <svg className={`${volume <= 1 ? "block" : "hidden"}`} height={24} width={24} viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M12,4L9.91,6.09L12,8.18M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.53C15.58,18.04 14.83,18.46 14,18.7V20.77C15.38,20.45 16.63,19.82 17.68,18.96L19.73,21L21,19.73L12,10.73M19,12C19,12.94 18.8,13.82 18.46,14.64L19.97,16.15C20.62,14.91 21,13.5 21,12C21,7.72 18,4.14 14,3.23V5.29C16.89,6.15 19,8.83 19,12M16.5,12C16.5,10.23 15.5,8.71 14,7.97V10.18L16.45,12.63C16.5,12.43 16.5,12.21 16.5,12Z" />
+                                    </svg>
+                                </button>
+                                <input className={`${volumeHover ? "w-full transition-width ease-in-out duration-[150ms]" : "transition-all w-0 ease-in duration-[150ms] scale-x-0 origin-left"}`} type="range" min="0" max="100" step="1" value={volume} onChange={(e) => handleVolumeSlider(e)} ></input>
+                            </div>
                         </div>
                         <div className="flex items-center justify-end gap-[16px] py-[16px] px-[24px]">
                             <button onClick={(e) => toggleMiniPlayerMode(e)}>
