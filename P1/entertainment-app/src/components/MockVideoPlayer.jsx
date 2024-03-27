@@ -25,8 +25,6 @@ export default function MockVideoPlayer() {
 
         const rect = timelineContainer.getBoundingClientRect();
         const percent = Math.min(Math.max(0, e.clientX - rect.left), rect.width) / rect.width;
-
-        console.log(e)
         let scrubbing = (e.buttons & 1) === 1;
         if (scrubbing) {
             setIsScrubbing(true);
@@ -193,7 +191,6 @@ export default function MockVideoPlayer() {
         e.preventDefault()
         const video = videoRef.current
         let targetVolume = e.target.value
-        // console.log(targetVolume)
         if (targetVolume === 0) {
             video.muted = true
         } else {
@@ -220,7 +217,6 @@ export default function MockVideoPlayer() {
     const handleChangeVideoSpeed = (e) => {
         e.preventDefault()
         const video = videoRef.current
-        console.log(video)
         if (videoSpeed === 1) {
             video.playbackRate = 1.5
             setVideoSpeed(1.5)
@@ -239,7 +235,7 @@ export default function MockVideoPlayer() {
         <div ref={videoContainerRef} className={`w-full rounded-[10px] relative bg-black`}>
             <Overlay playing={playing} show={show} />
             <div className={`
-                    absolute bottom-0 left-0 right-0 z-[100] transition-opacity focus-within:opacity-100  text-[16px] video-controls-container flex flex-col justify-start items-start hover:opacity-100 ${hover || !playing ? "opacity-100" : "opacity-0"}
+                    absolute bottom-0 left-0 right-0 z-[100] transition-opacity focus-within:opacity-100  text-[16px] video-controls-container flex flex-col justify-start items-start hover:opacity-100 ${hover || !playing ? "opacity-100" : "opacity-0"} ${playing && "focus-within:opacity-0"}
                     `}>
                 <div ref={timelineContainerRef} className="w-full px-[16px] h-[4px] hover:h-[8px] cursor-pointer timeline-container">
                     <div className="w-full bg-[#ffffff40] h-full relative timeline">
@@ -273,7 +269,7 @@ export default function MockVideoPlayer() {
                                     <path fill="currentColor" d="M12,4L9.91,6.09L12,8.18M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.53C15.58,18.04 14.83,18.46 14,18.7V20.77C15.38,20.45 16.63,19.82 17.68,18.96L19.73,21L21,19.73L12,10.73M19,12C19,12.94 18.8,13.82 18.46,14.64L19.97,16.15C20.62,14.91 21,13.5 21,12C21,7.72 18,4.14 14,3.23V5.29C16.89,6.15 19,8.83 19,12M16.5,12C16.5,10.23 15.5,8.71 14,7.97V10.18L16.45,12.63C16.5,12.43 16.5,12.21 16.5,12Z" />
                                 </svg>
                             </button>
-                            <input className={`${volumeHover ? "w-full transition-width ease-in-out duration-[150ms]" : "transition-all w-0 ease-in duration-[150ms] scale-x-0 origin-left"}`} type="range" min="0" max="100" step="1" value={volume} onChange={(e) => handleVolumeSlider(e)} ></input>
+                            <input className={`${volumeHover ? "range w-full transition-width ease-in-out duration-[150ms]" : "transition-all w-0 ease-in duration-[150ms] scale-x-0 origin-left "}`} type="range" min="0" max="100" step="1" value={volume} onChange={(e) => handleVolumeSlider(e)} ></input>
                         </div>
                         <div className="duration-container flex items-center justify-start gap-[8px]">
                             <div>{formatTime(currentTime)}</div>
