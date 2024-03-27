@@ -70,6 +70,7 @@ export default function MockVideoPlayer() {
         return () => {
             timelineContainer.removeEventListener('mousemove', handleTimelineUpdate)
             timelineContainer.removeEventListener("mousedown", toggleScrubbing)
+            timelineContainer.removeEventListener("mouseup", toggleScrubbing)
         }
     }, [isScrubbing, toggleScrubbing])
 
@@ -134,6 +135,7 @@ export default function MockVideoPlayer() {
 
     const toggleFullScreenMode = (e) => {
         e.preventDefault()
+        e.stopPropagation()
         const videoContainer = videoContainerRef.current
 
         if (playerMode !== "fullScreen") {
@@ -232,10 +234,21 @@ export default function MockVideoPlayer() {
     }
 
     return (
-        <div ref={videoContainerRef} className={`w-full rounded-[10px] relative bg-black`}>
+        <div
+            onMouseEnter={(e) => { handleHoverVideo(e) }}
+            onMouseLeave={(e) => { handleHoverLeaveVideo(e) }}
+            onClick={(e) => { togglePlayPause(e) }}
+            ref={videoContainerRef}
+            className={`w-full rounded-[10px] relative bg-black`}
+        >
+            {playerMode === "fullScreen" &&
+                <div className={`absolute top-0 left-0 transition-opacity py-[16px] px-[24px] ${hover || !playing ? "opacity-100" : "opacity-0"}`}>
+                    <p className="text-[32px]">Video Title</p>
+                </div>
+            }
             <Overlay playing={playing} show={show} />
             <div className={`
-                    absolute bottom-0 left-0 right-0 z-[100] transition-opacity focus-within:opacity-100  text-[16px] video-controls-container flex flex-col justify-start items-start hover:opacity-100 ${hover || !playing ? "opacity-100" : "opacity-0"} ${playing && "focus-within:opacity-0"}
+                    absolute bottom-0 left-0 right-0 z-[100] transition-opacity focus-within:opacity-100  text-[16px] video-controls-container flex flex-col justify-start items-start hover:opacity-100 ${hover || !playing ? "opacity-100" : "opacity-0"} ${playing && "focus-within:opacity-0"} 
                     `}>
                 <div ref={timelineContainerRef} className="w-full px-[16px] h-[4px] hover:h-[8px] cursor-pointer timeline-container">
                     <div className="w-full bg-[#ffffff40] h-full relative timeline">
@@ -301,7 +314,6 @@ export default function MockVideoPlayer() {
             <video ref={videoRef}
                 onMouseEnter={(e) => { handleHoverVideo(e) }}
                 onMouseLeave={(e) => { handleHoverLeaveVideo(e) }}
-                onClick={(e) => { togglePlayPause(e) }}
                 className="w-full rounded-[10px] mx-auto"
                 src='/rhcp-cantStop.mp4'
                 type="video/mp4">
