@@ -28,9 +28,6 @@ export default function MockVideoPlayer() {
 
         console.log(e)
         let scrubbing = (e.buttons & 1) === 1;
-        // console.log(e.buttons)
-        // console.log(scrubbing)
-        // videoContainer.classList.toggle("scrubbing", scrubbing);
         if (scrubbing) {
             setIsScrubbing(true);
             video.pause();
@@ -47,12 +44,9 @@ export default function MockVideoPlayer() {
 
     useEffect(() => {
         setShow(true)
-        // Set a timeout to change the opacity to 0 after 1 second
         const timer = setTimeout(() => {
             setShow(false)
         }, 1000)
-
-        // Clear the timeout if the component unmounts
         return () => clearTimeout(timer)
     }, [playing])
 
@@ -74,21 +68,10 @@ export default function MockVideoPlayer() {
         timelineContainer.addEventListener("mousemove", handleTimelineUpdate)
         timelineContainer.addEventListener("mousedown", toggleScrubbing)
         timelineContainer.addEventListener("mouseup", toggleScrubbing)
-        // document.addEventListener("mouseup", e => {
-        //     if (isScrubbing) {
-        //         toggleScrubbing(e)
-        //     }
-        // })
-        // document.addEventListener("mousemove", e => {
-        //     if (isScrubbing) {
-        //         handleTimelineUpdate(e)
-        //     }
-        // })
+
         return () => {
             timelineContainer.removeEventListener('mousemove', handleTimelineUpdate)
             timelineContainer.removeEventListener("mousedown", toggleScrubbing)
-            // document.removeEventListener("mousemove", handleTimelineUpdate)
-            // document.removeEventListener("mouseup", toggleScrubbing)
         }
     }, [isScrubbing, toggleScrubbing])
 
@@ -145,43 +128,6 @@ export default function MockVideoPlayer() {
             )}:${leadingZeroFormatter.format(seconds)}`
         }
     }
-
-    // function toggleScrubbing(e) {
-    //     e.preventDefault()
-    //     const timelineContainer = timelineContainerRef.current
-    //     const videoContainer = videoContainerRef.current
-    //     const video = videoRef.current
-    //     const rect = timelineContainer.getBoundingClientRect()
-    //     const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width
-
-    //     let scrubbing = (e.buttons & 1) === 1
-    //     console.log(scrubbing)
-    //     videoContainer.classList.toggle("scrubbing", scrubbing)
-    //     if (scrubbing) {
-    //         setIsScrubbing(true)
-    //         video.pauses()
-    //         setPlaying(false)
-    //     } else {
-    //         setIsScrubbing(false)
-    //         video.currentTime = percent * video.duration
-    //         if (!playing) {
-    //             video.play()
-    //         }
-    //     }
-
-    //     const handleTimelineUpdate = (e) => {
-    //         e.preventDefault()
-    //         const rect = timelineContainer.getBoundingClientRect()
-    //         const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width
-    //         timelineContainer.style.setProperty("--preview-position", percent)
-
-    //         if (isScrubbing) {
-    //             e.preventDefault()
-    //             timelineContainer.style.setProperty("--progress-position", percent)
-    //         }
-    //     }
-    //     handleTimelineUpdate()
-    // }
 
     // const toggleTheaterMode = (e) => {
     //     e.preventDefault()
