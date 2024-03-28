@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useBookmarks } from '../hooks/useBookmarks';
 import { updateBookmark } from '../hooks/handleBookmark';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useMutation } from '@tanstack/react-query';
 
@@ -14,9 +14,9 @@ const TrendingCard = ({ trendingMedia }) => {
     const [isBookmarked, setIsBookmarked] = useState(false)
     const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
 
-    // useState(() => {
-    //     setIsBookmarked(bookmarks.findIndex((bookmark) => bookmark.id === trendingMedia.id) > -1 ? true : false)
-    // }, [isBookmarkHovered])
+    useEffect(() => {
+        setIsBookmarked(bookmarks.findIndex((bookmark) => bookmark.id === trendingMedia.id) > -1 ? true : false)
+    }, [bookmarks])
 
     const handleHoverBookmark = () => {
         setIsBookmarkHovered(true)
@@ -44,7 +44,6 @@ const TrendingCard = ({ trendingMedia }) => {
             setIsBookmarked(prev => !prev)
             setBookmarks(prev => {
                 if (isBookmarked) {
-
                     return prev.filter((bookmark) => bookmark.id !== trendingMedia.id)
                 } else {
                     return [...prev, { ...trendingMedia, isBookmarked: true }]

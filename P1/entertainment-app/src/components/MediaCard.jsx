@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useBookmarks } from '../hooks/useBookmarks';
 import { updateBookmark } from '../hooks/handleBookmark';
@@ -10,14 +10,14 @@ export default function MediaCard({ media, loading }) {
   const { user } = useUser();
   let userEmail = user.primaryEmailAddress.emailAddress
 
-  const { setBookmarks } = useBookmarks();
+  const { bookmarks, setBookmarks } = useBookmarks();
 
   const [isBookmarked, setIsBookmarked] = useState(media.isBookmarked);
   const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
-  
-  useState(() => {
-    setIsBookmarked(media.isBookmarked)
-  }, [media.isBookmarked])
+
+  useEffect(() => {
+    setIsBookmarked(media.isBookmarked === undefined ? false : media.isBookmarked)
+  }, [bookmarks])
 
   const updateBookmarkMutation = useMutation({
     mutationFn: (dataToSend) => {
