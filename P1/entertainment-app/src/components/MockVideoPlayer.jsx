@@ -15,9 +15,11 @@ export default function MockVideoPlayer() {
     const [totalTime, setTotalTime] = useState(0)
     const [videoSpeed, setVideoSpeed] = useState(1)
     const [isScrubbing, setIsScrubbing] = useState(false)
+    const [ignoreParentClick, setIgnoreParentClick] = useState(false);
 
     const toggleScrubbing = useCallback(function (e) {
         e.preventDefault();
+        e.stopPropagation()
         const timelineContainer = timelineContainerRef.current;
         const videoContainer = videoContainerRef.current;
         const video = videoRef.current;
@@ -53,6 +55,7 @@ export default function MockVideoPlayer() {
 
         const handleTimelineUpdate = (e) => {
             e.preventDefault()
+            e.stopPropagation()
             const rect = timelineContainer.getBoundingClientRect()
             const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width
             timelineContainer.style.setProperty("--preview-position", percent)
@@ -148,7 +151,8 @@ export default function MockVideoPlayer() {
     }
 
     const toggleMiniPlayerMode = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
+        e.stopPropagation()
         const video = videoRef.current
 
         if (playerMode !== "miniPlayer") {
@@ -180,6 +184,9 @@ export default function MockVideoPlayer() {
 
     const togglePlayPause = (e) => {
         e.preventDefault()
+        e.stopPropagation()
+        console.log(e.target)
+        // if (ignoreParentClick) return
         if (playing) {
             videoRef.current.pause()
             setPlaying(false)
@@ -191,6 +198,7 @@ export default function MockVideoPlayer() {
 
     const handleVolumeSlider = (e) => {
         e.preventDefault()
+        e.stopPropagation()
         const video = videoRef.current
         let targetVolume = e.target.value
         if (targetVolume === 0) {
@@ -206,6 +214,7 @@ export default function MockVideoPlayer() {
     const toggleMute = (e) => {
         const video = videoRef.current
         e.preventDefault()
+        e.stopPropagation()
         if (volume !== 0) {
             setVolume(0)
             video.muted = true
@@ -218,6 +227,7 @@ export default function MockVideoPlayer() {
 
     const handleChangeVideoSpeed = (e) => {
         e.preventDefault()
+        e.stopPropagation()
         const video = videoRef.current
         if (videoSpeed === 1) {
             video.playbackRate = 1.5
@@ -232,6 +242,16 @@ export default function MockVideoPlayer() {
             setVideoSpeed(1)
         }
     }
+    const childInteractionHandler = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setIgnoreParentClick(true); // Set the flag to ignore the next parent click
+    };
+    const childInteractionHandlerLeave = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setIgnoreParentClick(false); // Set the flag to ignore the next parent click
+    };
 
     return (
         <div
@@ -247,7 +267,10 @@ export default function MockVideoPlayer() {
                 </div>
             }
             <Overlay playing={playing} show={show} />
-            <div className={`
+            <div
+                onMouseEnter={(e) => childInteractionHandler(e)}
+                onMouseLeave={(e) => childInteractionHandlerLeave(e)}
+                className={`
                     absolute bottom-0 left-0 right-0 z-[100] transition-opacity focus-within:opacity-100  text-[16px] video-controls-container flex flex-col justify-start items-start hover:opacity-100 ${hover || !playing ? "opacity-100" : "opacity-0"} ${playing && "focus-within:opacity-0"} 
                     `}>
                 <div ref={timelineContainerRef} className="w-full px-[16px] h-[4px] hover:h-[8px] cursor-pointer timeline-container">
@@ -291,16 +314,16 @@ export default function MockVideoPlayer() {
                         </div>
                     </div>
                     <div className="flex items-center justify-end gap-[16px] py-[16px] px-[24px]">
-                        <button onClick={(e) => handleChangeVideoSpeed(e)}>
+                        <button onClick={(e) => handleChangeVideoSpeed(e)} >
                             {`${videoSpeed}x`}
                         </button>
-                        <button onClick={(e) => toggleMiniPlayerMode(e)}>
+                        <button onClick={(e) => toggleMiniPlayerMode(e)} className={`${playerMode === "fullScreen" && "hidden"}`}>
                             <svg height={24} width={24} viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z" />
                             </svg>
                         </button>
 
-                        <button >
+                        <button className={`${playerMode === "fullScreen" && "hidden"}`}>
                             <svg height={24} width={24} viewBox="0 0 24 24">
                                 <path fill="white" d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" />
                             </svg>
