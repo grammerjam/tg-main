@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-const TrendingCard = ({ trendingMedia }) =>
-{
+const TrendingCard = ({ trendingMedia }) => {
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
 
@@ -13,38 +12,31 @@ const TrendingCard = ({ trendingMedia }) =>
     const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
     const [isBookmarked, setIsBookmarked] = useState(trendingMedia.isBookmarked)
 
-    const handleHoverBookmark = () =>
-    {
+    const handleHoverBookmark = () => {
         setIsBookmarkHovered(true)
     }
-    const handleHoverLeaveBookmark = () =>
-    {
+    const handleHoverLeaveBookmark = () => {
         setIsBookmarkHovered(false)
     }
 
     const updateBookmarkMutation = useMutation({
-        mutationFn: (dataToSend) =>
-        {
+        mutationFn: (dataToSend) => {
             return updateBookmark(dataToSend)
         },
-        onSettled: () =>
-        {
+        onSettled: () => {
             queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
         },
     });
 
-    const handleBookmarkMedia = async () =>
-    {
+    const handleBookmarkMedia = async () => {
         setIsBookmarked((prev) => !prev)
         const dataToSend = {
             userEmail: userEmail,
             bookmarkId: trendingMedia.id
         }
-        try
-        {
+        try {
             updateBookmarkMutation.mutate(dataToSend)
-        } catch (e)
-        {
+        } catch (e) {
             console.log(e)
         }
     }
