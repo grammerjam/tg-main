@@ -3,16 +3,20 @@ import { useBookmarks } from '../hooks/useBookmarks';
 import { updateBookmark } from '../hooks/handleBookmark';
 import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 const TrendingCard = ({ trendingMedia }) => {
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
 
-    const queryClient = useQueryClient();
-    const bookmarks = useBookmarks();
+    const { bookmarks, setBookmarks } = useBookmarks();
 
+    const [isBookmarked, setIsBookmarked] = useState(false)
     const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
+
+    // useState(() => {
+    //     setIsBookmarked(bookmarks.findIndex((bookmark) => bookmark.id === trendingMedia.id) > -1 ? true : false)
+    // }, [isBookmarkHovered])
 
     const handleHoverBookmark = () => {
         setIsBookmarkHovered(true)
@@ -26,10 +30,7 @@ const TrendingCard = ({ trendingMedia }) => {
             return updateBookmark(dataToSend)
         },
         onSettled: () => {
-            queryClient.setQueryData(["bookmarks"], (bookmarks) => {
-                bookmarks[trendingMedia.id] = !bookmarks[trendingMedia.id]
-            });
-            queryClient.invalidateQueries(["bookmarks"]);
+            // queryClient.invalidateQueries(["bookmarks"]);
         },
     });
 
@@ -40,6 +41,15 @@ const TrendingCard = ({ trendingMedia }) => {
         }
         try {
             updateBookmarkMutation.mutate(dataToSend)
+            setIsBookmarked(prev => !prev)
+            setBookmarks(prev => {
+                if (isBookmarked) {
+
+                    return prev.filter((bookmark) => bookmark.id !== trendingMedia.id)
+                } else {
+                    return [...prev, { ...trendingMedia, isBookmarked: true }]
+                }
+            })
         } catch (e) {
             console.log(e)
         }
@@ -53,7 +63,7 @@ const TrendingCard = ({ trendingMedia }) => {
                 onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}>
                 <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
                     <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill="none"
-                        className={`${isBookmarkHovered && "stroke-[#5A698F]"} ${bookmarks && bookmarks[trendingMedia.id] && "fill-[#FFFFFF]"}`} />
+                        className={`${isBookmarkHovered && "stroke-[#5A698F]"} ${isBookmarked && "fill-[#FFFFFF]"}`} />
                 </svg>
             </div>
             <div className='absolute bottom-0 left-0 right-0 p-5 text-white'>

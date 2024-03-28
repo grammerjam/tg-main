@@ -37,14 +37,14 @@ function App() {
       </SignedOut>
       <SignedIn>
         <QueryClientProvider client={queryClient}>
-          <div className='flex flex-col desktop:flex-row w-full relative'>
-            <div className='desktop:pl-[32px] desktop:pt-[32px] desktop:flex'>
-              <NavBar />
-            </div>
-            <main className='w-full pt-[64px] tablet:pt-[16px] desktop:pt-0 desktop:pl-[108px] '>
-              <SearchBar />
-              <div className='pt-[64px] tablet:pt-[16px] desktop:pt-[98px]'>
-                <BookmarkProvider>
+          <BookmarkProvider>
+            <div className='flex flex-col desktop:flex-row w-full relative'>
+              <div className='desktop:pl-[32px] desktop:pt-[32px] desktop:flex'>
+                <NavBar />
+              </div>
+              <main className='w-full pt-[64px] tablet:pt-[16px] desktop:pt-0 desktop:pl-[108px] '>
+                <SearchBar />
+                <div className='pt-[64px] tablet:pt-[16px] desktop:pt-[98px]'>
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/create-account" element={<CreateAccount />} />
@@ -53,10 +53,10 @@ function App() {
                     <Route path='/bookmark' element={<Bookmarks />} />
                     <Route path='*' element={<NotFound />} />
                   </Routes>
-                </BookmarkProvider>
-              </div>
-            </main>
-          </div>
+                </div>
+              </main>
+            </div>
+          </BookmarkProvider>
         </QueryClientProvider>
       </SignedIn>
     </div>

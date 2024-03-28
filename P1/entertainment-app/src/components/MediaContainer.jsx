@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query'
 import { useUser } from "@clerk/clerk-react";
+import { useBookmarks } from '../hooks/useBookmarks';
 
+import { joinArrays } from '../Utils';
 
 import MediaList from './MediaList';
 
@@ -25,6 +27,8 @@ function getUrlQuery(title, email) {
 export default function MediaContainer({ pageTitle }) {
 
     const { user } = useUser();
+    const { bmLoading, bookmarks } = useBookmarks();
+
     let userEmail = user.primaryEmailAddress.emailAddress
     let [searchParams] = useSearchParams()
     let searchString = searchParams.get('search')
@@ -55,8 +59,8 @@ export default function MediaContainer({ pageTitle }) {
         keepPreviousData: true,
     })
 
-
-    if (isLoading || media == undefined) {
+    
+    if (isLoading || bmLoading || media === undefined || bookmarks === undefined) {
 
         const emptyCardNumber = 20
         const emptyCardArray = []
@@ -80,16 +84,17 @@ export default function MediaContainer({ pageTitle }) {
             </div>
         )
     }
+
     if (error) return 'An error has occurred: ' + error.message
 
-
+    const allMedia = joinArrays( bookmarks, media, "id");
 
     return (
         <div className='flex flex-col px-[1rem] tablet:pl-[1.5rem] w-full desktop:pr-[36px]'>
             {(searchString !== null && searchString !== "") ? (
-                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{searchTitle(media)}</h1>
+                <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'>{searchTitle(allMedia)}</h1>
             ) : <h1 className='text-[20px] tablet:text-[32px] mb-[1.5rem] font-[300] desktop:mb-[2rem]'> {pageTitle}</h1>}
-            <MediaList results={searchString ? filterData(media) : media} />
+            <MediaList results={searchString ? filterData(allMedia) : allMedia} />
         </div>
     )
 }
