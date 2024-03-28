@@ -44,9 +44,9 @@ export default function MediaCard({ media, loading }) {
   }
 
   return (
-    <div className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] aspect-[3/2] w-[calc((100%-15px)/2)] tablet:w-[calc((100%-60px)/3)] desktop:w-[calc((100%-120px)/4)] text-[11px] tablet:text-b-sm font-[300] text-[#FFFFFFBF] `}>
+    <div className={`hover:brightness-90 transition duration-300 ease-in-out drop-shadow-2x1 mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] aspect-[3/2] w-[calc((100%-15px)/2)] tablet:w-[calc((100%-60px)/3)] desktop:w-[calc((100%-120px)/4)] text-[11px] tablet:text-b-sm font-[300] text-[#FFFFFFBF] `}>
       <div className={`w-full flex relative justify-end mb-[0.5rem] rounded-lg ${loading && "skeleton"}`}>
-        <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full opacity-50 flex justify-center items-center ${loading && "hidden"} ${isBookmarked ? "bg-ma-white opacity-100" : ""}`}
+        <div className={`cursor-pointer absolute mr-[0.5rem] mt-[0.5rem] tablet:mr-[1rem] tablet:mt-[1rem] w-[2rem] h-[2rem] bg-ma-black rounded-full opacity-50 flex justify-center items-center hover:scale-110 transition-transform duration-200 hover:brightness-100 ${loading && "hidden"} ${isBookmarked ? "bg-ma-white opacity-100" : ""}`}
           onClick={handleBookmarkMedia}
           onMouseEnter={(e) => { handleHoverBookmark(e) }}
           onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
@@ -58,7 +58,7 @@ export default function MediaCard({ media, loading }) {
         </div>
         <img className={`w-full rounded-lg ${loading && "invisible"}`} src={media.tpath} alt={media.title} role="button" tabIndex="0"></img>
       </div>
-      <div className='flex items-center pb-[0.25rem] tablet:pb-[0.30] gap-[6px]'>
+      <div className='flex items-center pb-[0.25rem] tablet:pb-[0.30] gap-[6px] cursor-pointer'>
         <p>{media.year}</p>
         <p className=''>{"•"}</p>
         <div className='flex items-center gap-[4px]'>
@@ -69,7 +69,7 @@ export default function MediaCard({ media, loading }) {
         <p className=''> {"•"} </p>
         <p> {media.rating} </p>
       </div>
-      <p className='text-ma-white font-[500] tablet:text-h-xsm' role="heading" aria-level="3"> {media.title} </p>
+      <p className='text-ma-white font-[500] tablet:text-h-xsm cursor-pointer' role="heading" aria-level="3"> {media.title} </p>
     </div>
   )
 }

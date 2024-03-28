@@ -50,7 +50,7 @@ const SearchBar = () => {
             <form className="w-full text-h-med tablet:text-h-lg px-[1rem] flex items-center" aria-label="Search Form">
                 <div className={`flex items-center desktop:py-[10px] w-full`} role="searchbox">
                     <div className="max-w-[24px] tablet:max-h-[24px]" role="img" aria-label="Search Icon">
-                        <img src={"/assets/icon-searchbar-search.svg"} alt="Search Icon" />
+                        <img src={"/assets/icon-searchbar-search.svg"} alt="Search Icon" className="cursor-pointer" />
                     </div>
                     <input
                         type="text"
