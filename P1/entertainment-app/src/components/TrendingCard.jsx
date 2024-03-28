@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-const TrendingCard = ({ trendingMedia }) => {
+const TrendingCard = ({ trendingMedia }) =>
+{
     const { user } = useUser();
     let userEmail = user.primaryEmailAddress.emailAddress
 
@@ -12,38 +13,45 @@ const TrendingCard = ({ trendingMedia }) => {
     const [isBookmarkHovered, setIsBookmarkHovered] = useState(false)
     const [isBookmarked, setIsBookmarked] = useState(trendingMedia.isBookmarked)
 
-    const handleHoverBookmark = () => {
+    const handleHoverBookmark = () =>
+    {
         setIsBookmarkHovered(true)
     }
-    const handleHoverLeaveBookmark = () => {
+    const handleHoverLeaveBookmark = () =>
+    {
         setIsBookmarkHovered(false)
     }
 
     const updateBookmarkMutation = useMutation({
-        mutationFn: (dataToSend) => {
+        mutationFn: (dataToSend) =>
+        {
             return updateBookmark(dataToSend)
         },
-        onSettled: () => {
+        onSettled: () =>
+        {
             queryClient.invalidateQueries({ queryKey: ["Bookmarked"] });
         },
     });
 
-    const handleBookmarkMedia = async () => {
+    const handleBookmarkMedia = async () =>
+    {
         setIsBookmarked((prev) => !prev)
         const dataToSend = {
             userEmail: userEmail,
             bookmarkId: trendingMedia.id
         }
-        try {
+        try
+        {
             updateBookmarkMutation.mutate(dataToSend)
-        } catch (e) {
+        } catch (e)
+        {
             console.log(e)
         }
     }
 
     return (
-        <div className={`mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative flex justify-end`}>
-            <div className={`absolute top-[1rem] right-[1rem] tablet:top-[1.3rem] tablet:right-[1.5rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center`}
+        <div className={`cursor-pointer hover:brightness-90 transition duration-300 ease-in-out drop-shadow-2x1 mb-[1rem] tablet:mb-[1.5rem] desktop:mb-[2rem] min-w-fit relative flex justify-end`}>
+            <div className={` absolute top-[1rem] right-[1rem] tablet:top-[1.3rem] tablet:right-[1.5rem] w-[2rem] h-[2rem] bg-ma-black hover:bg-ma-white rounded-full opacity-50 hover:opacity-100 hover:fill-ma-black flex justify-center items-center hover:scale-110 transition-transform duration-200 hover:brightness-100`}
                 onClick={handleBookmarkMedia}
                 onMouseEnter={(e) => { handleHoverBookmark(e) }}
                 onMouseLeave={(e) => { handleHoverLeaveBookmark(e) }}
